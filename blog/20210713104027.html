@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <!-- meta -->
-<meta charset="UTF-8">
+    <!-- meta --><meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
 <link rel="icon" type="image/x-icon" href="/images/logo.png">
 <link rel="stylesheet" type="text/css" href="/css/common.css">
@@ -25,8 +24,7 @@
   });
 </script>
 
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-G3M43D6P2H"></script>
+<!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=G-G3M43D6P2H"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
@@ -34,12 +32,12 @@
 
   gtag('config', 'G-G3M43D6P2H');
 </script>
-<title>複数ファイルアップロードのバリデーション - Mojolicious Tutorial - Perl Web Framework</title>
-<meta name="description" content="複数ファイルアップロードのバリデーションを書いてみましょう。">
+<title> Validation of multiple file uploads  - Mojolicious Tutorial - Perl Web Framework</title>
+<meta name="description" content="Let's write validation for multiple file uploads.">
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:site" content="@perlzemi" />
-<meta name="twitter:title" content="複数ファイルアップロードのバリデーション - Mojolicious Tutorial - Perl Web Framework" />
-<meta name="twitter:description" content="複数ファイルアップロードのバリデーションを書いてみましょう。" />
+<meta name="twitter:title" content=" Validation of multiple file uploads  - Mojolicious Tutorial - Perl Web Framework" />
+<meta name="twitter:description" content="Let's write validation for multiple file uploads." />
 <meta name="twitter:image" content="https://en.mojolicious.perlzemi.com//images/twitter_card_large_kaeru.png" />
 
 
@@ -61,9 +59,9 @@
     
   </div>
   <div class="middle">
-    <h2><a href="/blog/20210713104027.html">複数ファイルアップロードのバリデーション</a></h2>
+    <h2><a href="/blog/20210713104027.html"> Validation of multiple file uploads </a></h2>
 <p>
-  複数ファイルアップロードのバリデーションを書いてみましょう。
+  Let's write validation for multiple file uploads.
 </p>
 <div style="width:calc(100% - 30px);margin:10px auto;">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4525414114581084"
@@ -82,103 +80,103 @@
 
 
 <p>
-  <b>HTML側</b>
+  <b> HTML side </b>
 </p>
 <p>
-  HTML側のファイルアップロードのフォームです。四つのファイルアプロードのフィールドがあります。エラー表示と削除に対応しているものです。
+  This is a file upload form on the HTML side. There are four file upload fields. It corresponds to error display and deletion.
 </p>
 <pre>
-&lt;form action=&lt;%= url_for %&gt; method="POST", enctype="multipart/form-data"&gt;
-  %= hidden_field op =&gt; 'update';
+&lt;form action = &lt;%= url_for%&gt; method = "POST", enctype = "multipart / form-data"&gt;
+  %= hidden_field op =&gt;'update';
   %= hidden_field id =&gt; $id;
   &lt;ul&gt;
     &lt;li&gt;
-      画像1. &lt;%= file_field 'image1' %&gt;
-      &lt;div class="error"&gt;&lt;%= $errors-&gt;{'image1'} ? $errors-&gt;{'image1'} : '' %&gt;&lt;/div&gt;
-      削除 &lt;%= check_box 'image1_delete' %&gt;
+      Image 1. &lt;%= file_field'image1'%&gt;
+      &lt;div class = "error"&gt; &lt;%= $errors-&gt;{'image1'}? $errors-&gt;{'image1'}:''%&gt; &lt;/div&gt;
+      Delete &lt;%= check_box'image1_delete'%&gt;
     &lt;/li&gt;
     &lt;li&gt;
-      画像2. &lt;%= file_field 'image2' %&gt;
-      &lt;div class="error"&gt;&lt;%= $errors-&gt;{'image2'} ? $errors-&gt;{'image2'} : '' %&gt;&lt;/div&gt;
-      削除 &lt;%= check_box 'image2_delete' %&gt;
+      Image 2. &lt;%= file_field'image2'%&gt;
+      &lt;div class = "error"&gt; &lt;%= $errors-&gt;{'image2'}? $errors-&gt;{'image2'}:''%&gt; &lt;/div&gt;
+      Delete &lt;%= check_box'image2_delete'%&gt;
     &lt;/li&gt;
     &lt;li&gt;
-      画像3. &lt;%= file_field 'image3' %&gt;
-      &lt;div class="error"&gt;&lt;%= $errors-&gt;{'image3'} ? $errors-&gt;{'image3'} : '' %&gt;&lt;/div&gt;
-      削除 &lt;%= check_box 'image3_delete' %&gt;
+      Image 3. &lt;%= file_field'image3'%&gt;
+      &lt;div class = "error"&gt; &lt;%= $errors-&gt;{'image3'}? $errors-&gt;{'image3'}:''%&gt; &lt;/div&gt;
+      Delete &lt;%= check_box'image3_delete'%&gt;
     &lt;/li&gt;
     &lt;li&gt;
-      画像4. &lt;%= file_field 'image4' %&gt;
-      &lt;div class="error"&gt;&lt;%= $errors-&gt;{'image4'} ? $errors-&gt;{'image4'} : '' %&gt;&lt;/div&gt;
-      削除 &lt;%= check_box 'image4_delete' %&gt;
+      Image 4. &lt;%= file_field'image4'%&gt;
+      &lt;div class = "error"&gt; &lt;%= $errors-&gt;{'image4'}? $errors-&gt;{'image4'}:''%&gt; &lt;/div&gt;
+      Delete &lt;%= check_box'image4_delete'%&gt;
     &lt;/li&gt;
   &lt;/ul&gt;
 &lt;/form&gt;
 </pre>
 <p>
-  <b>プログラム側</b>
+  <b> Program side </b>
 </p>
 <p>
-  プログラム側のサンプルコードです。パラメーターで取得したものは、<a href="https://en.mojodoc.perlzemi.com/Mojo::Upload.html">Mojo::Upload</a>オブジェクトになります。複数のファイルフィールドの値をとって、画像情報を作成して、<a href="https://en.perlzemi.com/blog/20180214151861.html">配列のリファレンス</a>にしています。
+  This is a sample code on the program side. What you get with the parameters will be a <a href="https://en.mojodoc.perlzemi.com/Mojo ::Upload.html"> Mojo::Upload</a> object. The image information is created by taking the values ​​of multiple file fields and used as <a href="https://en.perlzemi.com/blog/20180214151861.html"> array reference</a>.
 </p>
 <p>
-  ファイルのサイズがあった場合に、ファイルの種類を判定しています。
+  If there is a file size, the file type is determined.
 </p>
 <pre>
 &lt;%
-  my $op = param('op') // '';
-  my $id = param('id');
+  my $op = param ('op') //'';
+  my $id = param ('id');
 
   my $errors = {};
-  if ($self-&gt;req-&gt;method eq 'POST') {
-    if ($op eq 'update') {
+  if ($self-&gt;req-&gt;methodeq'POST') {
+    if ($op eq'update') {
 
-      # パラメーターの取得
+      #Get parameters
       my $images = [];
       my $image_count = 4;
-      for (my $number = 1; $number &lt;= $image_count; $number++) {
+      for (my $number = 1; $number &lt;= $image_count; $number ++) {
         
-        my $image_upload = param("image$number");
+        my $image_upload = param ("image $number");
         
         my $image = {
           upload =&gt; $image_upload,
           number =&gt; $number,
-        };
+        };;
         
         push @$images, $image;
       }
 
-      # バリデーション
+      #Validation
       for my $image (@$images) {
         my $image_upload = $image-&gt;{upload};
         
-        if ($image_upload-&gt;size &gt; 0) {
-          # コンテントタイプ
+        if ($image_upload-&gt;size&gt; 0) {
+          #Content type
           my $image_content_type = $image_upload-&gt;headers-&gt;content_type;
           
-          # 拡張子
+          # extension
           my $ext;
 
-          # PNG
-          if ($image_content_type =~ m|\bimage/png\b|) {
-            $ext = 'png';
+          #PNG
+          if ($image_content_type = ~ m | \ bimage / png \ b |) {
+            $ext ='png';
           }
-          # JPEG
-          elsif ($image_content_type =~ m|\bimage/jpeg\b|) {
-            $ext = 'jpg';
+          #JPEG
+          elsif ($image_content_type = ~ m | \ bimage / jpeg \ b |) {
+            $ext ='jpg';
           }
-          # GIF
-          elsif ($image_content_type =~ m|\bimage/gif\b|) {
-            $ext = 'gif';
+          #GIF
+          elsif ($image_content_type = ~ m | \ bimage / gif \ b |) {
+            $ext ='gif';
           }
-          # PDF
-          elsif ($image_content_type =~ m|\bapplication/pdf\b|) {
-            $ext = 'pdf';
+          #PDF
+          elsif ($image_content_type = ~ m | \ bapplication / pdf \ b |) {
+            $ext ='pdf';
           }
           
           unless (defined $ext) {
             my $number = $image-&gt;{number};
-            $errors-&gt;{"image$number"} = "画像$image-&gt;{number}のファイルの種類が不正です。";
+            $errors-&gt;{"image $number"} = "The file type of image $image-&gt;{number} is invalid.";
           }
         }
       }
@@ -213,8 +211,7 @@
           <div style="margin-bottom:30px">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4525414114581084"
      crossorigin="anonymous"></script>
-<!-- ディスプレイ縦長 -->
-<ins class="adsbygoogle"
+<!-- ディスプレイ縦長 --><ins class="adsbygoogle"
      style="display:block"
      data-ad-client="ca-pub-4525414114581084"
      data-ad-slot="4544919209"

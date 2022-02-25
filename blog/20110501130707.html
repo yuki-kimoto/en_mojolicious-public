@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <!-- meta -->
-<meta charset="UTF-8">
+    <!-- meta --><meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
 <link rel="icon" type="image/x-icon" href="/images/logo.png">
 <link rel="stylesheet" type="text/css" href="/css/common.css">
@@ -25,8 +24,7 @@
   });
 </script>
 
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-G3M43D6P2H"></script>
+<!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=G-G3M43D6P2H"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
@@ -34,12 +32,12 @@
 
   gtag('config', 'G-G3M43D6P2H');
 </script>
-<title>パラメーターを取得する - param, every_param - Mojolicious Tutorial - Perl Web Framework</title>
-<meta name="description" content="パラメーターを取得するには、paramメソッド、every_paramメソッドを使用します。">
+<title> parameters --param, every_param  - Mojolicious Tutorial - Perl Web Framework</title>
+<meta name="description" content="Get  parameters --param, every_param">
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:site" content="@perlzemi" />
-<meta name="twitter:title" content="パラメーターを取得する - param, every_param - Mojolicious Tutorial - Perl Web Framework" />
-<meta name="twitter:description" content="パラメーターを取得するには、paramメソッド、every_paramメソッドを使用します。" />
+<meta name="twitter:title" content=" parameters --param, every_param  - Mojolicious Tutorial - Perl Web Framework" />
+<meta name="twitter:description" content="Get  parameters --param, every_param" />
 <meta name="twitter:image" content="https://en.mojolicious.perlzemi.com//images/twitter_card_large_kaeru.png" />
 
 
@@ -61,9 +59,8 @@
     
   </div>
   <div class="middle">
-    <h2><a href="/blog/20110501130707.html">パラメーターを取得する - param, every_param</a></h2>
-<p>
-  パラメーターを取得するには、paramメソッド、every_paramメソッドを使用します。
+    <p>
+  Get <h2><a href="/blog/20110501130707.html"> parameters --param, every_param </a></h2>
 </p>
 <div style="width:calc(100% - 30px);margin:10px auto;">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4525414114581084"
@@ -81,101 +78,102 @@
 </div>
 
 
+<p>
+  To get the parameters, use the param method and every_param method.
+</p>
 <pre>
-# ひとつのパラメーター
+# One parameter
 my $name = $c-&gt;param('name');
 
-# すべてのパラメーター
+# All parameters
 my $names = $c-&gt;every_param('name');
 </pre>
 <p>
-  Mojoliciousでパラメーターといった場合次の三つの要素を含むことが多いので、まず次の三つのものの区別をしておきましょう。
+  In Mojolicious, parameters often include the following three elements, so let's first distinguish between the following three.
 </p>
 <ol>
   <li>
-    クエリ文字列に含まれるデータ
+    Data contained in the query string
   </li>
   <li>
-    POSTで送信されたHTTPボディに含まれるデータ
+    Data contained in the HTTP body sent by POST
   </li>
   <li>
-    URLの中でキャプチャされたデータ
+    Data captured in the URL
   </li>
 </ol>
-<h4>(1)クエリ文字列に含まれるデータ</h4>
+<h4> (1) Data contained in the query string </h4>
 <p>
-  クエリ文字列とはURLの?以降に設定されるデータのことです。
+  The query string is the data set after? In the URL.
 </p>
 <pre>
 http://somehost.com/search?name=Ken&amp;age=19
 </pre>
 <p>
-  それぞれのパラメーター「パラメータ名:値」は「&」で結ばれた形になっています。クエリ文字列によるパラメータは、何かを検索するときによく利用されいます。
+  Each parameter "parameter name: value" is connected by "&". Query string parameters are often used when searching for something.
 </p>
-<h4>(2)POSTで送信されたHTTPボディに含まれるデータ</h4>
+<h4> (2) Data contained in the HTTP body sent by POST </h4>
 <p>
-  これはフォームの送信などでHTTPボディに含まれるデータです。
+  This is the data contained in the HTTP body, such as when submitting a form.
 </p>
-<h4>URLの中でキャプチャされたデータ</h4>
+<h4> Data captured in the URL </h4>
 <p>
-  MojoliciousではURLの中の一部分をパラメータとしてキャプチャすることができます。
+  Mojolicious allows you to capture a portion of the URL as a parameter.
 </p>
 <pre>
-get '/entry/:id' =&gt; sub { ... };
+get'/ entry /: id'=&gt; sub {...};
 </pre>
 <p>
-  この値もパラメータとして扱われます。
+  This value is also treated as a parameter.
 </p>
-<h3>パラメーターの値の取得</h3>
+<h3> Get parameter values ​​</h3>
 <p>
-  パラメーターの値を取得するにはMojolicious::Controllerのparamメソッドを使用します。これは上記の(1),(2),(3)すべてを含みます。
+  To get the value of the parameter, use the param method of Mojolicious::Controller. This includes all of the above (1), (2), (3).
 </p>
 <pre>
 my $age = $c-&gt;param('age');
 </pre>
-<h3>複数の値の取得</h3>
+<h3> Get multiple values ​​</h3>
 <p>
-  チェックボックスなどで複数選択された値を取得するにはevery_paramメソッドを呼び出します。
+  Call the every_param method to get multiple selected values ​​such as checkboxes.
 </p>
 <pre>
 my $contries = $c-&gt;every_param('country');
 </pre>
 <p>
-  <b>注意</b>:リストコンテキストでのparam($name)は、セキュリティ上の問題のために、Mojolicious 6で機能が削除されました。every_paramを使うようにしてください。
+  <b> Caution </b>: param ($name) in list context has been removed in Mojolicious 6 due to security issues. Be sure to use every_param.
 </p>
-<h3>すべてのパラメーターの名前と値を取得</h3>
+<h3> Get the names and values ​​of all parameters </h3>
 <p>
-  パラメーター名をすべて取得するには「$c->req->params->to_hash」を使います。
+  Use "$c->req->params->to_hash" to get all the parameter names.
 </p>
 <pre>
-my $params = $c-&gt;req-&gt;params-&gt;to_hash
-</pre>
-<p>
-  <b>注意</b>:リストコンテキストにおける$c->paramは、セキュリティ上の理由で、Mojolicious 6から廃止されています。すべての名前を取得するには、上記で名前と値を取得した後に「keys @$params」にキーを取得してください。
-</p>
-<p>
-  以下はMojolicious::Liteにおけるサンプルです。
-</p>
-<pre>
-# Mojolicious::Lite
+my $params = $c-&gt;req-&gt;params-&gt;to_hash&lt;/pre&gt;
+
+&lt;b&gt; Caution &lt;/b&gt;: $c-&gt;paramin list context is obsolete from Mojolicious 6 for security reasons. To get all the names, get the keys in "keys @$params" after getting the names and values ​​above.
+
+Below is a sample from Mojolicious::Lite.
+
+&lt;pre&gt;
+#Mojolicious::Lite
 use Mojolicious::Lite;
 
 use utf8;
 
-get '/entry/:id' =&gt; sub {
+get'/ entry /: id'=&gt; sub {
   my $self = shift;
   my $age = $self-&gt;param('age');
   my @countries = $self-&gt;param('country');
   my @names = $self-&gt;param;
-};
+};;
 </pre>
 <p>
-  以下はMojoliciousにおけるサンプルです。
+  Below is a sample from Mojolicious.
 </p>
 <pre>
 package MyApp::Diary;
 
-use Mojo::Base 'Mojolicious::Controller';
+use Mojo::Base'Mojolicious::Controller';
 
 sub entry {
   my $self = shift;
@@ -210,8 +208,7 @@ sub entry {
           <div style="margin-bottom:30px">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4525414114581084"
      crossorigin="anonymous"></script>
-<!-- ディスプレイ縦長 -->
-<ins class="adsbygoogle"
+<!-- ディスプレイ縦長 --><ins class="adsbygoogle"
      style="display:block"
      data-ad-client="ca-pub-4525414114581084"
      data-ad-slot="4544919209"

@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <!-- meta -->
-<meta charset="UTF-8">
+    <!-- meta --><meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
 <link rel="icon" type="image/x-icon" href="/images/logo.png">
 <link rel="stylesheet" type="text/css" href="/css/common.css">
@@ -25,8 +24,7 @@
   });
 </script>
 
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-G3M43D6P2H"></script>
+<!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=G-G3M43D6P2H"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
@@ -34,12 +32,12 @@
 
   gtag('config', 'G-G3M43D6P2H');
 </script>
-<title>SQLiteの情報を見るためのMojoliciousプラグイン Mojolicious::Plugin::SQLiteViewerLite - Mojolicious Tutorial - Perl Web Framework</title>
-<meta name="description" content="お知らせ">
+<title> Mojolicious plugin for viewing SQLite information Mojolicious::Plugin::SQLiteViewerLite  - Mojolicious Tutorial - Perl Web Framework</title>
+<meta name="description" content="Notice">
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:site" content="@perlzemi" />
-<meta name="twitter:title" content="SQLiteの情報を見るためのMojoliciousプラグイン Mojolicious::Plugin::SQLiteViewerLite - Mojolicious Tutorial - Perl Web Framework" />
-<meta name="twitter:description" content="お知らせ" />
+<meta name="twitter:title" content=" Mojolicious plugin for viewing SQLite information Mojolicious::Plugin::SQLiteViewerLite  - Mojolicious Tutorial - Perl Web Framework" />
+<meta name="twitter:description" content="Notice" />
 <meta name="twitter:image" content="https://en.mojolicious.perlzemi.com//images/twitter_card_large_kaeru.png" />
 
 
@@ -61,10 +59,10 @@
     
   </div>
   <div class="middle">
-    <h2><a href="/blog/20120316133189.html">SQLiteの情報を見るためのMojoliciousプラグイン Mojolicious::Plugin::SQLiteViewerLite</a></h2>
+    <h2><a href="/blog/20120316133189.html"> Mojolicious plugin for viewing SQLite information Mojolicious::Plugin::SQLiteViewerLite </a></h2>
 <blockquote>
 <p>
-  <big><big><b>お知らせ</b></big></big>
+  <big> <big> <b> Notice </b> </big> </big>
 </p>
 <div style="width:calc(100% - 30px);margin:10px auto;">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4525414114581084"
@@ -83,47 +81,47 @@
 
 
 <p>
-  Mojolicious::Plugin::SQLiteViewerLiteは<a href="/blog/20130419136633.html">Mojolicious::Plugin::DBViewer</a>に統合されました。
+  Mojolicious::Plugin::SQLiteViewerLite has been integrated into <a href="/blog/20130419136633.html"> Mojolicious::Plugin::DBViewer</a>.
 </p>
 </blockquote>
 <p>
-  Mojolicious::Plugin::SQLiteViewerLiteをCPANで公開しました。Mojoliciousのプラグインで、SQLiteのテーブル一覧やテーブルの定義をブラウザで表示させて観覧することができます。phpMyAdminの観覧専用のSQLiteのPerlバージョンだと思ってくれるとわかりやすいかもしれません。機能はずっとシンプルです。
+  Mojolicious::Plugin::SQLiteViewerLite has been released on CPAN. With the Mojolicious plugin, you can view the SQLite table list and table definitions in your browser. It may be helpful to think of it as a Perl version of SQLite dedicated to viewing phpMyAdmin. The function is much simpler.
 </p>
 <p>
-  先日公開した便利なMojolicious::Plugin::MySQLViewerLiteのSQLiteバージョンです。同じインターフェースで利用することができます。
+  This is the SQLite version of the useful Mojolicious::Plugin::MySQLViewerLite that was released the other day. It can be used with the same interface.
 </p>
 <ul>
   <li>
-    <big><big><a href="http://search.cpan.org/dist/Mojolicious-Plugin-SQLiteViewerLite/lib/Mojolicious/Plugin/SQLiteViewerLite.pm">Mojolicious::Plugin::SQLiteViewerLite</a></big></big>
+    <big> <big> <a href="http://search.cpan.org/dist/Mojolicious-Plugin-SQLiteViewerLite/lib/Mojolicious/Plugin/SQLiteViewerLite.pm"> Mojolicious::Plugin::SQLiteViewerLite</a> > </big> </big>
   </li>
 </ul>
-<h3>使い方</h3>
+<h3> How to use </h3>
 <pre>
-# Mojolicious::Lite
-plugin 'SQLiteViewerLite', dbh =&gt; $dbh;
+#Mojolicious::Lite
+plugin'SQLiteViewerLite', dbh =&gt; $dbh;
 
-# Mojolicious
+#Mojolicious
 $app-&gt;plugin('SQLiteViewerLite', dbh =&gt; $dbh);
 
-# Access
-http://localhost:3000/SQLiteviewerlite
+#Access
+http: // localhost: 3000 / SQLiteviewerlite
 </pre>
-<h3>機能</h3>
+<h3> Functions </h3>
 <p>
-  Mojolicious::Plugin::SQLiteViewerLiteは次のような機能をもっています。
+  Mojolicious::Plugin::SQLiteViewerLite has the following functions.
 </p>
 <ul>
   <li>
-    すべてのテーブル名の表示
+    Show all table names
   </li>
   <li>
-    <b>show create table</b>の表示
+    Show <b> show create table </b>
   </li>
   <li>
     select * from TABLE limit 0, 1000
   </li>
   <li>
-    すべてのテーブルのプライマリーキー、Nullが許可された列を表示
+    Show primary key for all tables, nullable columns
   </li>
 </ul>
 
@@ -152,8 +150,7 @@ http://localhost:3000/SQLiteviewerlite
           <div style="margin-bottom:30px">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4525414114581084"
      crossorigin="anonymous"></script>
-<!-- ディスプレイ縦長 -->
-<ins class="adsbygoogle"
+<!-- ディスプレイ縦長 --><ins class="adsbygoogle"
      style="display:block"
      data-ad-client="ca-pub-4525414114581084"
      data-ad-slot="4544919209"

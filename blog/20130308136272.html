@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <!-- meta -->
-<meta charset="UTF-8">
+    <!-- meta --><meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
 <link rel="icon" type="image/x-icon" href="/images/logo.png">
 <link rel="stylesheet" type="text/css" href="/css/common.css">
@@ -25,8 +24,7 @@
   });
 </script>
 
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-G3M43D6P2H"></script>
+<!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=G-G3M43D6P2H"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
@@ -34,12 +32,12 @@
 
   gtag('config', 'G-G3M43D6P2H');
 </script>
-<title>複数のコントローラーで共通に必要な値を渡す - Mojolicious Tutorial - Perl Web Framework</title>
-<meta name="description" content="グローバルに値を設定するのであればdefaultsメソッドを使うことができます。けれども、ときには複数のコントローラーだけで、値を利用したいという場合があると思います。">
+<title> Pass the required values for multiple controllers  - Mojolicious Tutorial - Perl Web Framework</title>
+<meta name="description" content="If you want to set the value globally, you can use the  defaults  method. However, sometimes you may want to use the value with just multiple controllers.">
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:site" content="@perlzemi" />
-<meta name="twitter:title" content="複数のコントローラーで共通に必要な値を渡す - Mojolicious Tutorial - Perl Web Framework" />
-<meta name="twitter:description" content="グローバルに値を設定するのであればdefaultsメソッドを使うことができます。けれども、ときには複数のコントローラーだけで、値を利用したいという場合があると思います。" />
+<meta name="twitter:title" content=" Pass the required values for multiple controllers  - Mojolicious Tutorial - Perl Web Framework" />
+<meta name="twitter:description" content="If you want to set the value globally, you can use the  defaults  method. However, sometimes you may want to use the value with just multiple controllers." />
 <meta name="twitter:image" content="https://en.mojolicious.perlzemi.com//images/twitter_card_large_kaeru.png" />
 
 
@@ -61,9 +59,9 @@
     
   </div>
   <div class="middle">
-    <h2><a href="/blog/20130308136272.html">複数のコントローラーで共通に必要な値を渡す</a></h2>
+    <h2><a href="/blog/20130308136272.html"> Pass the required values for multiple controllers </a></h2>
 <p>
-  グローバルに値を設定するのであれば<b>defaults</b>メソッドを使うことができます。けれども、ときには複数のコントローラーだけで、値を利用したいという場合があると思います。
+  If you want to set the value globally, you can use the <b> defaults </b> method. However, sometimes you may want to use the value with just multiple controllers.
 </p>
 <div style="width:calc(100% - 30px);margin:10px auto;">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4525414114581084"
@@ -82,23 +80,23 @@
 
 
 <p>
-  そのような場合は次のようなテクニックを使います。
+  In such cases, use the following techniques.
 </p>
 <pre>
 my $r = $app-&gt;routes-&gt;to(val =&gt; $val);
 
-# 後は同じ
-$r-&gt;get('/foo');
-$r-&gt;get('/bar');
+# The rest is the same
+$r-&gt;get('/ foo');
+$r-&gt;get('/ bar');
 </pre>
 <p>
-  ルーターを取得するときに<strong>to</strong>を使うところがポイントです。<b>to</b>メソッドは、通常はコントローラーとアクションの組み合わせを書くのに利用するのですが、実は、コントローラーのデフォルト値を設定することもできます。
+  The point is to use <strong> to </strong> when getting a router. The <b> to </b> method is usually used to write a combination of controller and action, but in fact you can also set a default value for the controller.
 </p>
 <p>
-  このようにすればコントローラー側で、設定した値を利用することができます。
+  By doing this, the set value can be used on the controller side.
 </p>
 <pre>
-# コントローラー内
+#In the controller
 my $val = $c-&gt;stash('val');
 </pre>
 
@@ -127,8 +125,7 @@ my $val = $c-&gt;stash('val');
           <div style="margin-bottom:30px">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4525414114581084"
      crossorigin="anonymous"></script>
-<!-- ディスプレイ縦長 -->
-<ins class="adsbygoogle"
+<!-- ディスプレイ縦長 --><ins class="adsbygoogle"
      style="display:block"
      data-ad-client="ca-pub-4525414114581084"
      data-ad-slot="4544919209"

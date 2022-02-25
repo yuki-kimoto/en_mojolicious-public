@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <!-- meta -->
-<meta charset="UTF-8">
+    <!-- meta --><meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
 <link rel="icon" type="image/x-icon" href="/images/logo.png">
 <link rel="stylesheet" type="text/css" href="/css/common.css">
@@ -25,8 +24,7 @@
   });
 </script>
 
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-G3M43D6P2H"></script>
+<!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=G-G3M43D6P2H"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
@@ -34,12 +32,12 @@
 
   gtag('config', 'G-G3M43D6P2H');
 </script>
-<title>Mojoliciousですべての処理の前に実行する処理をアンダーで記述する - Mojolicious Tutorial - Perl Web Framework</title>
-<meta name="description" content="たとえば認証などを行う場合は、すべての処理の直前で、ログインしているかどうかを確認したいと思います。このような場合はアンダーという機能を利用します。ルートからunder()でアンダーを作成して、実行したいコールバックを指定します。コールバックの戻り値が、真の場合は続きの処理を行い、偽の場合は続きの処理を行いません。">
+<title> Underwrite the process to be executed before all processes in Mojolicious  - Mojolicious Tutorial - Perl Web Framework</title>
+<meta name="description" content="For example, when performing authentication, I would like to check if I am logged in just before all the processing. In such a case, use a function called under. Create an under () from the root to specify the callback you want to execute. If the return value of the callback is true, the continuation processing is performed, and if it is false, the continuation processing is not performed.">
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:site" content="@perlzemi" />
-<meta name="twitter:title" content="Mojoliciousですべての処理の前に実行する処理をアンダーで記述する - Mojolicious Tutorial - Perl Web Framework" />
-<meta name="twitter:description" content="たとえば認証などを行う場合は、すべての処理の直前で、ログインしているかどうかを確認したいと思います。このような場合はアンダーという機能を利用します。ルートからunder()でアンダーを作成して、実行したいコールバックを指定します。コールバックの戻り値が、真の場合は続きの処理を行い、偽の場合は続きの処理を行いません。" />
+<meta name="twitter:title" content=" Underwrite the process to be executed before all processes in Mojolicious  - Mojolicious Tutorial - Perl Web Framework" />
+<meta name="twitter:description" content="For example, when performing authentication, I would like to check if I am logged in just before all the processing. In such a case, use a function called under. Create an under () from the root to specify the callback you want to execute. If the return value of the callback is true, the continuation processing is performed, and if it is false, the continuation processing is not performed." />
 <meta name="twitter:image" content="https://en.mojolicious.perlzemi.com//images/twitter_card_large_kaeru.png" />
 
 
@@ -61,9 +59,9 @@
     
   </div>
   <div class="middle">
-    <h2><a href="/blog/20101112127859.html">Mojoliciousですべての処理の前に実行する処理をアンダーで記述する</a></h2>
+    <h2><a href="/blog/20101112127859.html"> Underwrite the process to be executed before all processes in Mojolicious </a></h2>
 <p>
-  たとえば認証などを行う場合は、すべての処理の直前で、ログインしているかどうかを確認したいと思います。このような場合はアンダーという機能を利用します。ルートからunder()でアンダーを作成して、実行したいコールバックを指定します。コールバックの戻り値が、真の場合は続きの処理を行い、偽の場合は続きの処理を行いません。
+  For example, when performing authentication, I would like to check if I am logged in just before all the processing. In such a case, use a function called under. Create an under () from the root to specify the callback you want to execute. If the return value of the callback is true, the continuation processing is performed, and if it is false, the continuation processing is not performed.
 </p>
 <div style="width:calc(100% - 30px);margin:10px auto;">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4525414114581084"
@@ -87,7 +85,7 @@ sub startup {
   
   my $r = $self-&gt;routes;
 
-  # 認証
+  # certification
   $r = $r-&gt;under(sub {
     my $self = shift;
     
@@ -96,7 +94,7 @@ sub startup {
     }
     else {
       my $url = $self-&gt;req-&gt;url-&gt;to_string;
-      if ($url =~ m#login$#) {
+      if ($url = ~ m # login $#) {
         return 1;
       }
       else {
@@ -110,11 +108,11 @@ sub startup {
 }
 </pre>
 <p>
-  少し変な記述に見えますが、toメソッドがアンダー自体を返すので上記のような書き方が簡潔だと思います。すべてのルートでアンダーを共有するので、$r自体を上書きしてしまっています。セッションIDが発行されていない場合でログインを行うためのURL以外にアクセスした場合は、認証が拒否の知らせるテンプレートを描画するようにしています。
+  It looks a little strange, but I think the above writing is concise because the to method returns the under itself. It shares the unders with all routes, so it overwrites $r itself. If the session ID is not issued and you access other than the URL for logging in, authentication will draw a template to notify you of refusal.
 </p>
-<h3>Mojolicious 6からの変更点</h3>
+<h3> Changes from Mojolicious 6 </h3>
 <p>
-  Mojolicious 6からは、ブリッジを作成するbridgeメソッドが、underメソッドに統合されています。機能は同じなので、underメソッドを使うようにしてください。
+  Starting with Mojolicious 6, the bridge method that creates a bridge has been integrated into the under method. The functionality is the same, so be sure to use the under method.
 </p>
 
   </div>
@@ -142,8 +140,7 @@ sub startup {
           <div style="margin-bottom:30px">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4525414114581084"
      crossorigin="anonymous"></script>
-<!-- ディスプレイ縦長 -->
-<ins class="adsbygoogle"
+<!-- ディスプレイ縦長 --><ins class="adsbygoogle"
      style="display:block"
      data-ad-client="ca-pub-4525414114581084"
      data-ad-slot="4544919209"

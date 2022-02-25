@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <!-- meta -->
-<meta charset="UTF-8">
+    <!-- meta --><meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
 <link rel="icon" type="image/x-icon" href="/images/logo.png">
 <link rel="stylesheet" type="text/css" href="/css/common.css">
@@ -25,8 +24,7 @@
   });
 </script>
 
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-G3M43D6P2H"></script>
+<!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=G-G3M43D6P2H"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
@@ -34,12 +32,12 @@
 
   gtag('config', 'G-G3M43D6P2H');
 </script>
-<title>Mojoliciousの便利なAPI - Mojolicious Tutorial - Perl Web Framework</title>
-<meta name="description" content="リクエストオブジェクトはコントローラオブジェクトを通して取得することができます。">
+<title> Mojolicious's useful API  - Mojolicious Tutorial - Perl Web Framework</title>
+<meta name="description" content="The request object can be obtained through the controller object.">
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:site" content="@perlzemi" />
-<meta name="twitter:title" content="Mojoliciousの便利なAPI - Mojolicious Tutorial - Perl Web Framework" />
-<meta name="twitter:description" content="リクエストオブジェクトはコントローラオブジェクトを通して取得することができます。" />
+<meta name="twitter:title" content=" Mojolicious's useful API  - Mojolicious Tutorial - Perl Web Framework" />
+<meta name="twitter:description" content="The request object can be obtained through the controller object." />
 <meta name="twitter:image" content="https://en.mojolicious.perlzemi.com//images/twitter_card_large_kaeru.png" />
 
 
@@ -61,10 +59,10 @@
     
   </div>
   <div class="middle">
-    <h2><a href="/blog/20100907127859.html">Mojoliciousの便利なAPI</a></h2>
-<h3>リクエストオブジェクト</h3>
+    <h2><a href="/blog/20100907127859.html"> Mojolicious's useful API </a></h2>
+<h3> Request object </h3>
 <p>
-  リクエストオブジェクトはコントローラオブジェクトを通して取得することができます。
+  The request object can be obtained through the controller object.
 </p>
 <div style="width:calc(100% - 30px);margin:10px auto;">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4525414114581084"
@@ -83,159 +81,159 @@
 
 
 <pre>
-get '/' =&gt; sub {
+get'/' =&gt; sub {
   my $self = shift;
   my $req = $self-&gt;req;
-};
+};;
 </pre>
 <p>
-  リクエストオブジェクトは<a href="http://search.cpan.org/dist/Mojolicious/lib/Mojo/Message/Request.pm">Mojo::Message::Request</a>です。<a href="http://search.cpan.org/dist/Mojolicious/lib/Mojo/Message/Request.pm">Mojo::Message::Request</a>は<a href="http://search.cpan.org/dist/Mojolicious/lib/Mojo/Message.pm">Mojo::Message</a>を継承しています。
+  The request object is <a href="http://search.cpan.org/dist/Mojolicious/lib/Mojo/Message/Request.pm"> Mojo::Message::Request</a>. <a href="http://search.cpan.org/dist/Mojolicious/lib/Mojo/Message/Request.pm"> Mojo::Message::Request</a> is <a href="http:/ It inherits from /search.cpan.org/dist/Mojolicious/lib/Mojo/Message.pm "> Mojo::Message</a>.
 </p>
 <p>
-  リクエストオブジェクトの便利なAPIを紹介します。
+  Introducing a convenient API for request objects.
 </p>
-<h4>params</h4>
+<h4> params </h4>
 <p>
-  paramsメソッドを使用すると、GETとPOSTで渡されたパラメータを保持するパラメータオブジェクトにアクセスすることができます。
+  You can use the params method to access a parameter object that holds the parameters passed by GET and POST.
 </p>
 <pre>
 my $params = $req-&gt;params;
 </pre>
-<h4>query_params</h4>
+<h4> query_params </h4>
 <p>
-  query_paramsメソッドを使用すると、GETで渡されたパラメータを保持するパラメータオブジェクトにアクセスすることができます。
+  You can use the query_params method to access a parameter object that holds the parameters passed in the GET.
 </p>
 <pre>
 my $params = $req-&gt;query_params;
 </pre>
-<h4>json</h4>
+<h4> json </h4>
 <p>
-  jsonメソッドを使うと、JSON形式で送信されたデータをPerlのデータ構造として取得できます。
+  You can use the json method to get the data sent in JSON format as a Perl data structure.
 </p>
 <pre>
 my $data = $req-&gt;json;
 </pre>
-<h4>is_secure</h4>
+<h4> is_secure </h4>
 <pre>
 my $secure = $req-&gt;is_secure;
 </pre>
 <p>
-  コネクションがセキュアかどうかを調べます。つまり「https://」で接続されているかどうかを調べます。
+  Check if the connection is secure. In other words, check if you are connected with "https: //".
 </p>
-<h4>is_xhr</h4>
+<h4> is_xhr </h4>
 <pre>
 $xhr = $req-&gt;is_xhr;
 </pre>
 <p>
-  「Check X-Requested-With」ヘッダに「XMLHttpRequest」と文字列が含まれているかどうかを調べます。つまりAJAXで通信されているかどうかを調べます。
+  Checks if the "Check X-Requested-With" header contains the string "XMLHttpRequest". In other words, it checks whether it is communicating with AJAX.
 </p>
-<h3>パラメータオブジェクト</h3>
+<h3> Parameter object </h3>
 <p>
-  パラメータオブジェクトはGETやPOSTで渡されたパラメータを保持するオブジェクトです。これは<a href="http://search.cpan.org/dist/Mojolicious/lib/Mojo/Parameters.pm">Mojo::Parameters</a>オブジェクトです。
+  A parameter object is an object that holds the parameters passed by GET or POST. This is a <a href="http://search.cpan.org/dist/Mojolicious/lib/Mojo/Parameters.pm"> Mojo::Parameters</a> object.
 </p>
 <p>
-  パラメータオブジェクトの便利なAPIを紹介します。
+  Introducing a useful API for parameter objects.
 </p>
-<h4>to_hash</h4>
+<h4> to_hash </h4>
 <p>
-  to_hashメソッドを使うとパラメータをハッシュのリファレンスに変換することができます。
+  You can use the to_hash method to convert a parameter to a hash reference.
 </p>
 <pre>
 my $hash = $params-&gt;to_hash;
 </pre>
 <p>
-  これはコントローラオブジェクトから次のように利用されることが多いと思います
+  I think this is often used from controller objects like this:
 </p>
 <pre>
-get '/' =&gt; sub {
+get'/' =&gt; sub {
   my $self = shift;
   my $data = $self-&gt;req-&gt;params-&gt;to_hash;
 }
 </pre>
-<h3>アプリケーションオブジェクト</h3>
+<h3> Application object </h3>
 <p>
-  アプリケーションオブジェクトはapp関数を使って取得することができます。
+  Application objects can be obtained using the app function.
 </p>
 <pre>
 my $app = app;
 </pre>
 <p>
-  アプリケーションオブジェクトは<a href="http://search.cpan.org/dist/Mojolicious/lib/Mojolicious.pm">Mojolicious</a>オブジェクトです。<a href="http://search.cpan.org/dist/Mojolicious/lib/Mojolicious.pm">Mojolicious</a>は<a href="http://search.cpan.org/dist/Mojolicious/lib/Mojo.pm">Mojo</a>を継承しています。
+  The application object is a <a href="http://search.cpan.org/dist/Mojolicious/lib/Mojolicious.pm"> Mojolicious</a> object. <a href="http://search.cpan.org/dist/Mojolicious/lib/Mojolicious.pm"> Mojolicious</a> is <a href="http://search.cpan.org/dist/Mojolicious" It inherits from /lib/Mojo.pm "> Mojo</a>.
 </p>
 <p>
-  アプリケーションオブジェクトの便利なAPIを紹介します。
+  Introducing a useful API for application objects.
 </p>
-<h4>home</h4>
+<h4> home </h4>
 <p>
-  ホームオブジェクトを取得するにはhomeメソッドを使用します。
+  Use the home method to get the home object.
 </p>
 <pre>
 my $home = $app-&gt;home;
 </pre>
 <p>
-  ホームオブジェクトは<a href="http://search.cpan.org/dist/Mojolicious/lib/Mojo/Home.pm">Mojo::Home</a>オブジェクトで、アプリケーションのホームディレクトリの情報を持ちます。
+  The home object is a <a href="http://search.cpan.org/dist/Mojolicious/lib/Mojo/Home.pm"> Mojo::Home</a> object that holds information about your application's home directory. increase.
 </p>
-<h4>log</h4>
+<h4> log </h4>
 <p>
-  ログオブジェクトを取得するにはlogメソッドを使用します。
+  Use the log method to get the log object.
 </p>
 <pre>
 my $log = $app-&gt;log;
 </pre>
 <p>
-  ログオブジェクトは<a href="http://search.cpan.org/dist/Mojolicious/lib/Mojo/Log.pm">Mojo::Log</a>オブジェクトです。
+  The log object is a <a href="http://search.cpan.org/dist/Mojolicious/lib/Mojo/Log.pm"> Mojo::Log</a> object.
 </p>
-<h4>secrets</h4>
+<h4> secrets </h4>
 <p>
-  クッキーを暗号化するためのパスワードを設定するにはsecretsメソッドを使用します。
+  Use the secrets method to set a password for encrypting cookies.
 </p>
 <pre>
-$app-&gt;secrets(['lkjiji!&amp;F']);
+$app-&gt;secrets(['lkjiji! &amp; F']);
 </pre>
 <p>
-  クッキーを使用してセッション管理する場合は必ず設定しましょう。
+  Be sure to set it when managing sessions using cookies.
 </p>
-<h4>start</h4>
+<h4> start </h4>
 <p>
-  アプリケーションをスタートさせるにはstartメソッドを使用します。
+  Use the start method to start the application.
 </p>
 <pre>
 $app-&gt;start;
 </pre>
-<h4>types</h4>
+<h4> types </h4>
 <p>
-  タイプオブジェクトを取得するにはtypesメソッドを使用します。
+  Use the types method to get the types object.
 </p>
 <pre>
 my $types = $app-&gt;types;
 </pre>
 <p>
-  タイプオブジェクトは<a href="http://search.cpan.org/dist/Mojolicious/lib/MojoX/Types.pm">MojoX::Types</a>オブジェクトです。これはファイルの拡張子とコンテントタイプのマッピングを定義しているオブジェクトです。
+  The type object is a <a href="http://search.cpan.org/dist/Mojolicious/lib/MojoX/Types.pm"> MojoX::Types</a> object. This is an object that defines a file extension and content type mapping.
 </p>
-<h4>defaults</h4>
+<h4> defaults </h4>
 <p>
-  スタッシュのデフォルト値を設定しておくにはdefaultsメソッドを使用します。
+  Use the defaults method to set the default values ​​for the stash.
 </p>
 <pre>
-# Set
-$app-&gt;defaults({foo =&gt; 'bar'});
-$app-&gt;defaults-&gt;{foo} = 'bar';
+#Set
+$app-&gt;defaults({foo =&gt;'bar'});
+$app-&gt;defaults-&gt;{foo} ='bar';
 
-# Get
+#Get
 my $foo = $app-&gt;defaults-&gt;{foo};
 </pre>
-<h4>helper</h4>
+<h4> helper </h4>
 <p>
-  ヘルパーメソッドを追加するにはhelperメソッドを使用します。
+  Use the helper method to add a helper method.
 </p>
 <pre>
 $app-&gt;helper(
-  foo =&gt; sub { ... },
-  bar =&gt; sub { ... }
+  foo =&gt; sub {...},
+  bar =&gt; sub {...}
 );
 </pre>
 <p>
-  helperメソッドで追加したヘルパーメソッドは、アプリケーションオブジェクト、コントローラオブジェクト、テンプレートの内部で利用することができます。
+  The helper method added by the helper method can be used inside the application object, controller object, and template.
 </p>
 <pre>
 $app-&gt;foo;
@@ -244,79 +242,79 @@ $app-&gt;foo;
 $c-&gt;foo;
 </pre>
 <pre>
-@@ index.html.ep
-% foo;
+@@index.html.ep
+%foo;
 </pre>
-<h4>mode</h4>
+<h4> mode </h4>
 <p>
-  アプリケーションのモードを取得・設定するにはmodeメソッドを使用します。
+  Use the mode method to get and set the mode of the application.
 </p>
 <pre>
 my $mode = $app-&gt;mode;
 $app-&gt;mode('production');
 </pre>
 <p>
-  これは環境変数を使って行うこともできます。
+  This can also be done using environment variables.
 </p>
 <pre>
-export MOJO_MODE=production
+export MOJO_MODE = production
 </pre>
-<h3>Mojolicious::Liteでインポートされる関数</h3>
+<h3> Functions imported by Mojolicious::Lite </h3>
 <p>
-  Mojolicious::Liteを読み込んだときにインポートされる関数です。(Mojolicious::Liteの詳細については<a href="http://wiki.livedoor.jp/mojolicious/d/Mojolicious::Lite">Mojolicious::Liteのドキュメント</a>を参考にしてください。)
+  A function that is imported when you load Mojolicious::Lite. (For more information on Mojolicious::Lite, please refer to <a href="http://wiki.livedoor.jp/mojolicious/d/Mojolicious::Lite"> Mojolicious::Lite documentation</a>. )
 </p>
-<h4>app</h4>
+<h4> app </h4>
 <p>
-  アプケーションオブジェクトを取得するにはapp関数を定義します。
+  To get the application object, define the app function.
 </p>
 <pre>
 my $app = app;
 </pre>
-<h4>get</h4>
+<h4> get </h4>
 <p>
-  HTTPのGETメソッドでアクセスされるURLに対する処理を定義するにはget関数を使用します。。
+  Use the get function to define the processing for the URL accessed by the HTTP GET method. ..
 </p>
 <pre>
-get '/:foo' =&gt; sub {...};
+get'/: foo' =&gt; sub {...};
 </pre>
-<h4>post</h4>
+<h4> post </h4>
 <p>
-  HTTPのPOSTメソッドでアクセスされるURLに対する処理を定義するにはpost関数を使用します。
+  Use the post function to define the processing for the URL accessed by the HTTP POST method.
 </p>
 <pre>
-post '/:foo' =&gt; sub {...};
+post'/: foo' =&gt; sub {...};
 </pre>
-<h4>any</h4>
+<h4> any </h4>
 <p>
-  HTTPの任意のメソッドでアクセスされるURLに対する処理を定義するにはany関数を使用します。。また複数のHTTPメソッドを指定することも可能です。
+  Use the any function to define the processing for URLs accessed by any HTTP method. .. You can also specify multiple HTTP methods.
 </p>
 <pre>
-any '/:foo' =&gt; sub {...};
-any [qw/get post head put delete/] =&gt; '/:foo' =&gt; sub {...};
+any'/: foo'=&gt; sub {...};
+any [qw / get post head put delete /] =&gt;'/: foo' =&gt; sub {...};
 </pre>
-<h4>under</h4>
+<h4> under </h4>
 <p>
-  getやpostメソッドで定義した処理を実行する前に実行したい処理を定義するにはunder関数を使用します。これは認証などに利用することができます。
+  Use the under function to define the process you want to execute before executing the process defined by the get or post method. This can be used for authentication etc.
 </p>
 <pre>
 under sub {...};
 </pre>
-<h4>websocket</h4>
+<h4> websocket </h4>
 <p>
-  WebSocketハンドシェイク(Webソケットへの接続)でアクセスされるURLに対する処理を定義するにはwebsocket関数を使用します。
+  Use the websocket function to define the processing for URLs accessed by the WebSocket handshake (connecting to a WebSocket).
 </p>
 <pre>
-websocket '/:foo' =&gt; sub {...};
+websocket'/: foo' =&gt; sub {...};
 </pre>
-<h4>plugin</h4>
+<h4> plugin </h4>
 <p>
-  プラグインを追加するにはplugin関数を使用します。
+  Use the plugin function to add a plugin.
 </p>
 <pre>
-plugin 'JsonConfig';
+plugin'JsonConfig';
 </pre>
 <p>
-  デフォルトの名前空間はMojolicious::Pluginでこの配下にあるモジュール名を指定してプラグインを読み込むことができます。
+  The default namespace is Mojolicious::Plugin, and you can load the plugin by specifying the module name under this.
 </p>
 
   </div>
@@ -344,8 +342,7 @@ plugin 'JsonConfig';
           <div style="margin-bottom:30px">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4525414114581084"
      crossorigin="anonymous"></script>
-<!-- ディスプレイ縦長 -->
-<ins class="adsbygoogle"
+<!-- ディスプレイ縦長 --><ins class="adsbygoogle"
      style="display:block"
      data-ad-client="ca-pub-4525414114581084"
      data-ad-slot="4544919209"

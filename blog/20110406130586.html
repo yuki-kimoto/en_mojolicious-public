@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <!-- meta -->
-<meta charset="UTF-8">
+    <!-- meta --><meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
 <link rel="icon" type="image/x-icon" href="/images/logo.png">
 <link rel="stylesheet" type="text/css" href="/css/common.css">
@@ -25,8 +24,7 @@
   });
 </script>
 
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-G3M43D6P2H"></script>
+<!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=G-G3M43D6P2H"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
@@ -34,12 +32,12 @@
 
   gtag('config', 'G-G3M43D6P2H');
 </script>
-<title>署名つきクッキーのためのパスフレーズを設定する - Mojolicious Tutorial - Perl Web Framework</title>
-<meta name="description" content="署名つきクッキーのためのパスフレーズを設定する設定するにはMojoliciousクラスのsecretsメソッドを使用します。引数には、配列のリファレンスを渡してください。">
+<title> Set a passphrase for signed cookies  - Mojolicious Tutorial - Perl Web Framework</title>
+<meta name="description" content="Set a passphrase for signed cookies Use the  secrets  method of the Mojolicious class to set it. Pass an array reference as an argument.">
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:site" content="@perlzemi" />
-<meta name="twitter:title" content="署名つきクッキーのためのパスフレーズを設定する - Mojolicious Tutorial - Perl Web Framework" />
-<meta name="twitter:description" content="署名つきクッキーのためのパスフレーズを設定する設定するにはMojoliciousクラスのsecretsメソッドを使用します。引数には、配列のリファレンスを渡してください。" />
+<meta name="twitter:title" content=" Set a passphrase for signed cookies  - Mojolicious Tutorial - Perl Web Framework" />
+<meta name="twitter:description" content="Set a passphrase for signed cookies Use the  secrets  method of the Mojolicious class to set it. Pass an array reference as an argument." />
 <meta name="twitter:image" content="https://en.mojolicious.perlzemi.com//images/twitter_card_large_kaeru.png" />
 
 
@@ -61,9 +59,9 @@
     
   </div>
   <div class="middle">
-    <h2><a href="/blog/20110406130586.html">署名つきクッキーのためのパスフレーズを設定する</a></h2>
+    <h2><a href="/blog/20110406130586.html"> Set a passphrase for signed cookies </a></h2>
 <p>
-  署名つきクッキーのためのパスフレーズを設定する設定するにはMojoliciousクラスの<strong>secrets</strong>メソッドを使用します。引数には、配列のリファレンスを渡してください。
+  Set a passphrase for signed cookies Use the <strong> secrets </strong> method of the Mojolicious class to set it. Pass an array reference as an argument.
 </p>
 <div style="width:calc(100% - 30px);margin:10px auto;">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4525414114581084"
@@ -85,34 +83,34 @@
 $app-&gt;secrets(['lkjsdf%$#']);
 </pre>
 <p>
-  この設定を行わない場合は警告が発生しますので、試験環境以外では設定するようにしましょう。
+  If you do not make this setting, a warning will be issued, so set it in a non-test environment.
 </p>
 <p>
-  Mojolicious::LiteとMojoliciousでの使用例です。
+  This is an example of use with Mojolicious::Lite and Mojolicious.
 </p>
 <pre>
-# Mojolicious::Lite
+#Mojolicious::Lite
 app-&gt;secrets(['lkjsdf%$#']);
 
-# Mojolicious
+#Mojolicious
 sub starup {
   my $self = shift;
   $self-&gt;secrets(['lkjsdf%$#']);
 }
 </pre>
-<h3>新しいパスフレーズを、セッションを途切れさせないで、設定する。</h3>
+<h3> Set a new passphrase without interrupting the session. </h3>
 <p>
-  新しいパスフレーズを、セッションを途切れさせないで、設定することができます。
+  You can set a new passphrase without interrupting your session.
 </p>
 <pre>
-$app-&gt;secrets(['new_passw0rd', 'old_passw0rd']);
+$app-&gt;secrets(['new_passw0rd','old_passw0rd']);
 </pre>
 <p>
-  先頭に新しいパスフレーズを設定してください。
+  Please set a new passphrase at the beginning.
 </p>
-<h3>Mojolicious 5での変更</h3>
+<h3> Changes in Mojolicious 5 </h3>
 <p>
-  secretメソッドは廃止され、secretsメソッドに変更されています。これは、新しいパスフレーズを、セッションの破棄を避けて、設定するためです。
+  The secret method has been deprecated and replaced by the secrets method. This is to set a new passphrase to avoid discarding the session.
 </p>
 
   </div>
@@ -140,8 +138,7 @@ $app-&gt;secrets(['new_passw0rd', 'old_passw0rd']);
           <div style="margin-bottom:30px">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4525414114581084"
      crossorigin="anonymous"></script>
-<!-- ディスプレイ縦長 -->
-<ins class="adsbygoogle"
+<!-- ディスプレイ縦長 --><ins class="adsbygoogle"
      style="display:block"
      data-ad-client="ca-pub-4525414114581084"
      data-ad-slot="4544919209"

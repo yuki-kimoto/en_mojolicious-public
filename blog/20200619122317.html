@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <!-- meta -->
-<meta charset="UTF-8">
+    <!-- meta --><meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
 <link rel="icon" type="image/x-icon" href="/images/logo.png">
 <link rel="stylesheet" type="text/css" href="/css/common.css">
@@ -25,8 +24,7 @@
   });
 </script>
 
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-G3M43D6P2H"></script>
+<!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=G-G3M43D6P2H"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
@@ -34,12 +32,12 @@
 
   gtag('config', 'G-G3M43D6P2H');
 </script>
-<title>mojo generate app - Mojoliciousのひな型を作成する - Mojolicious Tutorial - Perl Web Framework</title>
-<meta name="description" content="mojo generate appコマンドを使って、Mojoliciousのひな型を作成することができます。">
+<title> mojo generate app --Create a Mojolicious template  - Mojolicious Tutorial - Perl Web Framework</title>
+<meta name="description" content="You can use the  mojo generate app  command to create a Mojolicious template.">
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:site" content="@perlzemi" />
-<meta name="twitter:title" content="mojo generate app - Mojoliciousのひな型を作成する - Mojolicious Tutorial - Perl Web Framework" />
-<meta name="twitter:description" content="mojo generate appコマンドを使って、Mojoliciousのひな型を作成することができます。" />
+<meta name="twitter:title" content=" mojo generate app --Create a Mojolicious template  - Mojolicious Tutorial - Perl Web Framework" />
+<meta name="twitter:description" content="You can use the  mojo generate app  command to create a Mojolicious template." />
 <meta name="twitter:image" content="https://en.mojolicious.perlzemi.com//images/twitter_card_large_kaeru.png" />
 
 
@@ -61,9 +59,9 @@
     
   </div>
   <div class="middle">
-    <h2><a href="/blog/20200619122317.html">mojo generate app - Mojoliciousのひな型を作成する</a></h2>
+    <h2><a href="/blog/20200619122317.html"> mojo generate app --Create a Mojolicious template </a></h2>
 <p>
-  <b>mojo generate app</b>コマンドを使って、Mojoliciousのひな型を作成することができます。
+  You can use the <b> mojo generate app </b> command to create a Mojolicious template.
 </p>
 <div style="width:calc(100% - 30px);margin:10px auto;">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4525414114581084"
@@ -82,72 +80,72 @@
 
 
 <pre>
-mojo generate app アプリケーション名
+mojo generate app application name
 </pre>
 <p>
-  Myappというアプリケーションを作成するサンプルです。Perlのモジュール名は、先頭が大文字であることが推奨、慣習なので、アプリケーション名は、すべて最初は大文字、それ以降は、小文字にするのをお勧めします。
+  This is a sample to create an application called Myapp. It is recommended and customary for Perl module names to start with an uppercase letter, so it is recommended that all application names be uppercase at the beginning and lowercase after that.
 </p>
 <pre>
 mojo generate app Myapp
 </pre>
 <p>
-  以下のように出力され「myapp」ディレクトリが作成されています。アプリケーション名や、ディレクトリは小文字に、モジュール名は、アプリケーション名と同じとなります。
+  The output is as follows, and the "myapp" directory is created. The application name and directory are in lowercase, and the module name is the same as the application name.
 </p>
 <pre>
-  [mkdir] /home/kimoto/labo/tmp/myapp/script
-  [write] /home/kimoto/labo/tmp/myapp/script/myapp
-  [chmod] /home/kimoto/labo/tmp/myapp/script/myapp 744
-  [mkdir] /home/kimoto/labo/tmp/myapp/lib
+  [mkdir] / home / kimoto / labo / tmp / myapp / script
+  [write] / home / kimoto / labo / tmp / myapp / script / myapp
+  [chmod] / home / kimoto / labo / tmp / myapp / script / myapp 744
+  [mkdir] / home / kimoto / labo / tmp / myapp / lib
   [write] /home/kimoto/labo/tmp/myapp/lib/Myapp.pm
-  [exist] /home/kimoto/labo/tmp/myapp
+  [exist] / home / kimoto / labo / tmp / myapp
   [write] /home/kimoto/labo/tmp/myapp/myapp.conf
-  [mkdir] /home/kimoto/labo/tmp/myapp/lib/Myapp/Controller
+  [mkdir] / home / kimoto / labo / tmp / myapp / lib / Myapp / Controller
   [write] /home/kimoto/labo/tmp/myapp/lib/Myapp/Controller/Example.pm
-  [mkdir] /home/kimoto/labo/tmp/myapp/t
+  [mkdir] / home / kimoto / labo / tmp / myapp / t
   [write] /home/kimoto/labo/tmp/myapp/t/basic.t
-  [mkdir] /home/kimoto/labo/tmp/myapp/public
+  [mkdir] / home / kimoto / labo / tmp / myapp / public
   [write] /home/kimoto/labo/tmp/myapp/public/index.html
-  [mkdir] /home/kimoto/labo/tmp/myapp/templates/layouts
+  [mkdir] / home / kimoto / labo / tmp / myapp / templates / layouts
   [write] /home/kimoto/labo/tmp/myapp/templates/layouts/default.html.ep
-  [mkdir] /home/kimoto/labo/tmp/myapp/templates/example
+  [mkdir] / home / kimoto / labo / tmp / myapp / templates / example
   [write] /home/kimoto/labo/tmp/myapp/templates/example/welcome.html.ep
 </pre>
-<h3>ディレクトリ構成の簡単な解説</h3>
-<h4>public</h4>
+<h3> A brief explanation of the directory structure </h3>
+<h4> public </h4>
 <p>
-  静的ファイルのディレクトリです。
+  A directory of static files.
 </p>
-<h4>templates</h4>
+<h4> templates </h4>
 <p>
-  テンプレートファイルのディレクトリです。
+  Template file directory.
 </p>
-<h4>lib</h4>
+<h4> lib </h4>
 <p>
-  ライブラリを置くディレクトリです。
+  The directory where the library is placed.
 </p>
-<h4>myapp.conf</h4>
+<h4> myapp.conf </h4>
 <p>
-  アプリケーションの設定ファイルです。
+  This is the application configuration file.
 </p>
-<h4>myapp</h4>
+<h4> myapp </h4>
 <p>
-  Mojoliciousアプリケーションです。開発サーバーで起動するには<a href="/blog/20120406133367.html">morbo</a>(モーボ)、本番サーバーで起動するには<a href="/blog/20110122130016.html">hypnotoad</a>(ハイフノトード)を使います。
+  Mojolicious application. <a href="/blog/20120406133367.html"> morbo</a> to boot on the development server, <a href="/blog/20110122130016.html"> hypnotoad to boot on the production server Use</a> (hyphenotod).
 </p>
 <p>
-  開発サーバー
+  Development server
 </p>
 <pre>
 morbo myapp
 </pre>
 <p>
-  本番サーバー
+  Production server
 </p>
 <pre>
 hypnotoad myapp
 </pre>
-<h3>アプリケーションクラスの動画解説</h3>
+<h3> Application class video commentary </h3>
 <ul>
-  <li><a href="https://www.youtube.com/watch?v=_GLkeeU8UgM">Mojoliciousアプリケーションクラス - Perlプログラミングちゃんねる</a></li>
+  <li> <a href="https://www.youtube.com/watch?v=_GLkeeU8UgM"> Mojolicious Application Class --Perl Programming Channel</a> </li>
 </ul>
 
   </div>
@@ -175,8 +173,7 @@ hypnotoad myapp
           <div style="margin-bottom:30px">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4525414114581084"
      crossorigin="anonymous"></script>
-<!-- ディスプレイ縦長 -->
-<ins class="adsbygoogle"
+<!-- ディスプレイ縦長 --><ins class="adsbygoogle"
      style="display:block"
      data-ad-client="ca-pub-4525414114581084"
      data-ad-slot="4544919209"

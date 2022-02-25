@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <!-- meta -->
-<meta charset="UTF-8">
+    <!-- meta --><meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
 <link rel="icon" type="image/x-icon" href="/images/logo.png">
 <link rel="stylesheet" type="text/css" href="/css/common.css">
@@ -25,8 +24,7 @@
   });
 </script>
 
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-G3M43D6P2H"></script>
+<!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=G-G3M43D6P2H"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
@@ -34,12 +32,12 @@
 
   gtag('config', 'G-G3M43D6P2H');
 </script>
-<title>パラメーターの受け取り方 - Mojolicious Tutorial - Perl Web Framework</title>
-<meta name="description" content="では基本のアプリケーションに機能を追加していきましょう。今回はMojoliciousにおけるパラメーターの受け取り方を解説したいと思います。ここで、パラメーターとは、ユーザーから送信されるデータのことだと考えてください。パラメーターの受け取り方には、三つの方法があります。">
+<title> How to receive parameters  - Mojolicious Tutorial - Perl Web Framework</title>
+<meta name="description" content="Now let's add functionality to the basic application. This time I would like to explain how to receive  parameters  in Mojolicious. Think of a parameter as the data sent by the user. There are three ways to receive the parameters.">
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:site" content="@perlzemi" />
-<meta name="twitter:title" content="パラメーターの受け取り方 - Mojolicious Tutorial - Perl Web Framework" />
-<meta name="twitter:description" content="では基本のアプリケーションに機能を追加していきましょう。今回はMojoliciousにおけるパラメーターの受け取り方を解説したいと思います。ここで、パラメーターとは、ユーザーから送信されるデータのことだと考えてください。パラメーターの受け取り方には、三つの方法があります。" />
+<meta name="twitter:title" content=" How to receive parameters  - Mojolicious Tutorial - Perl Web Framework" />
+<meta name="twitter:description" content="Now let's add functionality to the basic application. This time I would like to explain how to receive  parameters  in Mojolicious. Think of a parameter as the data sent by the user. There are three ways to receive the parameters." />
 <meta name="twitter:image" content="https://en.mojolicious.perlzemi.com//images/twitter_card_large_kaeru.png" />
 
 
@@ -61,9 +59,9 @@
     
   </div>
   <div class="middle">
-    <h2><a href="/blog/20140402139642.html">パラメーターの受け取り方</a></h2>
+    <h2><a href="/blog/20140402139642.html"> How to receive parameters </a></h2>
 <p>
-  では基本のアプリケーションに機能を追加していきましょう。今回はMojoliciousにおける<strong>パラメーターの受け取り方</strong>を解説したいと思います。ここで、パラメーターとは、ユーザーから送信されるデータのことだと考えてください。パラメーターの受け取り方には、三つの方法があります。
+  Now let's add functionality to the basic application. This time I would like to explain how to receive <strong> parameters </strong> in Mojolicious. Think of a parameter as the data sent by the user. There are three ways to receive the parameters.
 </p>
 <div style="width:calc(100% - 30px);margin:10px auto;">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4525414114581084"
@@ -83,123 +81,123 @@
 
 <ol>
   <li>
-    URLの一部
+    Part of the URL
   </li>
   <li>
-    クエリ文字列
+    Query string
   </li>
   <li>
-    POSTデータ
+    POST data
   </li>
 </ol>
 <p>
-  今回はこのうち「URLの一部」として受け取る方法と、「クエリ文字列」として受け取る方法の二つを解説したいと思いま。POSTデータとしてデータを送信する方法は、フォームの利用を解説するときに、改めて解説したいと思います。今のところは、みっつの方法があることを頭に入れておいてください。
+  This time, I would like to explain two of these, one is to receive it as a "part of the URL" and the other is to receive it as a "query string". I would like to explain how to send data as POST data again when explaining the use of forms. Keep in mind that there are three ways to do this for now.
 </p>
-<h3>URLの一部としてパラメーターを受け取る</h3>
+<h3> Receive parameters as part of the URL </h3>
 <p>
-  最初に、URLの一部としてパラメーターを受け取る方法を解説します。たとえば次のようなURLを考えてみてください。
+  First, I'll show you how to receive the parameters as part of the URL. For example, consider the following URL:
 </p>
 <pre>
-/date/20131016
-/date/20140203
+/ date / 20131016
+/ date / 20140203
 </pre>
 <p>
-  これは、URLの一部に日付が含まれています。このようなURLでアクセスしてきたときに、日付の値の部分を取得する方法を見てみましょう。コードを書いてみます。
+  It contains the date as part of the URL. Let's see how to get the part of the date value when accessing with such a URL. Let's write the code.
 </p>
 <pre>
 use Mojolicious::Lite;
 
-# ルーティングのパターンの指定
-get '/date/:date' =&gt; sub {
+# Specifying a routing pattern
+get'/ date /: date' =&gt; sub {
   my $self = shift;
   
-  # パラメーターの受け取り
+  #Receiving parameters
   my $date = $self-&gt;param('date');
 
   $self-&gt;render(text =&gt; "Data: $date");
-};
+};;
 
 app-&gt;start;
 </pre>
 <p>
-  このアプリケーションを実行して「/date/20131016」のようにアクセスすると、日付の値が表示されると思います。
+  If you run this application and access it like "/ date / 20131016", you should see the date value.
 </p>
-<h4>ルーティングのパターンの指定</h4>
+<h4> Specifying a routing pattern </h4>
 <p>
-  パラメーターを受け取るためには、ルーティングのパターンを定義する必要があります。
+  In order to receive the parameters, you need to define a routing pattern.
 </p>
 <pre>
-# ルーティングのパターンの指定
-get '/date/:date' =&gt; sub { ... };
+# Specifying a routing pattern
+get'/ date /: date' =&gt; sub {...};
 </pre>
 <p>
-  「:date」という部分に注目してください。URLの一部をパラメーターにしたい場合は、その部分を「:名前」と書きます。このように記述すると<strong>param</strong>メソッドを使って、その値をパラメーターとして受け取ることができます。
+  Notice the ": date" part. If you want to make a part of the URL a parameter, write that part as ": name". If you write it like this, you can use the <strong> param </strong> method to receive the value as a parameter.
 </p>
 <pre>
-# パラメーターの受け取り
+#Receiving parameters
 my $date = $self-&gt;param('date');
 </pre>
-<h4>paramメソッドの注意点</h4>
+<h4> Notes on the param method </h4>
 <p>
-  paramメソッドを使うときは、注意がひとつ必要です。それはparamメソッドは、スカラコンテキストとリストコンテキストで、異なる結果を返却するからです。スカラコンテキストでは、ひとつのパラメーターの値が返却されます。パラメーターに複数の値がある場合は、最初の値が返却されます。パラメーターが複数になるのは、フォームのチェックボックスなどで、複数の値が選択されている場合などです。
+  One thing to be careful about when using the param method. That's because the param method returns different results in the scalar context and the list context. In scalar context, the value of one parameter is returned. If the parameter has multiple values, the first value is returned. Multiple parameters are used, for example, when multiple values ​​are selected, such as in a checkbox on a form.
 </p>
 <p>
-  一方リストコンテキストで受け取ると、パラメーターの値が複数あった場合には、複数の値を取得します。
+  On the other hand, when received in the list context, if there are multiple values ​​for the parameter, multiple values ​​will be acquired.
 </p>
 <pre>
-# スカラコンテキスト
+#Scalar context
 my $value = $self-&gt;param('foo');
 
-# リストコンテキスト
-my @values = $self-&gt;param('foo');
+#List context
+my @values ​​= $self-&gt;param('foo');
 </pre>
 <p>
-  このような理由で、paramメソッドを直接呼び出して値を利用しようとすると、思わぬ結果になってしまうことがあります。ミスをあらかじめ防ぐには、変数に代入してから利用するのが安心です。
+  For this reason, if you try to use the value by calling the param method directly, you may get unexpected results. To prevent mistakes in advance, it is safe to assign to a variable before using it.
 </p>
-<h3>クエリ文字列としてパラメーターを受け取る</h3>
+<h3> Receive parameters as query string </h3>
 <p>
-  次は<strong>クエリ文字列</strong>としてパラメーターを受け取る方法を解説します。クエリ文字列とは、URLの後ろに続く、パラメーターを指定する部分のことです。次のURLを見てください。
+  Next, I will explain how to receive the parameter as a <strong> query string </strong>. The query string is the part that follows the URL and specifies the parameters. Please see the following URL.
 </p>
 <pre>
-/diary/?date=20131016&amp;user=kimoto
-/diary/?date=20121013&amp;user=kimoto
+/ diary /? date = 20131016 &amp; user = kimoto
+/ diary /? date = 20121013 &amp; user = kimoto
 </pre>
 <p>
-  「?」の後ろからクエリ文字列は始まります。パラメーター名と値は「=」で区切られます。「&」を使うことで、複数のパラメーターを連結することができます。ひとつの目のURLでは、パラメーター名は二つあり「date」と「user」です。それぞれに対応する値は「20131016」と「kimoto」になっています。
+  The query string starts after the "?". Parameter names and values ​​are separated by "=". You can concatenate multiple parameters by using "&". In the first URL, there are two parameter names, "date" and "user". The corresponding values ​​are "20131016" and "kimoto".
 </p>
 <p>
-  ではパラメーターの値を取得してみましょう。
+  Now let's get the value of the parameter.
 </p>
 <pre>
 use Mojolicious::Lite;
 
-# ルーティングのパターンの指定
-get '/diary' =&gt; sub {
+# Specifying a routing pattern
+get'/ diary' =&gt; sub {
   my $self = shift;
   
-  # パラメーターの受け取り
+  #Receiving parameters
   my $date = $self-&gt;param('date');
   my $user = $self-&gt;param('user');
 
   $self-&gt;render(text =&gt; "Date: $date, User: $user");
-};
+};;
 
 app-&gt;start;
 </pre>
 <p>
-  このアプリケーションを起動して「/diary/?date=20131016&user=kimoto」というURLでアクセスすると「Date: 20131016, User: kimoto」と表示され、パラメーターを取得できていることがわかります。
+  When you start this application and access it with the URL "/ diary /? Date = 20131016 & user = kimoto", "Date: 20131016, User: kimoto" is displayed, and you can see that the parameters have been acquired.
 </p>
-<h4>パラメーターの取得</h4>
+<h4> Get parameters </h4>
 <p>
-  パラメーターの取得は<strong>param</strong>を使います。paramメソッドは汎用的に設計されていて、パラメーターは、URLの一部としても受け取ることができますし、クエリ文字列から受け取ることもできます。
+  Use <strong> param </strong> to get the parameters. The param method is generically designed and parameters can be received as part of a URL or from a query string.
 </p>
 <pre>
-# パラメーターの受け取り
+#Receiving parameters
 my $date = $self-&gt;param('date');
 my $user = $self-&gt;param('user');
 </pre>
 <p>
-  このようにパラメーターを使うと、ユーザーから送信されたデータを、プログラムの中で利用することができます。
+  These parameters allow the data sent by the user to be used in the program.
 </p>
 
   </div>
@@ -227,8 +225,7 @@ my $user = $self-&gt;param('user');
           <div style="margin-bottom:30px">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4525414114581084"
      crossorigin="anonymous"></script>
-<!-- ディスプレイ縦長 -->
-<ins class="adsbygoogle"
+<!-- ディスプレイ縦長 --><ins class="adsbygoogle"
      style="display:block"
      data-ad-client="ca-pub-4525414114581084"
      data-ad-slot="4544919209"

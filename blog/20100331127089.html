@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <!-- meta -->
-<meta charset="UTF-8">
+    <!-- meta --><meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
 <link rel="icon" type="image/x-icon" href="/images/logo.png">
 <link rel="stylesheet" type="text/css" href="/css/common.css">
@@ -25,8 +24,7 @@
   });
 </script>
 
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-G3M43D6P2H"></script>
+<!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=G-G3M43D6P2H"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
@@ -34,12 +32,12 @@
 
   gtag('config', 'G-G3M43D6P2H');
 </script>
-<title>リアルタイム時計 - Mojolicious Tutorial - Perl Web Framework</title>
-<meta name="description" content="Mojolicious::Liteで作ったリアルタイム時計です。WebSocketを利用しています。ネイティブでWebSocketをサポートしているChromeで実行することができます。">
+<title> Real-time clock  - Mojolicious Tutorial - Perl Web Framework</title>
+<meta name="description" content="A real-time clock made with Mojolicious::Lite. I am using WebSocket. It can be run on Chrome that natively supports WebSockets.">
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:site" content="@perlzemi" />
-<meta name="twitter:title" content="リアルタイム時計 - Mojolicious Tutorial - Perl Web Framework" />
-<meta name="twitter:description" content="Mojolicious::Liteで作ったリアルタイム時計です。WebSocketを利用しています。ネイティブでWebSocketをサポートしているChromeで実行することができます。" />
+<meta name="twitter:title" content=" Real-time clock  - Mojolicious Tutorial - Perl Web Framework" />
+<meta name="twitter:description" content="A real-time clock made with Mojolicious::Lite. I am using WebSocket. It can be run on Chrome that natively supports WebSockets." />
 <meta name="twitter:image" content="https://en.mojolicious.perlzemi.com//images/twitter_card_large_kaeru.png" />
 
 
@@ -61,9 +59,9 @@
     
   </div>
   <div class="middle">
-    <h2><a href="/blog/20100331127089.html">リアルタイム時計</a></h2>
+    <h2><a href="/blog/20100331127089.html"> Real-time clock </a></h2>
 <p>
-  Mojolicious::Liteで作ったリアルタイム時計です。WebSocketを利用しています。ネイティブでWebSocketをサポートしているChromeで実行することができます。
+  A real-time clock made with Mojolicious::Lite. I am using WebSocket. It can be run on Chrome that natively supports WebSockets.
 </p>
 <div style="width:calc(100% - 30px);margin:10px auto;">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4525414114581084"
@@ -81,16 +79,16 @@
 </div>
 
 
-<h3>リアルタイム時計</h3>
+<h3> Real-time clock </h3>
 <p>
-  リアルタイム時計です。
+  It is a real-time clock.
 </p>
 <p>
-  [f:id:perlcodesample:20100415220535p:image]
+  [f: id: perlcodesample: 20100415220535p: image]
 </p>
-<h3>ソースコード</h3>
+<h3> Source code </h3>
 <p>
-  リアルタイム時計のソースコードです。
+  The source code of the real-time clock.
 </p>
 <pre>
 use Mojolicious::Lite;
@@ -99,50 +97,50 @@ use Mojo::IOLoop;
 my $clients = {};
 my $loop = Mojo::IOLoop-&gt;singleton;
 
-websocket '/' =&gt; sub {
+websocket'/' =&gt; sub {
   my $self = shift;
 
-  # Client id
+  #Client id
   my $cid = "$self";
   
-  # Controller
+  #Controller
   my $controller = $self;
   
-  # Send date and time
+  #Send date and time
   my $datetime = localtime;
   $self-&gt;send($datetime);
   
-  # Receive message;
+  #Receive message;
   $self-&gt;on('message' =&gt; sub {
     my ($self, $message) = @_;
     
-    # Start clock
-    if ($message eq 'Start') {
+    #Start clock
+    if ($message eq'Start') {
       
-      # Shortcut
-      return if $clients-&gt;{$cid}{running};
+      #Shortcut
+      return if $clients-&gt;{$cid} {running};
       
       # Start
-      $clients-&gt;{$cid}{running} = 1;
+      $clients-&gt;{$cid} {running} = 1;
       
-      # Subroutine for sending date and time
+      #Subroutine for sending date and time
       my $send_datetime;
       $send_datetime = sub {
 
-        # Send date and time
+        #Send date and time
         my $datetime = localtime;
         $controller-&gt;send($datetime);
         
-        # Timer
-        $loop-&gt;timer(1, $send_datetime) if $clients-&gt;{$cid}{running};
-      };
+        #Timer
+        $loop-&gt;timer(1, $send_datetime) if $clients-&gt;{$cid} {running};
+      };;
       
-      # Send
+      #Send
       $send_datetime-&gt;();
     }
     
-    # Stop clock
-    else { $clients-&gt;{$cid}{running} = 0 }
+    #Stop clock
+    else {$clients-&gt;{$cid} {running} = 0}
   });
   
   # on_finish
@@ -150,69 +148,69 @@ websocket '/' =&gt; sub {
     # Remove client
     delete $clients-&gt;{$cid};
   });
-};
+};;
 
-get '/' =&gt; 'index';
+get'/' =&gt;'index';
 
 app-&gt;start;
 
 __DATA__
 
-@@ index.html.ep
-% my $url = $self-&gt;req-&gt;url-&gt;to_abs-&gt;scheme( $self-&gt;req-&gt;is_secure ? 'wss' : 'ws' )-&gt;path( '/' );
-&lt;!doctype html&gt;
+@@index.html.ep
+%my $url = $self-&gt;req-&gt;url-&gt;to_abs-&gt;scheme($self-&gt;req-&gt;is_secure?'wss':'ws')-&gt;path('/');
+&lt;! doctype html&gt;
 &lt;html&gt;
 &lt;head&gt;
-  &lt;title&gt;Mojo Websocket Demo&lt;/title&gt;
+  &lt;title&gt; Mojo Websocket Demo &lt;/title&gt;
 
-  &lt;script type="text/javascript"&gt;
+  &lt;script type = "text / javascript"&gt;
     // only load the flash fallback when needed
-    if ( !( 'WebSocket' in window ) ) {
-      document.write([
-        '&lt;scr'+'ipt type="text/javascript" src="web-socket-js/swfobject.js"&gt;&lt;/scr'+'ipt&gt;',
-        '&lt;scr'+'ipt type="text/javascript" src="web-socket-js/FABridge.js"&gt;&lt;/scr'+'ipt&gt;',
-        '&lt;scr'+'ipt type="text/javascript" src="web-socket-js/web_socket.js"&gt;&lt;/scr'+'ipt&gt;'
-      ].join(''));
+    if (! ('WebSocket' in window)) {
+      document.write ([[
+        '&lt;scr' +'ipt type = "text / javascript" src = "web-socket-js / swfobject.js"&gt; &lt;/scr'+'ipt&gt;',
+        '&lt;scr' +'ipt type = "text / javascript" src = "web-socket-js / FABridge.js"&gt; &lt;/scr'+'ipt&gt;',
+        '&lt;scr' +'ipt type = "text / javascript" src = "web-socket-js / web_socket.js"&gt; &lt;/scr'+'ipt&gt;'
+      ] .join(''));
     }
   &lt;/script&gt;
-  &lt;script type="text/javascript"&gt;
+  &lt;script type = "text / javascript"&gt;
     if (WebSocket.__initialize) {
         // Set URL of your WebSocketMain.swf here:
-        WebSocket.__swfLocation = 'web-socket-js/WebSocketMain.swf';
+        WebSocket.__swfLocation ='web-socket-js / WebSocketMain.swf';
     }
 
-    // example copied from web-socket-js/sample.html
+    // example copied from web-socket-js / sample.html
     var ws, input, clock;
 
-    function init() {
+    function init () {
       
       // Connect to Web Socket.
-      ws = new WebSocket('&lt;%= $url %&gt;');
+      ws = new WebSocket ('&lt;%= $url%&gt;');
       
       // Receive message
-      ws.onmessage = function(e) {
+      ws.onmessage = function (e) {
         // Update clock
-        clock = document.getElementById('clock');
+        clock = document.getElementById ('clock');
         clock.innerHTML = e.data;
-      };
+      };;
     }
 
-    function onClockStart() {
+    function onClockStart () {
       // Start clock
-      ws.send('Start');
+      ws.send ('Start');
     }
 
-    function onClockStop() {
+    function onClockStop () {
       // Stop clock
-      ws.send('Stop');
+      ws.send ('Stop');
     }
     
     window.onload = init;
   &lt;/script&gt;
 &lt;/head&gt;
-  &lt;span id="clock"&gt;&lt;/span&gt;
-  &lt;button onclick="onClockStart(); return false;"&gt;Start&lt;/button&gt;
-  &lt;button onclick="onClockStop(); return false;"&gt;Stop&lt;/button&gt;
+  &lt;span id = "clock"&gt; &lt;/span&gt;
+  &lt;button onclick = "onClockStart (); return false;"&gt; Start &lt;/button&gt;
+  &lt;button onclick = "onClockStop (); return false;"&gt; Stop &lt;/button&gt;
 &lt;/html&gt;
 </pre>
 
@@ -241,8 +239,7 @@ __DATA__
           <div style="margin-bottom:30px">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4525414114581084"
      crossorigin="anonymous"></script>
-<!-- ディスプレイ縦長 -->
-<ins class="adsbygoogle"
+<!-- ディスプレイ縦長 --><ins class="adsbygoogle"
      style="display:block"
      data-ad-client="ca-pub-4525414114581084"
      data-ad-slot="4544919209"

@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <!-- meta -->
-<meta charset="UTF-8">
+    <!-- meta --><meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
 <link rel="icon" type="image/x-icon" href="/images/logo.png">
 <link rel="stylesheet" type="text/css" href="/css/common.css">
@@ -25,8 +24,7 @@
   });
 </script>
 
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-G3M43D6P2H"></script>
+<!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=G-G3M43D6P2H"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
@@ -34,12 +32,12 @@
 
   gtag('config', 'G-G3M43D6P2H');
 </script>
-<title>プラグインの名前空間を追加する - Mojolicious Tutorial - Perl Web Framework</title>
-<meta name="description" content="プラグインはデフォルトでMojolicious::Plugin以下から読み込まれますが、名前空間を追加することもできます。">
+<title> Add plugin namespace  - Mojolicious Tutorial - Perl Web Framework</title>
+<meta name="description" content="By default, plugins are loaded from under  Mojolicious::Plugin , but you can add namespaces as well.">
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:site" content="@perlzemi" />
-<meta name="twitter:title" content="プラグインの名前空間を追加する - Mojolicious Tutorial - Perl Web Framework" />
-<meta name="twitter:description" content="プラグインはデフォルトでMojolicious::Plugin以下から読み込まれますが、名前空間を追加することもできます。" />
+<meta name="twitter:title" content=" Add plugin namespace  - Mojolicious Tutorial - Perl Web Framework" />
+<meta name="twitter:description" content="By default, plugins are loaded from under  Mojolicious::Plugin , but you can add namespaces as well." />
 <meta name="twitter:image" content="https://en.mojolicious.perlzemi.com//images/twitter_card_large_kaeru.png" />
 
 
@@ -61,9 +59,9 @@
     
   </div>
   <div class="middle">
-    <h2><a href="/blog/20120907134700.html">プラグインの名前空間を追加する</a></h2>
+    <h2><a href="/blog/20120907134700.html"> Add plugin namespace </a></h2>
 <p>
-  プラグインはデフォルトで<b>Mojolicious::Plugin</b>以下から読み込まれますが、名前空間を追加することもできます。
+  By default, plugins are loaded from under <b> Mojolicious::Plugin </b>, but you can add namespaces as well.
 </p>
 <div style="width:calc(100% - 30px);margin:10px auto;">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4525414114581084"
@@ -82,14 +80,14 @@
 
 
 <pre>
-# Mojolicious::Lite
-push @{app-&gt;plugins-&gt;namespaces}, 'MyApp::Plugins';
+#Mojolicious::Lite
+push @{app-&gt;plugins-&gt;namespaces},'MyApp::Plugins';
 
-# Mojolicious
+#Mojolicious
 sub startup {
-  my $self = shift;
+   my $self = shift;
 
-  push @{$self-&gt;plugins-&gt;namespaces}, 'MyApp::Plugins';
+   push @{$self-&gt;plugins-&gt;namespaces},'MyApp::Plugins';
 }
 </pre>
 
@@ -118,8 +116,7 @@ sub startup {
           <div style="margin-bottom:30px">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4525414114581084"
      crossorigin="anonymous"></script>
-<!-- ディスプレイ縦長 -->
-<ins class="adsbygoogle"
+<!-- ディスプレイ縦長 --><ins class="adsbygoogle"
      style="display:block"
      data-ad-client="ca-pub-4525414114581084"
      data-ad-slot="4544919209"

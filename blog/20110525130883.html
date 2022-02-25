@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <!-- meta -->
-<meta charset="UTF-8">
+    <!-- meta --><meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
 <link rel="icon" type="image/x-icon" href="/images/logo.png">
 <link rel="stylesheet" type="text/css" href="/css/common.css">
@@ -25,8 +24,7 @@
   });
 </script>
 
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-G3M43D6P2H"></script>
+<!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=G-G3M43D6P2H"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
@@ -34,12 +32,12 @@
 
   gtag('config', 'G-G3M43D6P2H');
 </script>
-<title>Mojolicious::Liteでさまざまなルートを記述する - Mojolicious Tutorial - Perl Web Framework</title>
-<meta name="description" content="Mojolicious::Liteでさまざまなルートを記述してみましょう。">
+<title> Describe various routes with Mojolicious::Lite  - Mojolicious Tutorial - Perl Web Framework</title>
+<meta name="description" content="Let's write various routes with Mojolicious::Lite.">
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:site" content="@perlzemi" />
-<meta name="twitter:title" content="Mojolicious::Liteでさまざまなルートを記述する - Mojolicious Tutorial - Perl Web Framework" />
-<meta name="twitter:description" content="Mojolicious::Liteでさまざまなルートを記述してみましょう。" />
+<meta name="twitter:title" content=" Describe various routes with Mojolicious::Lite  - Mojolicious Tutorial - Perl Web Framework" />
+<meta name="twitter:description" content="Let's write various routes with Mojolicious::Lite." />
 <meta name="twitter:image" content="https://en.mojolicious.perlzemi.com//images/twitter_card_large_kaeru.png" />
 
 
@@ -61,9 +59,9 @@
     
   </div>
   <div class="middle">
-    <h2><a href="/blog/20110525130883.html">Mojolicious::Liteでさまざまなルートを記述する</a></h2>
+    <h2><a href="/blog/20110525130883.html"> Describe various routes with Mojolicious::Lite </a></h2>
 <p>
-  Mojolicious::Liteでさまざまなルートを記述してみましょう。
+  Let's write various routes with Mojolicious::Lite.
 </p>
 <div style="width:calc(100% - 30px);margin:10px auto;">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4525414114581084"
@@ -81,212 +79,212 @@
 </div>
 
 
-<h3>GETメソッドとPOSTメソッド</h3>
+<h3> GET and POST methods </h3>
 <p>
-  GETメソッドによる「/」へのルートです。GETメソッドはページを取得するときや検索を行うときに利用されることが多いです。
+  The route to "/" by the GET method. The GET method is often used when retrieving a page or performing a search.
 </p>
 <pre>
 # Via get method
 use Mojolicious::Lite;
-get '/' =&gt; sub { shift-&gt;render(text =&gt; 'Hello') };
+get'/' =&gt; sub {shift-&gt;render(text =&gt;'Hello')};
 app-&gt;start;
 </pre>
 <p>
-  次はPOSTメソッドによる「/create」へのルートです。POSTメソッドは新しい記事の投稿や更新、削除などサーバーに存在するデータに対して変更を行う場合に利用されることが多いです。一般的にフォームの送信処理で利用すると考えるとよいでしょう。
+  Next is the root to "/ create" by the POST method. The POST method is often used to make changes to data that resides on the server, such as posting, updating, or deleting new articles. Generally, you can think of it as being used in the form submission process.
 </p>
 <pre>
 # Via post method
 use Mojolicious::Lite;
-get '/' =&gt; 'index';
-post '/create' =&gt; sub {
+get'/' =&gt;'index';
+post'/ create'=&gt; sub {
   my $self = shift;
   
   my $title = $self-&gt;param('title');
   
   $self-&gt;render(text =&gt; $title);
-};
+};;
 app-&gt;start;
 
 __DATA__
 
-@@ index.html.ep
+@@index.html.ep
 &lt;html&gt;
-  &lt;head&gt;&lt;title&gt;Top Page&lt;/title&gt;&lt;/head&gt;
+  &lt;head&gt; &lt;title&gt; Top Page &lt;/title&gt; &lt;/head&gt;
   &lt;body&gt;
-    &lt;form method="post" action="&lt;%= url_for '/create' %&gt;" &gt;
-      &lt;div&gt;Title: &lt;input type="text" name="title"&gt;&lt;/div&gt;
-      &lt;div&gt;&lt;input type="submit" value="Send"&gt;&lt;/div&gt;
+    &lt;form method = "post" action = "&lt;%= url_for'/ create'%&gt;"&gt;
+      &lt;div&gt; Title: &lt;input type = "text" name = "title"&gt; &lt;/div&gt;
+      &lt;div&gt; &lt;input type = "submit" value = "Send"&gt; &lt;/div&gt;
     &lt;/form&gt;
   &lt;/body&gt;
 &lt;/html&gt;
 </pre>
-<h3>プレースホルダーの利用</h3>
+<h3> Use placeholders </h3>
 <p>
-  URLの中にはプレースホルダを含めることができます。「:名前」のようにコロンで始めます。プレースホルダは変数のようなものだと考えればよいでしょう。
+  You can include placeholders in the URL. Start with a colon, like ": name". You can think of placeholders as variables.
 </p>
 <pre>
-# Place holder
-get '/entry/:date' =&gt; sub {
+#Place holder
+get'/ entry /: date' =&gt; sub {
   my $self = shift;
   
   my $date = $self-&gt;param('date');
   
   $self-&gt;render(text =&gt; $date);
-};
+};;
 </pre>
 <p>
-  プレースホルダに指定した値はparamメソッドで取得することができます。
+  The value specified in the placeholder can be obtained by the param method.
 </p>
 <p>
-  次のURLでアクセスしてみましょう。20111212と表示されます。
+  Let's access it with the following URL. It is displayed as 20111212.
 </p>
 <pre>
-/entry/20111212
+/ entry / 20111212
 </pre>
-<h4>リラックスプレースホルダー</h4>
+<h4> Relax Placeholder </h4>
 <p>
-  ところがこのプレースホルダーには.(ドット)を含めることができません。.もキャプチャしたい場合はリラックスプレースホルダを利用します。リラックスプレースホルダーは「#名前」のようにシャープで始めます。リラックスプレースホルダーについては常に括弧「()」で囲む必要があることに注意してください。(注:Mojolicious3.0くらいからはリラックスプレースホルダーの記法は「.名前」から「#名前」に変更されました。)
+  However, this placeholder cannot contain. (Dot). If you also want to capture. Use the Relax Placeholder. Relax placeholders start with a sharp like "#name". Note that relax placeholders should always be enclosed in parentheses "()". (Note: From around Mojolicious 3.0, the notation for relax placeholders has changed from ".name" to "#name".)
 </p>
 <pre>
-# Relax place holder
-get '/entry/(.datetime)' =&gt; sub {
+#Relax place holder
+get'/ entry / (.datetime)' =&gt; sub {
   my $self = shift;
   
   my $datetime = $self-&gt;param('datetime');
   
   $self-&gt;render(text =&gt; $datetime);
-};
+};;
 </pre>
 <p>
-  次のURLでアクセスしてみましょう。20111212.102232と表示されます。
+  Let's access it with the following URL. It is displayed as 20111212.102232.
 </p>
 <pre>
 /entry/20111212.102232
 </pre>
-<h4>ワイルドカードプレースホルダー</h4>
+<h4> Wildcard Placeholder </h4>
 <p>
-  /(スラッシュ)も含めてマッチさせたい場合はワイルドカードプレースホルダーを使用します。
+  Use wildcard placeholders if you want to match including / (slash).
 </p>
 <pre>
-# Wildcard place holder
-get '/entry/*datetime' =&gt; sub {
+#Wildcard place holder
+get'/ entry / * datetime' =&gt; sub {
   my $self = shift;
   
   my $datetime = $self-&gt;param('datetime');
   
   $self-&gt;render(text =&gt; $datetime);
-};
+};;
 </pre>
 <p>
-  次のURLでアクセスしてみましょう。20111212/102232と表示されます。
+  Let's access it with the following URL. It is displayed as 20111212/102232.
 </p>
 <pre>
-/entry/20111212/102232
+/ entry / 20111212/102232
 </pre>
-<h3>ルートのテクニック</h3>
-<h4>ふたつのルート</h4>
+<h3> Root technique </h3>
+<h4> Two routes </h4>
 <p>
-  次のふたつのURLで同じロジックを実行したい場合はどうしたらよいでしょうか。
+  What if you want to execute the same logic on the following two URLs?
 </p>
 <pre>
-/entry
-/entry/20101111
+/ entry
+/ entry / 20101111
 </pre>
 <p>
-  このような場合はデフォルト値をundefに設定してあげるのがよいでしょう。そうすると上の二つのルートで同じロジックを利用できます。
+  In such a case, it is better to set the default value to undef. Then you can use the same logic in the above two routes.
 </p>
 <pre>
-# Match above two URL
-get '/entry/:date' =&gt; {date =&gt; undef} =&gt; sub {
+#Match above two URL
+get'/ entry /: date'=&gt; {date =&gt; undef} =&gt; sub {
   my $self = shift;
   
-  my $date = $self-&gt;param('date') || 'undefined';
+  my $date = $self-&gt;param('date') ||'undefined';
   
   $self-&gt;render(text =&gt; $date);
-};
+};;
 </pre>
-<h4>静的なルートと動的なルートの混合</h4>
+<h4> Mixing static and dynamic routes </h4>
 <p>
-  静的なルートと動的なルートを混ぜたい場合はどうすればよいでしょうか。
+  What if you want to mix static and dynamic routes?
 </p>
 <pre>
-# Static route
-/description
+#Static route
+/ description
 
-# User name
-/kimoto
-/kraih
-/taro
+#User name
+/ kimoto
+/ kraih
+/ taro
 </pre>
 <p>
-  その場合は静的なルートを上部に記述すればよいだけです。
+  In that case, all you have to do is write a static route at the top.
 </p>
 <pre>
-# Static route
-get '/description' =&gt; sub { shift-&gt;render(text =&gt; 'description') };
+#Static route
+get'/ description' =&gt; sub {shift-&gt;render(text =&gt;'description')};
 
-# Dinamic route
-get '/:user' =&gt; sub {
+#Dinamic route
+get'/: user' =&gt; sub {
   my $self = shift;
   
   my $user = $self-&gt;param('user');
   
   $self-&gt;render(text =&gt; $user);
-};
+};;
 </pre>
 <p>
-  もう少し難しいルートも記述してみましょう。GithubなどのURLなんかもこのような仕組みになっていますね。
+  Let's write a slightly more difficult route. URLs such as Github also have this kind of mechanism.
 </p>
 <pre>
-# Description(Static)
-/description
+#Description (Static)
+/ description
 
-# User name(Dinamic)
-/kimoto
-/kraih
-/taro
+#User name (Dinamic)
+/ kimoto
+/ kraih
+/ taro
 
-# User name and profile (Dinamic and Static)
-/kimoto/profile
-/kraih/profile
-/taro/profile
+#User name and profile (Dinamic and Static)
+/ kimoto / profile
+/ kraih / profile
+/ taro / profile
 
-# User name and project (Dinamic and Dinamic)
-/kimoto/dbix-custom
-/kraih/mojo
-/taro/foobar
+#User name and project (Dinamic and Dinamic)
+/ kimoto / dbix-custom
+/ kraih / mojo
+/ taro / foobar
 </pre>
 <pre>
-# Description(Static)
-get '/description' =&gt; sub { shift-&gt;render(text =&gt; 'description') };
+#Description (Static)
+get'/ description' =&gt; sub {shift-&gt;render(text =&gt;'description')};
 
-# User name(Dinamic)
-get '/:user' =&gt; sub {
+#User name (Dinamic)
+get'/: user' =&gt; sub {
   my $self = shift;
   
   my $user = $self-&gt;param('user');
   
   $self-&gt;render(text =&gt; "User $user");
-};
+};;
 
-# User name and profile (Dinamic and Static)
-get '/:user/profile' =&gt; sub {
+#User name and profile (Dinamic and Static)
+get'/: user / profile'=&gt; sub {
   my $self = shift;
   
   my $user = $self-&gt;param('user');
   
   $self-&gt;render(text =&gt; "$user Profile");
-};
+};;
 
-# User name and project (Dinamic and Dinamic)
-get '/:user/:project' =&gt; sub {
+#User name and project (Dinamic and Dinamic)
+get'/: user /: project' =&gt; sub {
   my $self = shift;
   
   my $user = $self-&gt;param('user');
   my $project = $self-&gt;param('project');
   
   $self-&gt;render(text =&gt; "$user $project Project");
-};
+};;
 </pre>
 
   </div>
@@ -314,8 +312,7 @@ get '/:user/:project' =&gt; sub {
           <div style="margin-bottom:30px">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4525414114581084"
      crossorigin="anonymous"></script>
-<!-- ディスプレイ縦長 -->
-<ins class="adsbygoogle"
+<!-- ディスプレイ縦長 --><ins class="adsbygoogle"
      style="display:block"
      data-ad-client="ca-pub-4525414114581084"
      data-ad-slot="4544919209"

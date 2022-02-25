@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <!-- meta -->
-<meta charset="UTF-8">
+    <!-- meta --><meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
 <link rel="icon" type="image/x-icon" href="/images/logo.png">
 <link rel="stylesheet" type="text/css" href="/css/common.css">
@@ -25,8 +24,7 @@
   });
 </script>
 
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-G3M43D6P2H"></script>
+<!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=G-G3M43D6P2H"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
@@ -34,12 +32,12 @@
 
   gtag('config', 'G-G3M43D6P2H');
 </script>
-<title>ルーティングの基礎 - Mojolicious Tutorial - Perl Web Framework</title>
-<meta name="description" content="次にルーティングについてもう少し詳しく解説します。ルーティングとはURLと処理の対応の記述のことです。">
+<title> Routing basics  - Mojolicious Tutorial - Perl Web Framework</title>
+<meta name="description" content="Now let's take a closer look at  routing . Routing is a description of the correspondence between URLs and processing.">
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:site" content="@perlzemi" />
-<meta name="twitter:title" content="ルーティングの基礎 - Mojolicious Tutorial - Perl Web Framework" />
-<meta name="twitter:description" content="次にルーティングについてもう少し詳しく解説します。ルーティングとはURLと処理の対応の記述のことです。" />
+<meta name="twitter:title" content=" Routing basics  - Mojolicious Tutorial - Perl Web Framework" />
+<meta name="twitter:description" content="Now let's take a closer look at  routing . Routing is a description of the correspondence between URLs and processing." />
 <meta name="twitter:image" content="https://en.mojolicious.perlzemi.com//images/twitter_card_large_kaeru.png" />
 
 
@@ -61,9 +59,9 @@
     
   </div>
   <div class="middle">
-    <h2><a href="/blog/20140412139642.html">ルーティングの基礎</a></h2>
+    <h2><a href="/blog/20140412139642.html"> Routing basics </a></h2>
 <p>
-  次に<strong>ルーティング</strong>についてもう少し詳しく解説します。ルーティングとはURLと処理の対応の記述のことです。
+  Now let's take a closer look at <strong> routing </strong>. Routing is a description of the correspondence between URLs and processing.
 </p>
 <div style="width:calc(100% - 30px);margin:10px auto;">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4525414114581084"
@@ -82,85 +80,85 @@
 
 
 <p>
-  簡単なルーティングについては、これまでも使ってきました。
+  I've used simple routing before.
 </p>
 <pre>
-get '/' =&gt; sub { ... };
-get '/info' =&gt; sub { ... };
-get '/date/:date' =&gt; sub { ... };
+get'/' =&gt; sub {...};
+get'/ info' =&gt; sub {...};
+get'/ date /: date' =&gt; sub {...};
 </pre>
 <p>
-  ここでは、ルーティングについてもう少し詳しく解説します。
+  Here's a little more detail about routing.
 </p>
-<h3>プレースホルダー</h3>
+<h3> Placeholder </h3>
 <p>
-  最初にプレースホルダーについて解説します。
+  First, I will explain about placeholders.
 </p>
-<h4>通常のプレースホルダー</h4>
+<h4> Regular placeholder </h4>
 <p>
-  先頭にコロンをつけると、その部分はパラメーターとして取得できることは説明しました。
+  I explained that if you add a colon at the beginning, that part can be obtained as a parameter.
 </p>
 <pre>
-get '/date/:date' =&gt; sub {
+get'/ date /: date' =&gt; sub {
   my $self = shift;
   my $date = $self-&gt;param('date');
-};
+};;
 </pre>
 <p>
-  Mojoliciousでは、これを<strong>プレースホルダー</strong>と呼びます。注意してほしいのは、このプレースホルダーは、「<b>/</b>」と「<b>.</b>」以外の値にマッチするということです。
+  In Mojolicious, this is called a <strong> placeholder </strong>. Please note that this placeholder matches values ​​other than "<b> / </b>" and "<b>. </B>".
 </p>
 <p>
-  たとえば「/date/20131015/hello」というURLでアクセスしたとしましょう。これはルーティングが成功しません。ルーティングが成功して「date」に「20131015/hello」を受け取ることができるのではなくって、ルーティング自体が成功せず、ページが見つかりません。
+  For example, let's say you access with the URL "/ date / 20131015 / hello". This will result in unsuccessful routing. Instead of successfully routing and receiving "20131015 / hello" on "date", the routing itself does not succeed and the page cannot be found.
 </p>
 <p>
-  たとえば「/date/20131015.json」というURLでアクセスしたとしましょう。これはルーティングが成功しません。ルーティングがマッチして「date」に「20131015.json」を受け取ることができるのではなくって、ルーティング自体が成功せず、ページが見つかりません。
+  For example, let's say you access with the URL "/date/20131015.json". This will result in unsuccessful routing. Instead of being able to match the routing and receive "20131015.json" on the "date", the routing itself is unsuccessful and the page cannot be found.
 </p>
 <p>
-  プレースホルダーは「()」を使って、その部分がプレースホルダーであることを区別することもできます。
+  Placeholders can also use "()" to distinguish that part is a placeholder.
 </p>
 <pre>
-get '/date/(:date).json' =&gt; sub { ... };
+get'/date/(:date).json'=&gt; sub {...};
 </pre>
 <p>
-  「/date/20130213.json」でアクセスすれば、ルーティングが成功して、パラメーター「date」に「20130213」を受け取ることができます。
+  If you access with "/date/20130213.json", the routing is successful and you can receive "20130213" in the parameter "date".
 </p>
-<h4>リラックスプレースホルダー</h4>
+<h4> Relax Placeholder </h4>
 <p>
-  通常のプレースホルダーは「/」と「.」以外にマッチしますが、リラックスプレースホルダーを使えば「.」以外にマッチさせることができます。リラックスプレースホルダーは先頭が「#」ではじまります。
+  Normal placeholders match other than "/" and ".", But relax placeholders can be used to match other than ".". Relax placeholders start with a "#".
 </p>
 <pre>
-get '/date/#date' =&gt; sub { ... };
+get'/ date / # date' =&gt; sub {...};
 </pre>
 <p>
-  「/date/20130213.json」でアクセスすれば、ルーティングが成功して、パラメーター「date」に「20130213.json」を受け取ることができます。「.」を含んだ部分を取得することができます。
+  If you access with "/date/20130213.json", the routing will be successful and you will receive "20130213.json" in the parameter "date". You can get the part including ".".
 </p>
 <p>
-  リラックスプレースホルダーはこのように「.」を含んだ部分もパラメーターとして受け取ることができるのが特徴です。
+  The feature of Relax Placeholder is that you can also receive the part including "." As a parameter.
 </p>
-<h4>ワイルドカードプレースホルダー</h4>
+<h4> Wildcard Placeholder </h4>
 <p>
-  「/」と「.」を含むすべての文字にマッチさせるにはワイルドカードプレースホルダーを利用します。ワイルドカードプレースホルダーは先頭が「*」で始まります。
+  Use wildcard placeholders to match all characters, including "/" and ".". Wildcard placeholders start with a "*".
 </p>
 <pre>
-get '/date/*date' =&gt; sub { ... };
+get'/ date / * date' =&gt; sub {...};
 </pre>
 <p>
-  「/date/20130213/hello」でアクセスすれば、ルーティングが成功して、パラメーター「date」に「20130213/hello」を受け取ることができます。「/」を含んだ部分を取得することができます。
+  If you access with "/ date / 20130123 / hello", the routing will be successful and you will receive "20130213 / hello" for the parameter "date". You can get the part including "/".
 </p>
 <p>
-  ワイルドカードプレースホルダーはこのように「/」を含んだ部分もパラメーターとして受け取ることができるのが特徴です。
+  The feature of the wildcard placeholder is that the part including "/" can be received as a parameter like this.
 </p>
-<h3>HTTPメソッド</h3>
+<h3> HTTP method </h3>
 <p>
-  次にHTTPメソッドについて解説したいと思います。HTTPメソッドというのは、HTTPリクエストを送信するときに指定するものです。一般的な用法であれば、ページの内容を取得するときはGETメソッド、フォームなどでデータを送信するときはPOSTメソッド、ページの存在を確認したい場合はHEADメソッドが使用されます。
+  Next, I would like to explain the HTTP method. The HTTP method is what you specify when sending an HTTP request. In general usage, the GET method is used to get the contents of the page, the POST method is used to send data by form, and the HEAD method is used to check the existence of the page.
 </p>
 <table>
   <tr>
     <td>
-      メソッド名
+      Method name
     </td>
     <td>
-      用法
+      Usage
     </td>
   </tr>
   <tr>
@@ -168,7 +166,7 @@ get '/date/*date' =&gt; sub { ... };
       GET
     </td>
     <td>
-      ページの内容を取得
+      Get the contents of the page
     </td>
   </tr>
   <tr>
@@ -176,7 +174,7 @@ get '/date/*date' =&gt; sub { ... };
       POST
     </td>
     <td>
-      フォームなどでデータを送信
+      Send data by form etc.
     </td>
   </tr>
   <tr>
@@ -184,104 +182,104 @@ get '/date/*date' =&gt; sub { ... };
       HEAD
     </td>
     <td>
-      ページの存在を確認
+      Confirm the existence of the page
     </td>
   </tr>
 </table>
 <p>
-  他にもPUTメソッドやDELETEメソッドやPATCHメソッドなどがありますが、ここではこの三つを覚えてください。特にGETとPOSTを覚えておけばWebサイトの作成に困ることはありません。
+  There are other methods such as PUT method, DELETE method and PATCH method, but please remember these three here. Especially if you remember GET and POST, you will not have any trouble creating a website.
 </p>
 <p>
-  Mojolicious::Liteでは上記のHTTPメソッドに対応して以下の関数が利用できます。
-</p>
-<pre>
-get '/' =&gt; sub { ... };
-post '/' =&gt; sub { ... };
-head '/' =&gt; sub { ... };
-put '/' =&gt; sub { ... };
-del '/' =&gt; sub { ... };
-patch '/' =&gt; sub { ... };
-</pre>
-<h4>すべてのHTTPメソッドにマッチさせる</h4>
-<p>
-  同じURLでgetとpostの両方を受けたいという場合は多いと思います。そのような場合は<strong>any</strong>関数を使いましょう。すべてのHTTPメソッドにマッチします。
+  In Mojolicious::Lite, the following functions can be used corresponding to the above HTTP method.
 </p>
 <pre>
-any '/' =&gt; sub { ... };
+get'/' =&gt; sub {...};
+post'/' =&gt; sub {...};
+head'/' =&gt; sub {...};
+put'/' =&gt; sub {...};
+del'/' =&gt; sub {...};
+patch'/' =&gt; sub {...};
 </pre>
-<h4>HTTPメソッド名を取得する</h4>
+<h4> Match all HTTP methods </h4>
 <p>
-  <b>any</b>関数で受け取った場合は、ユーザーがどのHTTPメソッドでアクセスしてきたのかを知りたい場合があると思います。そのような場合は<b>req</b>メソッドでHTTPリクエストを表現するMojo::Message::Requestオブジェクトを取得して、<b>method</b>メソッドでHTTPメソッドを取得できます。
+  I think there are many cases where you want to receive both get and post at the same URL. In that case, use the <strong> any </strong> function. Matches all HTTP methods.
+</p>
+<pre>
+any'/' =&gt; sub {...};
+</pre>
+<h4> Get HTTP method name </h4>
+<p>
+  If you receive it with the <b> any </b> function, you may want to know which HTTP method the user used to access it. In such a case, you can get the Mojo::Message::Request object that expresses the HTTP request with the <b> req </b> method, and get the HTTP method with the <b> method </b> method.
 </p>
 <pre>
 my $http_method = $c-&gt;req-&gt;method;
 </pre>
-<h3>ページが見つからない場合を自分で処理する</h3>
+<h3> Handle if the page is not found </h3>
 <p>
-  日付の場合は、たとえば、数値の8桁でなければ、ページが見つからないという処理を書きたいと考えると思います。数値の8桁以外の場合は、意味を持たないからです。このような場合は、存在しないということを知らせるのがよいでしょう。<strong>reply->not_found</strong>を使ってページが「404 Not Found」を自分で描画することができます。
+  In the case of a date, for example, I would like to write a process that the page cannot be found unless it is 8 digits. This is because it has no meaning if the number is other than 8 digits. In such cases, it's a good idea to let them know that it doesn't exist. You can use <strong> reply->not_found</strong> to draw the page "404 Not Found" yourself.
 </p>
 <pre>
-get '/date/:date' =&gt; sub {
+get'/ date /: date' =&gt; sub {
   my $self = shift;
   my $date = $self-&gt;param('date');
   
-  # 日付の形式でない場合は「404 Not Found」を描画する
-  unless ($date =~ /^[0-9]{8}$/) {
+  # Draw "404 Not Found" if not in date format
+  unless ($date = ~ / ^ [0-9] {8} $/) {
     $self-&gt;reply-&gt;not_found;
     return;
   }
 
   $self-&gt;render('date', date =&gt; $date);
-};
+};;
 </pre>
 <p>
-  <strong>reply->exception</strong>を代わりに使えば、エラーを示す「500 エラーメッセージ」を表示することもできます。
+  You can also use <strong> reply->exception</strong> instead to get a "500 error message" indicating an error.
 </p>
 <pre>
 $c-&gt;reply-&gt;exception('Error');
 </pre>
-<h3>すべてのルーティングに共通する前処理</h3>
+<h3> Preprocessing common to all routings </h3>
 <p>
-  すべてのルーティングに共通する前処理を書きたいと思うことがあると思います。たとえば、ログインしていなければ「/login」というページに、リダイレクトしたい場合があると思います。
+  You may want to write a pre-process that is common to all routes. For example, you may want to redirect to a page called "/ login" if you are not logged in.
 </p>
 <p>
-  このような場合は<strong>under</strong>関数を使えば、すべてのルーティングに共通する前処理を書くことができます。以下のサンプルではunder関数に渡したサブルーチンの中でスタッシュの値を取得して、それをふたつの異なるルーティング「/some1」と「some2」で利用できることを示しています。
+  In such cases, you can use the <strong> under </strong> function to write preprocessing that is common to all routings. The sample below shows that you can get the stash value in a subroutine passed to the under function and use it in two different routes, "/ some1" and "some2".
 </p>
 <pre>
 use Mojolicious::Lite;
 
-# 前処理
+# Preprocessing
 under sub {
   my $self = shift;
   
-  $self-&gt;stash('name' =&gt; 'Kimoto');
+  $self-&gt;stash('name' =&gt;'Kimoto');
 
   return 1;
-};
+};;
 
-get '/some1' =&gt; sub { 
+get'/ some1' =&gt; sub {
   my $self = shift;
 
   my $name = $self-&gt;stash('name');
 
   $self-&gt;render(text =&gt; $name);
-};
+};;
 
-get '/some2' =&gt; sub { 
+get'/ some2' =&gt; sub {
   my $self = shift;
 
   my $name = $self-&gt;stash('name');
 
   $self-&gt;render(text =&gt; $name);
-};
+};;
 
 app-&gt;start;
 </pre>
 <p>
-  上記のサンプルではunder関数の中で「return 1」として1を返していますが、これは後に続く継続の処理を行いたい場合に必要です。underの後に続く継続の処理を行いたくない場合は「return」と書いて、未定義値を返却してください。
+  In the above sample, 1 is returned as "return 1" in the under function, but this is necessary if you want to process the continuation that follows. If you do not want to continue processing after under, write "return" and return the undefined value.
 </p>
 <p>
-  以下のようにunderを変更すると、継続の処理が行わずに画面に「Access deny」と表示されるのが確認できます。
+  If you change under as shown below, you can see that "Access deny" is displayed on the screen without continuing processing.
 </p>
 <pre>
 under sub {
@@ -289,105 +287,103 @@ under sub {
   
   my $continue = 0;
   
-  # 継続処理を行わない場合
+  # When not performing continuous processing
   unless ($continue) {
-    $self-&gt;render(text =&gt; 'Access deny');
+    $self-&gt;render(text =&gt;'Access deny');
     return;
   }
 
   return 1;
-};
+};;
 </pre>
-<h3>ルーティングのサンプル</h3>
+<h3> Routing sample </h3>
 <p>
-  ルーティングを理解するためのサンプルコードを書いてみます。
+  Let's write some sample code to understand routing.
 </p>
 <pre>
 use Mojolicious::Lite;
 
-# 前処理
+# Preprocessing
 under sub {
   my $self = shift;
   
-  # ユーザーがadminの場合は許可しない
-  my $user = $self-&gt;url_for-&gt;path-&gt;parts-&gt;[0] // '';
-  if ($user eq 'admin') {
+  # Do not allow if user is admin
+  my $user = $self-&gt;url_for-&gt;path-&gt;parts-&gt;[0] //'';
+  if ($user eq'admin') {
     
     $self-&gt;res-&gt;code(403);
-    $self-&gt;render(text =&gt; 'Forbidden');
+    $self-&gt;render(text =&gt;'Forbidden');
     return
   }
   
   return 1;
-};
+};;
 
-# /ユーザー名/プロジェクト名/ディレクトリ名
-# あるいは /ユーザー名/プロジェクト名
-get '/:user/:project/*dir' =&gt; {dir =&gt; undef} =&gt; sub {
-  my $self = shift;
-  
-  # パラメーター
+# / Username / Project name / Directory name
+# Or / user name / project name
+get'/: user /: project / * dir' =&gt; {dir =&gt; undef} =&gt; sub {
+  my $self = shift;#Parameter
   my $user = $self-&gt;param('user');
   my $project = $self-&gt;param('project');
-  my $dir = $self-&gt;param('dir') // 'Nothing';
+  my $dir = $self-&gt;param('dir') //'Nothing';
   
-  # 描画
+  #Drawing
   $self-&gt;render(
     'index',
     user =&gt; $user,
     project =&gt; $project,
     dir =&gt; $dir
   );
-};
+};;
 
-any '/http-method' =&gt; sub {
+any'/ http-method' =&gt; sub {
   my $self = shift;
 
-  # HTTPメソッドの取得
+  #Get HTTP method
   my $http_method = $self-&gt;req-&gt;method;
 
   $self-&gt;render(text =&gt; "HTTP Method: $http_method");
-};
+};;
 
 app-&gt;start;
 
 __DATA__
 
-@@ index.html.ep
+@@index.html.ep
 &lt;%
-  my $user = stash('user');
-  my $project = stash('project');
-  my $dir = stash('dir');
+  my $user = stash ('user');
+  my $project = stash ('project');
+  my $dir = stash ('dir');
 %&gt;
 &lt;html&gt;
   &lt;head&gt;
-    &lt;title&gt;Routing&lt;/title&gt;
+    &lt;title&gt; Routing &lt;/title&gt;
   &lt;/head&gt;
   &lt;body&gt;
-    User: &lt;%= $user %&gt;&lt;br&gt;
-    Project: &lt;%= $project %&gt;&lt;br&gt;
-    Directory: &lt;%= $dir %&gt;&lt;/br&gt;
+    User: &lt;%= $user%&gt; &lt;br&gt;
+    Project: &lt;%= $project%&gt; &lt;br&gt;
+    Directory: &lt;%= $dir%&gt; &lt;/br&gt;
   &lt;/body&gt;
 &lt;/html&gt;
 </pre>
-<h4>アプリケーションの解説</h4>
+<h4> Application description </h4>
 <p>
-  このアプリケーションは次のURLでアクセスできるようになっています。
+  This application can be accessed at the following URL:
 </p>
 <pre>
-/ユーザー名/プロジェクト名/ディレクトリ名
-/ユーザー名/プロジェクト名
+/ Username / project name / directory name
+/ Username / Project name
 </pre>
 <p>
-  「/kimoto/dog/dir1/readme.txt」でアクセスすれば、次のように表示されます。
+  If you access it with "/kimoto/dog/dir1/readme.txt", it will be displayed as follows.
 </p>
 <pre>
 User: kimoto
 Project: dog
-Directory: dir1/readme.txt
+Directory: dir1 / readme.txt
 </pre>
 <p>
-  「/kimoto/dog」でアクセスすれば、次のように表示されます。
+  If you access it with "/ kimoto / dog", it will be displayed as follows.
 </p>
 <pre>
 User: kimoto
@@ -395,74 +391,74 @@ Project: dog
 Directory: Nothing
 </pre>
 <p>
-  これは次のようにルーティングを定義しているからです。
+  This is because the routing is defined as follows:
 </p>
 <pre>
-get '/:user/:project/*dir' =&gt; {dir =&gt; undef} =&gt; sub { ... };
+get'/: user /: project / * dir' =&gt; {dir =&gt; undef} =&gt; sub {...};
 </pre>
 <p>
-  また「/admin/dog/dir1/readme.txt」でアクセスすれば、「Forbidden」と表示されます。これは以下の前処理を記述しているためです。
+  If you access it with "/admin/dog/dir1/readme.txt", "Forbidden" will be displayed. This is because the following preprocessing is described.
 </p>
 <pre>
-# 前処理
+# Preprocessing
 under sub {
   my $self = shift;
   
-  # ユーザーがadminの場合は許可しない
-  my $user = $self-&gt;url_for-&gt;path-&gt;parts-&gt;[0] // '';
-  if ($user eq 'admin') {
+  # Do not allow if user is admin
+  my $user = $self-&gt;url_for-&gt;path-&gt;parts-&gt;[0] //'';
+  if ($user eq'admin') {
     
     $self-&gt;res-&gt;code(403);
-    $self-&gt;render(text =&gt; 'Forbidden');
+    $self-&gt;render(text =&gt;'Forbidden');
     return
   }
   
   return 1;
-};
+};;
 </pre>
 <p>
-  URLのパスの最初の部分が「admin」の場合は、ステータスコードを「403」に設定して「Forbidden」というテキストを返却しているようにしています。
+  If the first part of the URL path is "admin", I'm trying to set the status code to "403" and return the text "Forbidden".
 </p>
 <p>
-  少し解説します。
+  I will explain a little.
 </p>
 <pre>
-# URLのパスの最初の部分を取得
-my $user = $self-&gt;url_for-&gt;path-&gt;parts-&gt;[0] // '';
+#Get the first part of the URL path
+my $user = $self-&gt;url_for-&gt;path-&gt;parts-&gt;[0] //'';
 </pre>
 <p>
-  まずアクセスしたURLを取得するには<b>url_for</b>メソッドを使用します。取得するのはMojo::URLオブジェクトです。次のこのURLのパスの部分を取得するには、Mojo::URLクラスの<b>path</b>メソッドを使用します。取得するのはMojo::Pathオブジェクトです。次にパスの各部分は配列として保存されていて、これはMojo::Pathクラスの<b>parts</b>メソッドによって取得できます。
+  First, use the <b> url_for </b> method to get the accessed URL. You will get a Mojo::URL object. To get the path part of this URL below, use the <b> path </b> method of the Mojo::URL class. You will get a Mojo::Path object. Then each part of the path is saved as an array, which can be obtained by the <b> parts </b> method of the Mojo::Path class.
 </p>
 <p>
-  「//」は、左辺が未定義値だった場合に、右辺を代入できるperlの「defined-or演算子」です。
+  "//" is a perl "defined-or operator" that allows you to assign the right side if the left side is an undefined value.
 </p>
 <p>
-  このようにしてURLのパスの最初の部分を取得しています。
+  This way we are getting the first part of the URL path.
 </p>
 <p>
-  次にユーザーにチェックの部分です。
+  Next is the part to check with the user.
 </p>
 <pre>
-# ユーザーがadminであれば、ステータスコードに403を設定して、Forbiddenを表示
-if ($user eq 'admin') {
+#If the user is admin, set the status code to 403 to display Forbidden
+if ($user eq'admin') {
   
   $self-&gt;res-&gt;code(403);
-  $self-&gt;render(text =&gt; 'Forbidden');
+  $self-&gt;render(text =&gt;'Forbidden');
   return
 }
 </pre>
 <p>
-  コントローラークラスの<b>res</b>メソッドを使用すればレスポンスオブジェクトを取得できます。これはMojo::Message::Responseオブジェクトです。Mojo::Message::Responseクラスの<b>code</b>メソッドを使用すれば、ステータスコードを設定できます。
+  You can get the response object by using the <b> res </b> method of the controller class. This is a Mojo::Message::Response object. You can set the status code using the <b> code </b> method of the Mojo::Message::Response class.
 </p>
 <p>
-  次の部分ではHTTPメソッド名を取得しています。
+  The next part gets the HTTP method name.
 </p>
 <pre>
-# HTTPメソッドの取得
+#Get HTTP method
 my $http_method = $self-&gt;req-&gt;method;
 </pre>
 <p>
-  「/http-method」にアクセスすると「HTTP Method: GET」と表示されます。
+  When you access "/ http-method", "HTTP Method: GET" is displayed.
 </p>
 
   </div>
@@ -490,8 +486,7 @@ my $http_method = $self-&gt;req-&gt;method;
           <div style="margin-bottom:30px">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4525414114581084"
      crossorigin="anonymous"></script>
-<!-- ディスプレイ縦長 -->
-<ins class="adsbygoogle"
+<!-- ディスプレイ縦長 --><ins class="adsbygoogle"
      style="display:block"
      data-ad-client="ca-pub-4525414114581084"
      data-ad-slot="4544919209"

@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <!-- meta -->
-<meta charset="UTF-8">
+    <!-- meta --><meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
 <link rel="icon" type="image/x-icon" href="/images/logo.png">
 <link rel="stylesheet" type="text/css" href="/css/common.css">
@@ -25,8 +24,7 @@
   });
 </script>
 
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-G3M43D6P2H"></script>
+<!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=G-G3M43D6P2H"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
@@ -34,12 +32,12 @@
 
   gtag('config', 'G-G3M43D6P2H');
 </script>
-<title>パラメーターをハッシュリファレンスに変換する - Mojolicious Tutorial - Perl Web Framework</title>
-<meta name="description" content="パラメーターをハッシュリファレンスに変換するには、Mojo::Parametersクラスのto_hashメソッドを使用します。">
+<title> Convert parameters to hash references  - Mojolicious Tutorial - Perl Web Framework</title>
+<meta name="description" content="To convert the parameters to a hash reference, use the  to_hash  method of the Mojo::Parameters class.">
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:site" content="@perlzemi" />
-<meta name="twitter:title" content="パラメーターをハッシュリファレンスに変換する - Mojolicious Tutorial - Perl Web Framework" />
-<meta name="twitter:description" content="パラメーターをハッシュリファレンスに変換するには、Mojo::Parametersクラスのto_hashメソッドを使用します。" />
+<meta name="twitter:title" content=" Convert parameters to hash references  - Mojolicious Tutorial - Perl Web Framework" />
+<meta name="twitter:description" content="To convert the parameters to a hash reference, use the  to_hash  method of the Mojo::Parameters class." />
 <meta name="twitter:image" content="https://en.mojolicious.perlzemi.com//images/twitter_card_large_kaeru.png" />
 
 
@@ -61,9 +59,9 @@
     
   </div>
   <div class="middle">
-    <h2><a href="/blog/20110424130671.html">パラメーターをハッシュリファレンスに変換する</a></h2>
+    <h2><a href="/blog/20110424130671.html"> Convert parameters to hash references </a></h2>
 <p>
-  パラメーターをハッシュリファレンスに変換するには、Mojo::Parametersクラスの<strong>to_hash</strong>メソッドを使用します。
+  To convert the parameters to a hash reference, use the <strong> to_hash </strong> method of the Mojo::Parameters class.
 </p>
 <div style="width:calc(100% - 30px);margin:10px auto;">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4525414114581084"
@@ -85,26 +83,26 @@
 my $hash_data = $params-&gt;to_hash;
 </pre>
 <p>
-  Mojolicious::Liteのサンプルです。パラメーター(クエリ文字列、POSTデータ、URLの中でキャプチャされたもの)を、ハッシュリファレンスに変換しています。
+  This is a sample of Mojolicious::Lite. Converting parameters (query string, POST data, captured in URL) to hash reference.
 </p>
 <pre>
-# Mojolicious::Lite
-get '/' =&gt; sub {
+#Mojolicious::Lite
+get'/' =&gt; sub {
   my $self = shift;
   my $param = $self-&gt;req-&gt;params-&gt;to_hash;
-};
+};;
 </pre>
 <p>
-  Mojolicious::ControllerオブジェクトのreqメソッドでMojo::Message::Requestオブジェクトを取得し、Mojo::Message::RequestオブジェクトのparamsメソッドでMojo::Parametersオブジェクトを取得し、Mojo::Parametersオブジェクトからto_hashメソッドを呼び出しています。
+  Get the Mojo::Message::Request object with the req method of the Mojolicious::Controller object, get the Mojo::Parameters object with the params method of the Mojo::Message::Request object, and the to_hash method from the Mojo::Parameters object. Is calling.
 </p>
 <p>
-  Mojoliciousのサンプルです。
+  This is a sample of Mojolicious.
 </p>
 <pre>
-# Mojolicious
+#Mojolicious
 package MyApp::Book;
 
-use Mojo::Base 'Mojolicious::Controller';
+use Mojo::Base'Mojolicious::Controller';
 
 sub register {
   my $self = shift;
@@ -137,8 +135,7 @@ sub register {
           <div style="margin-bottom:30px">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4525414114581084"
      crossorigin="anonymous"></script>
-<!-- ディスプレイ縦長 -->
-<ins class="adsbygoogle"
+<!-- ディスプレイ縦長 --><ins class="adsbygoogle"
      style="display:block"
      data-ad-client="ca-pub-4525414114581084"
      data-ad-slot="4544919209"

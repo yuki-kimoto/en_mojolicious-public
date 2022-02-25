@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <!-- meta -->
-<meta charset="UTF-8">
+    <!-- meta --><meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
 <link rel="icon" type="image/x-icon" href="/images/logo.png">
 <link rel="stylesheet" type="text/css" href="/css/common.css">
@@ -25,8 +24,7 @@
   });
 </script>
 
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-G3M43D6P2H"></script>
+<!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=G-G3M43D6P2H"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
@@ -34,12 +32,12 @@
 
   gtag('config', 'G-G3M43D6P2H');
 </script>
-<title>Mojoliciousにおけるセッションの扱い - Mojolicious Tutorial - Perl Web Framework</title>
-<meta name="description" content="僕はWebアプリケーションをまともに作ったことがない人なので、Webアプリケーションのセキュリティ周りはうといです。Mojoliciousにはsessionというメソッドがあるのですが、これはWebアプリでいうところの、セッション管理であると信じていたのですが、ぜんぜん関係がない気がしてきました。">
+<title> Handling sessions in Mojolicious  - Mojolicious Tutorial - Perl Web Framework</title>
+<meta name="description" content="I'm a person who has never made a web application properly, so I'm afraid about the security of web applications. Mojolicious has a method called session, and I believed that this was session management in a web application, but I felt that it had nothing to do with it.">
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:site" content="@perlzemi" />
-<meta name="twitter:title" content="Mojoliciousにおけるセッションの扱い - Mojolicious Tutorial - Perl Web Framework" />
-<meta name="twitter:description" content="僕はWebアプリケーションをまともに作ったことがない人なので、Webアプリケーションのセキュリティ周りはうといです。Mojoliciousにはsessionというメソッドがあるのですが、これはWebアプリでいうところの、セッション管理であると信じていたのですが、ぜんぜん関係がない気がしてきました。" />
+<meta name="twitter:title" content=" Handling sessions in Mojolicious  - Mojolicious Tutorial - Perl Web Framework" />
+<meta name="twitter:description" content="I'm a person who has never made a web application properly, so I'm afraid about the security of web applications. Mojolicious has a method called session, and I believed that this was session management in a web application, but I felt that it had nothing to do with it." />
 <meta name="twitter:image" content="https://en.mojolicious.perlzemi.com//images/twitter_card_large_kaeru.png" />
 
 
@@ -61,9 +59,9 @@
     
   </div>
   <div class="middle">
-    <h2><a href="/blog/20121227136093.html">Mojoliciousにおけるセッションの扱い</a></h2>
+    <h2><a href="/blog/20121227136093.html"> Handling sessions in Mojolicious </a></h2>
 <p>
-  僕はWebアプリケーションをまともに作ったことがない人なので、Webアプリケーションのセキュリティ周りはうといです。Mojoliciousにはsessionというメソッドがあるのですが、これはWebアプリでいうところの、セッション管理であると信じていたのですが、ぜんぜん関係がない気がしてきました。
+  I'm a person who has never made a web application properly, so I'm afraid about the security of web applications. Mojolicious has a method called session, and I believed that this was session management in a web application, but I felt that it had nothing to do with it.
 </p>
 <div style="width:calc(100% - 30px);margin:10px auto;">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4525414114581084"
@@ -82,169 +80,169 @@
 
 
 <p>
-  sessionというメソッドの名前ゆえに僕が勘違いしていた可能性が高いです。Mojoliciousのセッション管理機能は貧弱といわれるけれど、そもそもMojoliciousにはセッション管理機能がついていないんじゃないかと思えてきました。
+  It's likely that I was misunderstanding because of the name of the method called session. Mojolicious's session management function is said to be poor, but I've been wondering if Mojolicious doesn't have a session management function in the first place.
 </p>
 <p>
-  sessionメソッドっていうのは、単純にクッキーに値を保存するための簡単な仕組みで、HMACによる署名がつくので、確実に改ざんを検出できるようになっています。
+  The session method is a simple mechanism for simply storing the value in a cookie, and since it is signed by HMAC, tampering can be detected reliably.
 </p>
 <pre>
-$c-&gt;session(name =&gt; 'kimoto');
+$c-&gt;session(name =&gt;'kimoto');
 </pre>
 <p>
-  ですから、クッキーに保存されるデータはJSONをBase64でエンコードしただけで、暗号化はされていません。ですのでデータは丸見えです。
+  So the data stored in the cookie is just Base64 encoded JSON, not encrypted. Therefore, the data is completely visible.
 </p>
 <p>
-  けれどもHMACによる署名がされているので、信頼できない経路を通っても、改ざんを確実に検出することができます。
+  However, because it is signed by HMAC, it can reliably detect tampering even through untrusted routes.
 </p>
 <blockquote>
 <p>
-  sessionメソッドを使っても、暗号化はされない。改ざんの検出が可能。
+  Even if you use the session method, it will not be encrypted. Falsification can be detected.
 </p>
 </blockquote>
 <p>
-  改ざんされないためには、secretの値をデフォルトの設定ではなく、きちんと変更しておくことが大切です。
+  To prevent tampering, it is important to change the secret value properly, not the default setting.
 </p>
 <pre>
-$app-&gt;secret('#!=%JOLFIS#jf438nfj');
+$app-&gt;secret('#! =%JOLFIS # jf438nfj');
 </pre>
 <p>
-  もし改ざんされている場合は、クッキーの値は破棄されます。
+  If it has been tampered with, the cookie value will be discarded.
 </p>
-<h3>どんなデータをsessionに保存してよいか</h3>
+<h3> What kind of data can be saved in session </h3>
 <p>
-  一つ目は、見られてもよい重要でないデータです。暗号化されないので、見られたら困るデータは、sessionメソッドを使って保存してはいけません。見られたら困るデータは、サーバー側に保存しましょう。
-</p>
-<p>
-  二つ目は、セッションIDです。これには条件があって、一意であるという条件です。一度使ったセッションIDを再利用すると、セキュリティを維持することができないようです。
+  The first is unimportant data that may be seen. Data that would be inconvenient to see should not be saved using the session method as it is not encrypted. Save the data that you don't want to see on the server side.
 </p>
 <p>
-  ですので、何らかのモジュールで、アプリケーションで一意になるセッションIDを生成してくれるモジュールを使いましょう。
+  The second is the session ID. This is conditional and unique. It seems that security cannot be maintained once the session ID is reused.
+</p>
+<p>
+  So, in some module, use a module that will generate a session ID that will be unique to your application.
 </p>
 <pre>
-# セッションIDの生成(一意であること)
+#Generation of session ID (uniqueness)
 my $session_id = Some::Module-&gt;new-&gt;create_session_id;
 
-# セッションIDを署名付きクッキーに保存
+#Save session ID in signed cookie
 $c-&gt;session(session_id =&gt; $session_id);
 
-# 見られてもよいデータは、sessionに保存してもよい
-$c-&gt;session(display =&gt; 'light');
+# Data that may be seen may be saved in session
+$c-&gt;session(display =&gt;'light');
 
-# 見られてはいけないデータは、データベースなどへ
+#For data that should not be seen, go to the database etc.
 $dbi-&gt;insert({user_id =&gt; $user_id, age =&gt; 19});
 </pre>
-<h3>追記</h3>
+<h3> Addition </h3>
 <p>
-  セッションを盗まれる可能性がありますが、それはクッキーにセッションIDを保存する以上は、どうにもならないです。これについては、セッションの有効期限を短く設定することで対処しましょう。
+  The session can be stolen, but that's nothing more than storing the session ID in a cookie. Let's deal with this by setting a shorter session expiration date.
 </p>
-<h3>セッションにデータを保存する</h3>
+<h3> Save data to session </h3>
 <p>
-  現在のセッションにデータを保存するにはMojolicious::Controllerクラスのsessionメソッドを利用します。セッションIDは内部的に自動的に発行されているので、セッションIDを作成する必要はありません。セッションにデータを保存しておけば、同じユーザーからリクエストがあった場合に、保存したデータを取得することができます。
+  To save the data in the current session, use the session method of the Mojolicious::Controller class. You do not need to create a session ID because the session ID is issued automatically internally. If you save the data in the session, you can retrieve the saved data when requested by the same user.
 </p>
 <pre>
-# データの保存
-$c-&gt;session(name =&gt; 'Ken');
+#Save data
+$c-&gt;session(name =&gt;'Ken');
 $c-&gt;session(age =&gt; 19);
 
-# データの取得
+#Getting data
 my $name = $c-&gt;session('name');
 my $age = $c-&gt;session('age');
 </pre>
 <p>
-  Mojoliciousのセッションはクッキーを使って実装されており、クッキーの上限サイズが4096バイトであることに注意してください。つまりこれを超えるバイトのデータを保存することはできないということです。
+  Note that Mojolicious sessions are implemented using cookies, and the maximum cookie size is 4096 bytes. This means that you cannot store more bytes of data.
 </p>
 <p>
-  Mojolicious::Liteのサンプルです。
+  This is a sample of Mojolicious::Lite.
 </p>
 <pre>
-# Mojolicious::Lite
-get '/' =&gt; sub {
+#Mojolicious::Lite
+get'/' =&gt; sub {
   my $self = shift;
-  $self-&gt;session(name =&gt; 'Ken');
-};
+  $self-&gt;session(name =&gt;'Ken');
+};;
 </pre>
 <p>
-  Mojoliciousのサンプルです。
+  This is a sample of Mojolicious.
 </p>
 <pre>
-# Mojolicious
+#Mojolicious
 package MyApp::Login;
 
-use Mojo::Base 'Mojolicious::Controller';
+use Mojo::Base'Mojolicious::Controller';
 
 sub default {
   my $self = shift;
-  $self-&gt;session(name =&gt; 'Ken');
+  $self-&gt;session(name =&gt;'Ken');
 }
 </pre>
-<h3>現在のセッションを破棄する</h3>
+<h3> Discard the current session </h3>
 <p>
-  現在のセッションを破棄するにはMojolicious::Controllerクラスの<strong>session</strong>メソッドでexpiresを「1」に設定します。
+  To destroy the current session, set expires to "1" in the <strong> session </strong> method of the Mojolicious::Controller class.
 </p>
 <pre>
 $c-&gt;session(expires =&gt; 1);
 </pre>
 <p>
-  Mojolicious::Liteのサンプルです。ログアウト処理の際にセッションを破棄して、「/login」というURLにリダイレクトしています。
+  This is a sample of Mojolicious::Lite. During the logout process, the session is destroyed and redirected to the URL "/ login".
 </p>
 <pre>
-# Mojolicious::Lite
-get '/logout' =&gt; sub {
+#Mojolicious::Lite
+get'/ logout' =&gt; sub {
   my $self = shift;
   $self-&gt;session(expires =&gt; 1);
-  $self-&gt;redirect_to('/login');
-};
+  $self-&gt;redirect_to('/ login');
+};;
 </pre>
 <p>
-  Mojoliciousのサンプルです。
+  This is a sample of Mojolicious.
 </p>
 <pre>
-# Mojolicious
+#Mojolicious
 package MyApp::Logout;
 
-use Mojo::Base 'Mojolicious::Controller';
+use Mojo::Base'Mojolicious::Controller';
 
 sub default {
   my $self = shift;
   $self-&gt;session(expires =&gt; 1);
-  $self-&gt;redirect_to('/login');
+  $self-&gt;redirect_to('/ login');
 }
 </pre>
-<h3>フラッシュにデータを保存する</h3>
+<h3> Save data to flash </h3>
 <p>
-  フラッシュにデータを保存するにはMojolicious::Controllerクラスの<strong>flash</strong>メソッドを利用します。フラッシュは、次のリクエストにだけ引き継がれるセッションのことです。次回のリクエストのためだけにデータを保存しておきたい場合、たとえばリダイレクトを行う場合になどに利用されます。
+  To save data to flash, use the <strong> flash </strong> method of the Mojolicious::Controller class. A flash is a session that is inherited only by the next request. It is used when you want to save the data only for the next request, for example when redirecting.
 </p>
 <pre>
-# データの保存
-$c-&gt;flash(name =&gt; 'Ken');
+#Save data
+$c-&gt;flash(name =&gt;'Ken');
 $c-&gt;flash(age =&gt; 19);
 
-# データの取得
+#Getting data
 my $name = $c-&gt;flash('name');
 my $age = $c-&gt;flash('age');
 </pre>
 <p>
-  Mojolicious::Liteのサンプルです。
+  This is a sample of Mojolicious::Lite.
 </p>
 <pre>
-# Mojolicious::Lite
-get '/' =&gt; sub {
+#Mojolicious::Lite
+get'/' =&gt; sub {
   my $self = shift;
-  $self-&gt;flash(name =&gt; 'Ken');
-};
+  $self-&gt;flash(name =&gt;'Ken');
+};;
 </pre>
 <p>
-  Mojoliciousのサンプルです。
+  This is a sample of Mojolicious.
 </p>
 <pre>
-# Mojolicious
+#Mojolicious
 package MyApp::Login;
 
-use Mojo::Base 'Mojolicious::Controller';
+use Mojo::Base'Mojolicious::Controller';
 
 sub default {
   my $self = shift;
-  $self-&gt;flash(name =&gt; 'Ken');
+  $self-&gt;flash(name =&gt;'Ken');
 }
 </pre>
 
@@ -273,8 +271,7 @@ sub default {
           <div style="margin-bottom:30px">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4525414114581084"
      crossorigin="anonymous"></script>
-<!-- ディスプレイ縦長 -->
-<ins class="adsbygoogle"
+<!-- ディスプレイ縦長 --><ins class="adsbygoogle"
      style="display:block"
      data-ad-client="ca-pub-4525414114581084"
      data-ad-slot="4544919209"

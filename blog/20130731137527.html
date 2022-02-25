@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <!-- meta -->
-<meta charset="UTF-8">
+    <!-- meta --><meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
 <link rel="icon" type="image/x-icon" href="/images/logo.png">
 <link rel="stylesheet" type="text/css" href="/css/common.css">
@@ -25,8 +24,7 @@
   });
 </script>
 
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-G3M43D6P2H"></script>
+<!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=G-G3M43D6P2H"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
@@ -34,12 +32,12 @@
 
   gtag('config', 'G-G3M43D6P2H');
 </script>
-<title>ファイルを配置でルーティングを自動生成 - Mojolicious::Plugin::AutoRoute - Mojolicious Tutorial - Perl Web Framework</title>
-<meta name="description" content="Mojolicious::Plugin::AutoRouteは、ファイルを配置するだけで、ルーティングを自動的に生成してくれるプラグインです。">
+<title> Automatically generate routing by placing files --Mojolicious::Plugin::AutoRoute  - Mojolicious Tutorial - Perl Web Framework</title>
+<meta name="description" content="Mojolicious::Plugin::AutoRoute  is a plugin that automatically generates routes just by placing a file.">
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:site" content="@perlzemi" />
-<meta name="twitter:title" content="ファイルを配置でルーティングを自動生成 - Mojolicious::Plugin::AutoRoute - Mojolicious Tutorial - Perl Web Framework" />
-<meta name="twitter:description" content="Mojolicious::Plugin::AutoRouteは、ファイルを配置するだけで、ルーティングを自動的に生成してくれるプラグインです。" />
+<meta name="twitter:title" content=" Automatically generate routing by placing files --Mojolicious::Plugin::AutoRoute  - Mojolicious Tutorial - Perl Web Framework" />
+<meta name="twitter:description" content="Mojolicious::Plugin::AutoRoute  is a plugin that automatically generates routes just by placing a file." />
 <meta name="twitter:image" content="https://en.mojolicious.perlzemi.com//images/twitter_card_large_kaeru.png" />
 
 
@@ -61,9 +59,9 @@
     
   </div>
   <div class="middle">
-    <h2><a href="/blog/20130731137527.html">ファイルを配置でルーティングを自動生成 - Mojolicious::Plugin::AutoRoute</a></h2>
+    <h2><a href="/blog/20130731137527.html"> Automatically generate routing by placing files --Mojolicious::Plugin::AutoRoute </a></h2>
 <p>
-  <strong>Mojolicious::Plugin::AutoRoute</strong>は、ファイルを配置するだけで、ルーティングを自動的に生成してくれるプラグイン</strong>です。
+  <strong> Mojolicious::Plugin::AutoRoute </strong> is a plugin that automatically generates routes just by placing a file. </Strong>
 </p>
 <div style="width:calc(100% - 30px);margin:10px auto;">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4525414114581084"
@@ -83,74 +81,74 @@
 
 <blockquote>
 <p>
-  <a href="http://search.cpan.org/dist/Mojolicious-Plugin-AutoRoute/lib/Mojolicious/Plugin/AutoRoute.pm">Mojolicious::Plugin::AutoRoute</a>
+  <a href="http://search.cpan.org/dist/Mojolicious-Plugin-AutoRoute/lib/Mojolicious/Plugin/AutoRoute.pm"> Mojolicious::Plugin::AutoRoute</a>
 </p>
 </blockquote>
 <p>
-  テンプレートをファイルとして配置するだけで書くだけで、Webアプリケーションを作成することができます。
+  You can create a web application just by placing the template as a file and writing it.
 </p>
 <p>
-  「PHPのようにファイル置いただけで動いたら楽だな」と考えている方にピッタリです。
+  It is perfect for those who think that it would be easier if it works just by placing a file like PHP.
 </p>
-<h3>使い方</h3>
+<h3> How to use </h3>
 <pre>
-# Mojolicious
+#Mojolicious
 $self-&gt;plugin('AutoRoute');
 
-# Mojolicious::Lite
-plugin 'AutoRoute';
+#Mojolicious::Lite
+plugin'AutoRoute';
 
-# Option
-plugin 'AutoRoute', route =&gt; $r;
+#Option
+plugin'AutoRoute', route =&gt; $r;
 </pre>
 <p>
-  「templates」ディレクトリの中に「auto」ディレクトリを作成して、その中にテンプレートを配置してください。
+  Create an "auto" directory inside the "templates" directory and place the templates in it.
 </p>
 <p>
-  対応したルーティングが自動で生成されます。
+  The corresponding routing is automatically generated.
 </p>
 <pre>
-テンプレート                        ルート
-templates/auto/index.html.ep        # /
-              /foo.html.ep          # /foo
-              /foo/bar.html.ep      # /foo/bar
-              /foo/bar/baz.html.ep  # /foo/bar/baz
+Template root
+templates / auto / index.html.ep # /
+              /foo.html.ep # /foo
+              /foo/bar.html.ep # /foo/bar
+              /foo/bar/baz.html.ep # /foo/bar/baz
 </pre>
-<h3>オプション</h3>
-<h4> route</h4>
+<h3> Options </h3>
+<h4> route </h4>
 <pre>
 route =&gt; $route;
 </pre>
 <p>
-  必要であれば親のルートの指定できます。これはMojolicious::Routesオブジェクトです。デフォルトは<b>$app->routes</b>です。
+  You can specify the parent route if desired. This is a Mojolicious::Routes object. The default is <b> $app->routes</b>.
 </p>
-<h4> top_dir</h4>
+<h4> top_dir </h4>
 <pre>
-top_dir =&gt; 'myauto'
+top_dir =&gt;'myauto'
 </pre>
 <p>
-  トップディレクトリの名前。デフォルトは<b>auto</b>ディレクトリです。
+  The name of the top directory. The default is the <b> auto </b> directory.
 </p>
-<h3>サンプル</h3>
+<h3> Sample </h3>
 <pre>
 use Mojolicious::Lite;
 
-# AutoRoute
-plugin 'AutoRoute';
+#AutoRoute
+plugin'AutoRoute';
 
-@@ auto/index.html.ep
-/
+@@auto / index.html.ep
+/ /
 
-@@ auto/foo.html.ep
-/foo
+@@auto / foo.html.ep
+/ foo
 
-@@ auto/bar.html.ep
-/bar
+@@auto / bar.html.ep
+/ bar
 
-@@ auto/foo/bar/baz.html.ep
-/foo/bar/baz
+@@auto / foo / bar / baz.html.ep
+/ foo / bar / baz
 
-@@ auto/json.html.ep
+@@auto / json.html.ep
 &lt;%
   $self-&gt;render(json =&gt; {foo =&gt; 1});
   return;
@@ -182,8 +180,7 @@ plugin 'AutoRoute';
           <div style="margin-bottom:30px">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4525414114581084"
      crossorigin="anonymous"></script>
-<!-- ディスプレイ縦長 -->
-<ins class="adsbygoogle"
+<!-- ディスプレイ縦長 --><ins class="adsbygoogle"
      style="display:block"
      data-ad-client="ca-pub-4525414114581084"
      data-ad-slot="4544919209"

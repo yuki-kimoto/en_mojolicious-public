@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <!-- meta -->
-<meta charset="UTF-8">
+    <!-- meta --><meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
 <link rel="icon" type="image/x-icon" href="/images/logo.png">
 <link rel="stylesheet" type="text/css" href="/css/common.css">
@@ -25,8 +24,7 @@
   });
 </script>
 
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-G3M43D6P2H"></script>
+<!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=G-G3M43D6P2H"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
@@ -34,12 +32,12 @@
 
   gtag('config', 'G-G3M43D6P2H');
 </script>
-<title>Mojolicious(PSGI)アプリをStarmanでデプロイする - Mojolicious Tutorial - Perl Web Framework</title>
-<meta name="description" content="StarmanというPerlのプリフォークサーバを使って、Mojoliciousアプリケーションを起動してみます。Starman本番環境でMojoliciousアプリケーションを運用するのに良い選択肢です。">
+<title> Deploy the Mojolicious (PSGI) app with Starman  - Mojolicious Tutorial - Perl Web Framework</title>
+<meta name="description" content="Try launching a Mojolicious application using a Perl prefolk server called Starman. It's a good choice for running Mojolicious applications in Starman production.">
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:site" content="@perlzemi" />
-<meta name="twitter:title" content="Mojolicious(PSGI)アプリをStarmanでデプロイする - Mojolicious Tutorial - Perl Web Framework" />
-<meta name="twitter:description" content="StarmanというPerlのプリフォークサーバを使って、Mojoliciousアプリケーションを起動してみます。Starman本番環境でMojoliciousアプリケーションを運用するのに良い選択肢です。" />
+<meta name="twitter:title" content=" Deploy the Mojolicious (PSGI) app with Starman  - Mojolicious Tutorial - Perl Web Framework" />
+<meta name="twitter:description" content="Try launching a Mojolicious application using a Perl prefolk server called Starman. It's a good choice for running Mojolicious applications in Starman production." />
 <meta name="twitter:image" content="https://en.mojolicious.perlzemi.com//images/twitter_card_large_kaeru.png" />
 
 
@@ -61,9 +59,9 @@
     
   </div>
   <div class="middle">
-    <h2><a href="/blog/20100906127859.html">Mojolicious(PSGI)アプリをStarmanでデプロイする</a></h2>
+    <h2><a href="/blog/20100906127859.html"> Deploy the Mojolicious (PSGI) app with Starman </a></h2>
 <p>
-  StarmanというPerlのプリフォークサーバを使って、Mojoliciousアプリケーションを起動してみます。Starman本番環境でMojoliciousアプリケーションを運用するのに良い選択肢です。
+  Try launching a Mojolicious application using a Perl prefolk server called Starman. It's a good choice for running Mojolicious applications in Starman production.
 </p>
 <div style="width:calc(100% - 30px);margin:10px auto;">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4525414114581084"
@@ -85,7 +83,7 @@
 cpanm Starman
 </pre>
 <p>
-  以下はMojolicious::Liteで記述したPSGIアプリ(hello.pl)です。注意点として「app->start」と「__DATA__」の間にはコメント以外は置いてはいけません。
+  The following is a PSGI app (hello.pl) written in Mojolicious::Lite. Please note that only comments should be placed between "app->start" and "__DATA__".
 </p>
 <pre>
 use strict;
@@ -93,53 +91,53 @@ use warnings;
 
 use Mojolicious::Lite;
 
-get '/' =&gt; 'index';
+get'/' =&gt;'index';
 
 app-&gt;start;
 
 __DATA__
 
-@@ index.html.ep
-&lt;html&gt;&lt;body&gt;Hello!&lt;/body&gt;&lt;/html&gt;
+@@index.html.ep
+&lt;html&gt; &lt;body&gt; Hello! &lt;/Body&gt; &lt;/html&gt;
 </pre>
 <p>
-  starmanを起動します。
+  Start starman.
 </p>
 <pre>
 starman hello.pl
 </pre>
 <p>
-  これで以下にアクセスするとMojoliciousアプリが起動していることが確認できます。
+  Now you can see that the Mojolicious app is running by accessing the following:
 </p>
 <pre>
-http://localhost:5000/
+http: // localhost: 5000 /
 </pre>
 <p>
-  ポートを指定するには「--port」オプションを使用します。
+  Use the "--port" option to specify the port.
 </p>
 <pre>
-starman --port=3000 hello.pl
+starman --port = 3000 hello.pl
 </pre>
-<h3>本番運用</h3>
+<h3> Production operation </h3>
 <p>
-  本番運用する場合はバックグラウンドで実行をして、サーバ起動と同時にアプリケーションを実行したいと思うことでしょう。そのような場合は次のようにします。rootユーザーで実行してください。
+  For production operations, you'll want to run it in the background and run your application at the same time you start the server. In such a case, do the following. Run it as the root user.
 </p>
 <pre>
-# サーバーの開始
-su - kimoto -c 'starman --port=3000 --daemonize --pid=/home/kimoto/labo/pid /home/kimoto/labo/app1.pl'
+#Start the server
+su --kimoto -c'starman --port = 3000 --daemonize --pid = / home / kimoto / labo / pid /home/kimoto/labo/app1.pl'
 </pre>
 <p>
-  suの-cコマンドを使うことで、ユーザーを変更して実行しています。通所はhello.plの所有者で実行すればよいでしょう。--daemonizeオプションで、サーバーをデーモン化できます。--pidオプションで、サーバーのプロセスIDを書き込むファイルを指定します。これはサーバーを停止させるときに必要な情報になります。
+  I am changing the user and running it by using su's -c command. The office should be run by the owner of hello.pl. You can daemonize the server with the --daemonize option. The --pid option specifies the file to write the process ID of the server. This will be the information you need when you stop the server.
 </p>
 <p>
-  サーバーを停止させるにはkillコマンドにプロセスIDを渡します。xargと組み合わせると、ファイルに書かれたプロセスIDをkillに渡すことができます。
+  To stop the server, pass the process ID to the kill command. When combined with xarg, you can pass the process ID written in the file to kill.
 </p>
 <pre>
-# サーバーの停止
-cat /home/kimoto/labo/pid | xargs kill
+#Server outage
+cat / home / kimoto / labo / pid | xargs kill
 </pre>
 <p>
-  Linuxの起動時にMojoliciousアプリケーションを起動したい場合は以下のファイルにサーバーの起動の記述を追加してください。
+  If you want to start the Mojolicious application when Linux starts, add the description of starting the server to the following file.
 </p>
 <pre>
 /etc/rc.d/rc.local
@@ -170,8 +168,7 @@ cat /home/kimoto/labo/pid | xargs kill
           <div style="margin-bottom:30px">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4525414114581084"
      crossorigin="anonymous"></script>
-<!-- ディスプレイ縦長 -->
-<ins class="adsbygoogle"
+<!-- ディスプレイ縦長 --><ins class="adsbygoogle"
      style="display:block"
      data-ad-client="ca-pub-4525414114581084"
      data-ad-slot="4544919209"

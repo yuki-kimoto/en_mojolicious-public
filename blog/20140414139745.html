@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <!-- meta -->
-<meta charset="UTF-8">
+    <!-- meta --><meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
 <link rel="icon" type="image/x-icon" href="/images/logo.png">
 <link rel="stylesheet" type="text/css" href="/css/common.css">
@@ -25,8 +24,7 @@
   });
 </script>
 
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-G3M43D6P2H"></script>
+<!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=G-G3M43D6P2H"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
@@ -34,12 +32,12 @@
 
   gtag('config', 'G-G3M43D6P2H');
 </script>
-<title>Mojoliciousのテンプレートヘルパー - Mojolicious Tutorial - Perl Web Framework</title>
-<meta name="description" content="テンプレートで利用すると便利なヘルパーについて解説したいと思います。ヘルパーとは、テンプレート内で呼び出すことのできる関数のようなものだと考えてください。layoutヘルパー、stashヘルパーについては、すでに解説していますので、それ以外のヘルパーについて解説します。">
+<title> Mojolicious template helper  - Mojolicious Tutorial - Perl Web Framework</title>
+<meta name="description" content="I would like to explain the  helper  that is useful in templates. Think of a helper as a function that you can call in a template. The layout helper and stash helper have already been explained, so I will explain the other helpers.">
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:site" content="@perlzemi" />
-<meta name="twitter:title" content="Mojoliciousのテンプレートヘルパー - Mojolicious Tutorial - Perl Web Framework" />
-<meta name="twitter:description" content="テンプレートで利用すると便利なヘルパーについて解説したいと思います。ヘルパーとは、テンプレート内で呼び出すことのできる関数のようなものだと考えてください。layoutヘルパー、stashヘルパーについては、すでに解説していますので、それ以外のヘルパーについて解説します。" />
+<meta name="twitter:title" content=" Mojolicious template helper  - Mojolicious Tutorial - Perl Web Framework" />
+<meta name="twitter:description" content="I would like to explain the  helper  that is useful in templates. Think of a helper as a function that you can call in a template. The layout helper and stash helper have already been explained, so I will explain the other helpers." />
 <meta name="twitter:image" content="https://en.mojolicious.perlzemi.com//images/twitter_card_large_kaeru.png" />
 
 
@@ -61,9 +59,9 @@
     
   </div>
   <div class="middle">
-    <h2><a href="/blog/20140414139745.html">Mojoliciousのテンプレートヘルパー</a></h2>
+    <h2><a href="/blog/20140414139745.html"> Mojolicious template helper </a></h2>
 <p>
-  テンプレートで利用すると便利な<b>ヘルパー</b>について解説したいと思います。ヘルパーとは、テンプレート内で呼び出すことのできる関数のようなものだと考えてください。layoutヘルパー、stashヘルパーについては、すでに解説していますので、それ以外のヘルパーについて解説します。
+  I would like to explain the <b> helper </b> that is useful in templates. Think of a helper as a function that you can call in a template. The layout helper and stash helper have already been explained, so I will explain the other helpers.
 </p>
 <div style="width:calc(100% - 30px);margin:10px auto;">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4525414114581084"
@@ -81,346 +79,346 @@
 </div>
 
 
-<h3>スタイルシートの埋め込み</h3>
+<h3> Embedding stylesheets </h3>
 <p>
-  テンプレートの中にスタイルシートを記述したい場合は<strong>stylesheet</strong>タグヘルパーを使用します。<b>begin</b>と<b>end</b>で囲った部分にスタイルシートを書きます。
+  If you want to write a stylesheet in the template, use the <strong> stylesheet </strong> tag helper. Write the style sheet in the part surrounded by <b> begin </b> and <b> end </b>.
 </p>
 <pre>
 %= stylesheet begin
   body {
-    background:blue;
+    background: blue;
   }
-% end
+%end
 </pre>
 <p>
-  通常の方法でstyleタグを使って書いてもよいのですが、こちらのほうが簡潔ですし、汎用性のあるタグに展開されるので便利です。以下のようなタグに展開されます。
+  You can write it using the style tag in the usual way, but this is more concise and convenient because it expands to a versatile tag. It will be expanded to the following tags.
 </p>
 <pre>
-&lt;style&gt;/*&lt;![CDATA[*/
+&lt;style&gt; / * &lt;! [CDATA [* /
 
   body {
-    background:blue;
+    background: blue;
   }
 
-/*]]&gt;*/&lt;/style&gt;
+/ *]]&gt; * / &lt;/style&gt;
 </pre>
 <p>
-  またpublicディレクトリにあるスタイルシートをstylesheetタグヘルパーで読み込むことができます。
+  You can also load stylesheets in public directories with the stylesheet tag helper.
 </p>
 <pre>
-%= stylesheet '/css/common.css';
+%= stylesheet'/css/common.css';
 </pre>
 <p>
-  これは次のように展開されます。
+  It expands as follows:
 </p>
 <pre>
-&lt;link href="/css/common.css" rel="stylesheet" /&gt;
+&lt;link href = "/ css / common.css" rel = "stylesheet" /&gt;
 </pre>
 <p>
-  タグを挿入できるヘルパーをタグヘルパーといいます。利用可能なタグヘルパーについては「<a href="/blog/20110616130993.html">Mojoliciousのタグヘルパーの一覧</a>」をご覧ください。
+  Helpers that can insert tags are called tag helpers. See <a href="/blog/20110616130993.html"> Mojolicious Tag Helpers List</a> for available tag helpers.
 </p>
-<h3>JavaScriptの埋め込み</h3>
+<h3> JavaScript embedding </h3>
 <p>
-  テンプレートの中にJavaScriptを記述したい場合は<strong>stylesheet</strong>ヘルパーを使用します。<b>begin</b>と<b>end</b>で囲った部分にJavaScriptを書きます。
+  If you want to write JavaScript in the template, use the <strong> stylesheet </strong> helper. Write JavaScript in the part surrounded by <b> begin </b> and <b> end </b>.
 </p>
 <pre>
 %= javascript begin
-  alert('Hello');
-% end
+  alert ('Hello');
+%end
 </pre>
 <p>
-  通常の方法でscriptタグを使って書いてもよいのですが、こちらのほうが簡潔ですし、汎用性のあるタグに展開されるので便利です。以下のようなタグに展開されます。
+  You can write it using the script tag in the usual way, but this is more concise and convenient because it expands to a versatile tag. It will be expanded to the following tags.
 </p>
 <pre>
-&lt;script&gt;//&lt;![CDATA[
+&lt;script&gt; // &lt;! [CDATA [
 
-  alert('Hello');
+  alert ('Hello');
 
-//]]&gt;&lt;/script&gt;
+//]]&gt; &lt;/script&gt;
 </pre>
 <p>
-  またpublicディレクトリにあるJavaScriptをjavascriptヘルパーで読み込むことができます。
+  You can also load JavaScript in the public directory with the javascript helper.
 </p>
 <pre>
-%= javascript '/js/common.js';
+%= javascript'/js/common.js';
 </pre>
 <p>
-  これは次のように展開されます。
+  It expands as follows:
 </p>
 <pre>
-&lt;script src="/js/common.js"&gt;&lt;/script&gt;
+&lt;script src = "/ js / common.js"&gt; &lt;/script&gt;
 </pre>
-<h3>アプリケーションオブジェクトの取得</h3>
+<h3> Get application object </h3>
 <p>
-  アプリケーションオブジェクトを取得するには<b>app</b>ヘルパーを使用します。
+  Use the <b> app </b> helper to get the application object.
 </p>
 <pre>
-% my $app = app;
+%my $app = app;
 </pre>
-<h3>コントローラーオブジェクトの取得</h3>
+<h3> Get controller object </h3>
 <p>
-  テンプレートの中では<b>$self</b>という名前で、コントローラーオブジェクトを参照することができます。
+  You can refer to the controller object by the name <b> $self </b> in the template.
 </p>
 <pre>
-% my $c = $self
-</pre>
-<p>
-  これを使って、テンプレートの中でHTTPメソッドを取得することなどができますね。
-</p>
-<pre>
-% my $http_method = $self-&gt;req-&gt;method;
-</pre>
-<h3>データのダンプ</h3>
-<p>
-  データの内容をダンプするための<b>dumper</b>メソッドが用意されています。これは機能的にはData::DumperモジュールのDumper関数と同じです。
-</p>
-<pre>
-% warn dumper $date;
-</pre>
-<h3>他のテンプレートの取り込み</h3>
-<p>
-  <strong>include</strong>ヘルパーを使うと他のテンプレートを取り込むことができます。
-</p>
-<pre>
-%= include '/include/header.html.ep
+%my $c = $self
 </pre>
 <p>
-  ヘッダやフッタなどは、サイトで共通なことが多いですので、これらを作っておいて、複数のテンプレートから読み込むと便利です。<b>include</b>ヘルパー第二引数以降を利用することで、スタッシュの値を設定することができます。
+  You can use this to get HTTP methods in the template, etc.
 </p>
 <pre>
-%= include '/include/header.html.ep, name =&gt; 'kimoto', age =&gt; 34;
+%my $http_method = $self-&gt;req-&gt;method;
 </pre>
-<h3>URLの表現</h3>
+<h3> Data dump </h3>
 <p>
-  Mojoliciousではアプリケーションの内部的なURLを表現する場合は、パフォーマンスが重要になるアプリケーションを除いて<strong>url_for</strong>ヘルパーを使用するようにしてください。たとえば「/date/20131215」というURLを表現したい場合は次のように記述します。
+  There is a <b> dumper </b> method for dumping the contents of the data. This is functionally the same as the Dumper function in the Data::Dumper module.
 </p>
 <pre>
-&lt;a href="&lt;%= url_for('/date/20131215') %&gt;"&gt;2013/12/15&lt;/a&gt;
+%warn dumper $date;
+</pre>
+<h3> Import other templates </h3>
+<p>
+  You can use the <strong> include </strong> helper to include other templates.
+</p>
+<pre>
+%= include'/include/header.html.ep
 </pre>
 <p>
-  url_forメソッドを使うのは、アプリケーションに汎用性を持たせるためです。このように記述しておけば、CGIとして起動しても、サーバーとして起動しても、URLが汎用的になります。
-</p>
-<p>
-  これは次のように展開されます。
+  Headers and footers are often common to all sites, so it is convenient to create them and load them from multiple templates. <b> include </b> You can set the stash value by using the second and subsequent arguments of the helper.
 </p>
 <pre>
-# CGIの場合
-&lt;a href="/myapp.cgi/date/20131215"&gt;2013/12/15&lt;/a&gt;
+%= include'/include/header.html.ep, name =&gt;'kimoto', age =&gt; 34;
+</pre>
+<h3> URL representation </h3>
+<p>
+  When expressing the internal URL of an application in Mojolicious, be sure to use the <strong> url_for </strong> helper except for applications where performance is important. For example, if you want to express the URL "/ date / 20131215", write as follows.
+</p>
+<pre>
+&lt;a href="&lt;%=url_for('/date/20131215')%&gt;"&gt; 2013/12/15&lt;/a&gt;
+</pre>
+<p>
+  The url_for method is used to make the application versatile. If you write it like this, the URL will be generic regardless of whether you start it as CGI or as a server.
+</p>
+<p>
+  It expands as follows:
+</p>
+<pre>
+# For CGI
+&lt;a href="/myapp.cgi/date/20131215"&gt; 2013/12/15&lt;/a&gt;
 
-# サーバーとして起動した場合
-&lt;a href="/date/20131215"&gt;2013/12/15&lt;/a&gt;
+#When started as a server
+&lt;a href="/date/20131215"&gt; 2013/12/15&lt;/a&gt;
 </pre>
-<h4>Mojo::URLオブジェクト</h4>
+<h4> Mojo::URL object </h4>
 <p>
-  url_forヘルパーで取得するのはMojo::URLオブジェクトです。Mojo::URLクラスはURLを扱うためのクラスです。
+  The url_for helper gets the Mojo::URL object. The Mojo::URL class is a class for handling URLs.
 </p>
 <p>
-  Mojo::URLオブジェクトを文字列化するためには<b>to_strong</b>メソッドを使うか、文字列として評価します。
+  To stringify a Mojo::URL object, use the <b> to_strong </b> method or evaluate it as a string.
 </p>
 <pre>
-% my $url_str = url_for-&gt;to_string;
-% my $url_str = "" . url_for;
+%my $url_str = url_for-&gt;to_string;
+%my $url_str = "". url_for;
 </pre>
 <p>
-  最初の例では「<%= %>」の中は、文字列として評価されるために単純に
+  In the first example, "<%=%>" is simply evaluated as a string.
 </p>
 <pre>
-&lt;%= url_for('/some') %&gt;
+&lt;%= url_for ('/ some')%&gt;
 </pre>
 <p>
-  と書くだけで、URLが文字列として展開されます。
+  Just write, and the URL will be expanded as a string.
 </p>
-<h4>現在のURLを取得</h4>
+<h4> Get the current URL </h4>
 <p>
-  <strong>url_for</strong>ヘルパーで引数を指定しなければ、現在のURLを取得することができます。
+  If you don't specify any arguments with the <strong> url_for </strong> helper, you can get the current URL.
 </p>
 <pre>
-% my $current_url = url_for
+%my $current_url = url_for
 </pre>
-<h3>クエリ文字列</h3>
+<h3> Query string </h3>
 <p>
-  url_forヘルパーで注意しておきたいのは、引数なしで現在のURLを取得する場合は、クエリ文字列を除いた部分のURLを取得できるということです。もしクエリ文字列を含めたURLを取得したい場合は<string>url_with</strong>ヘルパーを利用します。
+  One thing to keep in mind with the url_for helper is that if you want to get the current URL with no arguments, you can get the URL of the part excluding the query string. If you want to get the URL including the query string, use the <string> url_with </strong> helper.
 </p>
 <pre>
-&lt;%= url_with %&gt;
+&lt;%= url_with%&gt;
 </pre>
 <p>
-  たとえば「/some?name=kimoto&age=30」というURLをアクセスした場合はurl_forヘルパーでは「/some」を取得しますがurl_withヘルパーであれば「/some?name=kimoto&age=30」を取得できます。
+  For example, if you access the URL "/ some? Name = kimoto & age = 30", the url_for helper will get "/ some", but the url_with helper will get "/ some? Name = kimoto & age = 30".
 </p>
 <p>
-  クエリの部分はMojo::Parametersオブジェクトに保存されています。これはMojo::URLクラスの<b>query</b>メソッドで取得できます。
+  The query part is stored in the Mojo::Parameters object. This can be obtained with the <b> query </b> method of the Mojo::URL class.
 </p>
 <pre>
 my $query = url_with-&gt;query;
 </pre>
 <p>
-  またqueryメソッドは、クエリ文字列を設定する機能もあわせてもっています。クエリ文字列を設定するには以下の三種類の方法があります。最初のクエリ文字列が「title=perl&name=ken」だったと想定してください。
+  The query method also has the ability to set the query string. There are three ways to set the query string: Suppose the first query string was "title = perl & name = ken".
 </p>
-<h4>クエリ文字列を置き換える</h4>
+<h4> Replace query string </h4>
 <p>
-  クエリ文字列を置き換えるには次のようにリスト形式で渡します。
+  To replace the query string, pass it in list format as follows:
 </p>
 <pre>
-$url-&gt;query(name =&gt; 'taro', price =&gt; 1900);
+$url-&gt;query(name =&gt;'taro', price =&gt; 1900);
 </pre>
 <p>
-  上記の例の場合は以下のように置き換わります。
+  In the case of the above example, it is replaced as follows.
 </p>
 <pre>
-# 前
-title=perl&amp;name=ken
+# Previous
+title = perl &amp; name = ken
 
-# 後
-name=taro&amp;price=1900
+# After
+name = taro &amp; price = 1900
 </pre>
-<h4>クエリ文字列のマージ</h4>
+<h4> Merge query strings </h4>
 <p>
-  クエリ文字列をマージするには配列のリファレンスとして渡します。
+  To merge the query strings, pass it as an array reference.
 </p>
 <pre>
-$url-&gt;query([name =&gt; 'taro', price =&gt; 1900]);
+$url-&gt;query([name =&gt;'taro', price =&gt; 1900]);
 </pre>
 <p>
-  次のようにマージされます。値が同じものは置き換えられます。
+  It will be merged as follows: Those with the same value will be replaced.
 </p>
 <pre>
-# 前
-title=perl&amp;name=ken
+# Previous
+title = perl &amp; name = ken
 
-# 後
-title=perl&amp;name=taro&amp;price=1900
+# After
+title = perl &amp; name = taro &amp; price = 1900
 </pre>
-<h4>クエリ文字列の追加</h4>
+<h4> Add query string </h4>
 <p>
-  クエリ文字列を追加するにはハッシュのリファレンスとして渡します。
+  Pass it as a hash reference to add the query string.
 </p>
 <pre>
-$url-&gt;query({name =&gt; 'taro', price =&gt; 1900});
+$url-&gt;query({name =&gt;'taro', price =&gt; 1900});
 </pre>
 <p>
-  次のように追加されます。
+  It will be added as follows.
 </p>
 <pre>
-# 前
-title=perl&amp;name=ken
+# Previous
+title = perl &amp; name = ken
 
-# 後
-title=perl&amp;name=ken&amp;name=taro&amp;price=1900
+# After
+title = perl &amp; name = ken &amp; name = taro &amp; price = 1900
 </pre>
 <p>
-  Webアプリではページ番号だけを差し替えたいという要望が強いと思います。そういう場合は、クエリのマージの機能を使うのがよいでしょう。
+  I think there is a strong demand for replacing only page numbers in web applications. In that case, it's a good idea to use the query merge feature.
 </p>
 <pre>
-&lt;%= url_with-&gt;query([page =&gt; $page]) %&gt;
+&lt;%= url_with-&gt;query([page =&gt; $page])%&gt;
 </pre>
-<h3>テンプレートヘルパーを利用したサンプル</h3>
+<h3> Sample using template helper </h3>
 <p>
-  今回解説したテンプレートヘルパーを使ったサンプルコードを書いてみます。
+  Let's write a sample code using the template helper explained this time.
 </p>
 <pre>
 use Mojolicious::Lite;
 
-get '/person' =&gt; sub {
+get'/ person' =&gt; sub {
   my $self = shift;
   
-  # パラメーター
+  #Parameter
   my $name = $self-&gt;param('name');
   my $age = $self-&gt;param('age');
   
-  # 描画
+  #Drawing
   $self-&gt;render('index', name =&gt; $name, age =&gt; $age);
-};
+};;
 
 app-&gt;start;
 
 __DATA__
 
-@@ index.html.ep
+@@index.html.ep
 &lt;%
-  # スタッシュの値
-  my $name = stash('name');
-  my $age = stash('age');
+  #Stash value
+  my $name = stash ('name');
+  my $age = stash ('age');
   
-  # ログの取得
+  #Get log
   app-&gt;log-&gt;info('Template Helper');
   
-  # HTTPメソッド
+  #HTTP method
   my $http_method = $self-&gt;req-&gt;method;
   
-  # データのダンプ
+  #Data dump
   my $data = [1, 2, 3];
   warn dumper $data;
 %&gt;
 &lt;html&gt;
   &lt;head&gt;
-    &lt;title&gt;Template Helper&lt;/title&gt;
-    %= stylesheet '/css/common.css';
-    %= javascript '/js/common.js';
+    &lt;title&gt; Template Helper &lt;/title&gt;&gt;
+    %= stylesheet'/css/common.css';
+    %= javascript'/js/common.js';
   &lt;/head&gt;
   &lt;body&gt;
-    %= include '/include/header';
+    %= include'/ include / header';
     
-    Name: &lt;%= $name %&gt;&lt;br&gt;
-    Age: &lt;%= $age %&gt;&lt;br&gt;
-    Current URL: &lt;%= url_with %&gt;&lt;br&gt;
-    Current URL with some change: &lt;%= url_with-&gt;query([name =&gt; 'ken']) %&gt;
-    %= include '/include/footer';
+    Name: &lt;%= $name%&gt; &lt;br&gt;
+    Age: &lt;%= $age%&gt; &lt;br&gt;
+    Current URL: &lt;%= url_with%&gt; &lt;br&gt;
+    Current URL with some change: &lt;%= url_with-&gt;query([name =&gt;'ken'])%&gt;
+    %= include'/ include / footer';
   &lt;/body&gt;
 &lt;/html&gt;
 </pre>
-<h4>public/css/common.css</h4>
+<h4> public / css / common.css </h4>
 <p>
-  CSSファイルを「public」ディレクトリの中に配置しましょう。「public/css/common.css」という名前で保存してください。文字色変更する設定などが書いてあります。
+  Place your CSS file in the "public" directory. Save it as "public / css / common.css". Settings such as changing the font color are written.
 </p>
 <pre>
-#header h1 {
-  color:green;
-  border-bottom:1px solid gray;
+# header h1 {
+  color: green;
+  border-bottom: 1px solid gray;
 }
 
 #footer {
-  color:red;
-  border-top:1px solid gray;
-  text-align:center;
+  color: red;
+  border-top: 1px solid gray;
+  text-align: center;
 }
 </pre>
-<h4>public/js/common.js</h4>
+<h4> public / js / common.js </h4>
 <p>
-  JavaScriptファイルを「public」ディレクトリの中に配置しましょう。「public/js/common.js」という位置においてください。「Hello」と表示するダイアログを実行するJavaScriptです。
+  Place your JavaScript files in the "public" directory. Please put it in the position of "public / js / common.js". JavaScript that executes a dialog that displays "Hello".
 </p>
 <pre>
-alert('Hello');
+alert ('Hello');
 </pre>
-<h4>ヘッダとフッタ</h4>
+<h4> Header and footer </h4>
 <p>
-  ヘッダとフッタを作ってみましょう。「templates」ディレクトリの中に、「templates/include/header.html.ep」と「templates/include/footer.html.ep」という名前で保存してください。
+  Let's make a header and footer. Save it as "templates / include / header.html.ep" and "templates / include / footer.html.ep" in the "templates" directory.
 </p>
 <p>
-  <b>templates/include/header.html.ep</b>
+  <b> templates / include / header.html.ep </b>
 </p>
 <pre>
-&lt;div id="header"&gt;
-&lt;h1&gt;Template Helper&lt;/h1&gt;
+&lt;div id = "header"&gt;
+&lt;h1&gt; Template Helper &lt;/h1&gt;
 &lt;/div&gt;
 </pre>
 <p>
-  <b>templates/include/footer.html.ep</b>
+  <b> templates / include / footer.html.ep </b>
 </p>
 <pre>
-&lt;div id="footer"&gt;
+&lt;div id = "footer"&gt;
 Author kimoto
 &lt;/div&gt;
 </pre>
-<h4>アプリケーションの実行</h4>
+<h4> Run application </h4>
 <p>
-  このアプリケーションを実行して「/person?name=kimoto&age=32」でアクセスしてみてください。上部にヘッダ、下部フッタが、挿入されています。コンテンツの内容として以下が表示されます。
+  Run this application and try accessing it with "/ person? Name = kimoto & age = 32". The header and footer are inserted at the top. The following is displayed as the content.
 </p>
 <pre>
 Name: kimoto
 Age: 32
 HTTP Method: GET
-Current URL: /person?name=kimoto&amp;age=32
-Current URL with some change: /person?age=32&amp;name=ken
+Current URL: / person? name=kimoto&amp;age=32
+Current URL with some change: / person? age = 32 &amp; name = ken
 </pre>
 
   </div>
@@ -448,8 +446,7 @@ Current URL with some change: /person?age=32&amp;name=ken
           <div style="margin-bottom:30px">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4525414114581084"
      crossorigin="anonymous"></script>
-<!-- ディスプレイ縦長 -->
-<ins class="adsbygoogle"
+<!-- ディスプレイ縦長 --><ins class="adsbygoogle"
      style="display:block"
      data-ad-client="ca-pub-4525414114581084"
      data-ad-slot="4544919209"

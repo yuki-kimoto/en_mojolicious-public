@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <!-- meta -->
-<meta charset="UTF-8">
+    <!-- meta --><meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
 <link rel="icon" type="image/x-icon" href="/images/logo.png">
 <link rel="stylesheet" type="text/css" href="/css/common.css">
@@ -25,8 +24,7 @@
   });
 </script>
 
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-G3M43D6P2H"></script>
+<!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=G-G3M43D6P2H"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
@@ -34,12 +32,12 @@
 
   gtag('config', 'G-G3M43D6P2H');
 </script>
-<title>URLの中でコロン(:)などの予約語を使う - Mojolicious Tutorial - Perl Web Framework</title>
-<meta name="description" content="Mojoliciousのルーターは、細かい設定などができて、とても便利です。けれども、使ってみると:と#と*と.が予約語になっているということに気づくと思います。">
+<title> Use reserved words such as colons (:) in URLs  - Mojolicious Tutorial - Perl Web Framework</title>
+<meta name="description" content="Mojolicious routers are very convenient because you can make detailed settings. However, when I try to use it, : ,  # ,  *  and .  are reserved words. You will notice.">
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:site" content="@perlzemi" />
-<meta name="twitter:title" content="URLの中でコロン(:)などの予約語を使う - Mojolicious Tutorial - Perl Web Framework" />
-<meta name="twitter:description" content="Mojoliciousのルーターは、細かい設定などができて、とても便利です。けれども、使ってみると:と#と*と.が予約語になっているということに気づくと思います。" />
+<meta name="twitter:title" content=" Use reserved words such as colons (:) in URLs  - Mojolicious Tutorial - Perl Web Framework" />
+<meta name="twitter:description" content="Mojolicious routers are very convenient because you can make detailed settings. However, when I try to use it, : ,  # ,  *  and .  are reserved words. You will notice." />
 <meta name="twitter:image" content="https://en.mojolicious.perlzemi.com//images/twitter_card_large_kaeru.png" />
 
 
@@ -61,9 +59,9 @@
     
   </div>
   <div class="middle">
-    <h2><a href="/blog/20120503133604.html">URLの中でコロン(:)などの予約語を使う</a></h2>
+    <h2><a href="/blog/20120503133604.html"> Use reserved words such as colons (:) in URLs </a></h2>
 <p>
-  Mojoliciousのルーターは、細かい設定などができて、とても便利です。けれども、使ってみると<b>:</b>と<b>#</b>と<b>*</b>と<b>.</b>が予約語になっているということに気づくと思います。
+  Mojolicious routers are very convenient because you can make detailed settings. However, when I try to use it, <b>: </b>, <b> # </b>, <b> * </b> and <b>. </B> are reserved words. You will notice.
 </p>
 <div style="width:calc(100% - 30px);margin:10px auto;">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4525414114581084"
@@ -82,45 +80,45 @@
 
 
 <p>
-  これらの記号をURLの中で利用したい場合はあきらめるしかないのでしょうか(#はURLの中でフラグメントとしての意味を持つので除く)。以下のような指定では正しくパラメーターを取得することができません。
+  If I want to use these symbols in the URL, I have no choice but to give up (except because # has a meaning as a fragment in the URL). Parameters cannot be acquired correctly with the following specifications.
 </p>
 <pre>
-# 間違い (/20101114:mainでパラメータを正しく取得できない)
-get '/(:date):(:id)' =&gt; sub {
+#Wrong (/20101114: I can't get the parameters correctly in main)
+get'/ (: date): (: id)' =&gt; sub {
   my $self = shift;
   
   my $date = $self-&gt;param('date');
   my $id = $self-&gt;param('id');
   
   $self-&gt;render(text =&gt; "$date $id");
-};
+};;
 </pre>
 <p>
-  コロンは予約語なので、このようなルートの指定はうまくいきません。
+  Since the colon is a reserved word, specifying a route like this doesn't work.
 </p>
-<h3>解決策として、正規表現による制約を利用する</h3>
+<h3> Use regular expression constraints as a solution </h3>
 <p>
-  けれども、Mojoliciousのルーターはきわめて柔軟なので、通常のルータと<a href="/blog/20100827127859.html">正規表現</a>を組み合わせることができます。
+  However, Mojolicious routers are so flexible that you can combine regular routers with <a href="/blog/20100827127859.html"> regular expressions</a>.
 </p>
 <p>
-  つまり、予約語を含むような部分は正規表現で記述すれば、すっきりとはいきませんが、解決できます。
+  In other words, if you write a part that includes reserved words with a regular expression, it will not be neat, but it can be solved.
 </p>
 <pre>
-# 正しい (/20101114:mainでパラメータを正しく取得できる)
-get '/:date_id' =&gt; [date_id =&gt; qr/[^:]+?:[^:]+/] =&gt; sub {
+#Correct (You can get the parameters correctly with / 20101114: main)
+get'/: date_id'=&gt; [date_id =&gt; qr / [^:] +?: [^:] + /] =&gt; sub {
   my $self = shift;
   
   my $date_id = $self-&gt;param('date_id');
-  my ($date, $id) = $date_id =~ /([^:]+?):([^:]+)/;
+  my ($date, $id) = $date_id = ~ / ([^:] +?) :( [^:] +) /;
   
   $self-&gt;render(text =&gt; "$date $id");
-};
+};;
 </pre>
 <p>
-  プレースホルダーを$data_idという名前にして、これに対して正規表現を使って制約を記述しています。<b>/20101114:main</b>にマッチするルートを記述できています。
+  I've named the placeholder $data_id and used a regular expression to describe the constraint. You have written a route that matches <b> / 20101114: main </b>.
 </p>
 <p>
-  後は、同じ正規表現を使って、分割するだけです。
+  All you have to do now is split it using the same regular expression.
 </p>
 
   </div>
@@ -148,8 +146,7 @@ get '/:date_id' =&gt; [date_id =&gt; qr/[^:]+?:[^:]+/] =&gt; sub {
           <div style="margin-bottom:30px">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4525414114581084"
      crossorigin="anonymous"></script>
-<!-- ディスプレイ縦長 -->
-<ins class="adsbygoogle"
+<!-- ディスプレイ縦長 --><ins class="adsbygoogle"
      style="display:block"
      data-ad-client="ca-pub-4525414114581084"
      data-ad-slot="4544919209"

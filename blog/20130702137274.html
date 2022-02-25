@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <!-- meta -->
-<meta charset="UTF-8">
+    <!-- meta --><meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
 <link rel="icon" type="image/x-icon" href="/images/logo.png">
 <link rel="stylesheet" type="text/css" href="/css/common.css">
@@ -25,8 +24,7 @@
   });
 </script>
 
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-G3M43D6P2H"></script>
+<!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=G-G3M43D6P2H"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
@@ -34,12 +32,12 @@
 
   gtag('config', 'G-G3M43D6P2H');
 </script>
-<title>rootユーザーでいるときに、一般ユーザーにスイッチしてコマンドを実行する方法 - Mojolicious Tutorial - Perl Web Framework</title>
-<meta name="description" content="rootユーザーでいるときに、一般ユーザーにスイッチしてコマンドを実行するには、以下のようにsuの-cオプションを使用します。">
+<title> How to switch to a general user and execute commands while you are the root user  - Mojolicious Tutorial - Perl Web Framework</title>
+<meta name="description" content="To switch to a  general user  and execute  commands  while you are a  root user ,  su  su < Use the  -c  option of / strong.">
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:site" content="@perlzemi" />
-<meta name="twitter:title" content="rootユーザーでいるときに、一般ユーザーにスイッチしてコマンドを実行する方法 - Mojolicious Tutorial - Perl Web Framework" />
-<meta name="twitter:description" content="rootユーザーでいるときに、一般ユーザーにスイッチしてコマンドを実行するには、以下のようにsuの-cオプションを使用します。" />
+<meta name="twitter:title" content=" How to switch to a general user and execute commands while you are the root user  - Mojolicious Tutorial - Perl Web Framework" />
+<meta name="twitter:description" content="To switch to a  general user  and execute  commands  while you are a  root user ,  su  su < Use the  -c  option of / strong." />
 <meta name="twitter:image" content="https://en.mojolicious.perlzemi.com//images/twitter_card_large_kaeru.png" />
 
 
@@ -61,9 +59,9 @@
     
   </div>
   <div class="middle">
-    <h2><a href="/blog/20130702137274.html">rootユーザーでいるときに、一般ユーザーにスイッチしてコマンドを実行する方法</a></h2>
+    <h2><a href="/blog/20130702137274.html"> How to switch to a general user and execute commands while you are the root user </a></h2>
 <p>
-  <strong>rootユーザー</strong>でいるときに、<strong>一般ユーザーにスイッチ</strong>して<strong>コマンドを実行</strong>するには、以下のように<strong>su</strong>の<strong>-c</strong>オプションを使用します。
+  To switch to a <strong> general user </strong> and execute <strong> commands </strong> while you are a <strong> root user </strong>, <strong> su <strong> su < Use the <strong> -c </strong> option of / strong.
 </p>
 <div style="width:calc(100% - 30px);margin:10px auto;">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4525414114581084"
@@ -82,25 +80,25 @@
 
 
 <pre>
-su - ユーザー名 -c コマンド
+su --username -c command
 </pre>
 <p>
-  最近はWebアプリケーションを作成しているのですけれど、rootユーザーから一般ユーザーにスイッチして、アプリケーションを実行する一番よい方法はなにかなぁと最近考えています。これは、サーバーが起動したときに、自動的にWebアプリケーションを実行したいし、rootユーザーからWebアプリを管理したいからです。
+  I've been writing web applications lately, but recently I've been wondering what is the best way to switch from a root user to a regular user and run the application. This is because I want the web application to run automatically when the server starts and I want to manage the web application from the root user.
 </p>
 <p>
-  suとsudoはどちらがいいかなぁと考えているのですがsudoは端末(tty)からではないと実行できないというデフォルトの設定が入っていることがあるため、suのほうがいい気がします。コマンドをダブルクォートで囲まないといけないのが、すこし面倒ですけども。
+  I'm wondering which is better, su or sudo, but I think su is better because it may have a default setting that sudo can only be executed from the terminal (tty). It's a bit annoying to have to enclose the command in double quotes, though.
 </p>
 <p>
-  サンプルとしては次のようなシェルを記述します。
+  As a sample, write the following shell.
 </p>
 <pre>
-#!/bin/sh
+#! / bin / sh
 
-PERL_BIN=/home/gitprep/perl5/perlbrew/perls/perl-5.16.3/bin
-su - gitprep -c "PATH=$PERL_BIN:$PATH /home/gitprep/webapp/gitprep/gitprep $*"
+PERL_BIN = / home / gitprep / perl5 / perlbrew / perls / perl-5.16.3 / bin
+su --gitprep -c "PATH = $PERL_BIN: $PATH / home / gitprep / webapp / gitprep / gitprep $*"
 </pre>
 <p>
-  PATHをきちんと設定してあげる必要あるところもポイントです。なぜなら端末にログインしているわけではないのでPATHの編集を行っている.bashrcが読み込まれないからです。どのPerlを使うのかは、デフォルトのPerlをつかない場合は指定する必要があります。
+  The point is that you need to set the PATH properly. Because I am not logged in to the terminal, the .bashrc that is editing the PATH is not loaded. Which Perl to use must be specified if the default Perl is not used.
 </p>
 
   </div>
@@ -128,8 +126,7 @@ su - gitprep -c "PATH=$PERL_BIN:$PATH /home/gitprep/webapp/gitprep/gitprep $*"
           <div style="margin-bottom:30px">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4525414114581084"
      crossorigin="anonymous"></script>
-<!-- ディスプレイ縦長 -->
-<ins class="adsbygoogle"
+<!-- ディスプレイ縦長 --><ins class="adsbygoogle"
      style="display:block"
      data-ad-client="ca-pub-4525414114581084"
      data-ad-slot="4544919209"

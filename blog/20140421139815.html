@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <!-- meta -->
-<meta charset="UTF-8">
+    <!-- meta --><meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
 <link rel="icon" type="image/x-icon" href="/images/logo.png">
 <link rel="stylesheet" type="text/css" href="/css/common.css">
@@ -25,8 +24,7 @@
   });
 </script>
 
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-G3M43D6P2H"></script>
+<!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=G-G3M43D6P2H"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
@@ -34,12 +32,12 @@
 
   gtag('config', 'G-G3M43D6P2H');
 </script>
-<title>フォームの利用 - Mojolicious Tutorial - Perl Web Framework</title>
-<meta name="description" content="ユーザーからのデータを受け取るには、フォームを利用します。フォームの使い方を学びましょう。">
+<title> Using forms  - Mojolicious Tutorial - Perl Web Framework</title>
+<meta name="description" content="Use  forms  to receive data from users. Learn how to use forms.">
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:site" content="@perlzemi" />
-<meta name="twitter:title" content="フォームの利用 - Mojolicious Tutorial - Perl Web Framework" />
-<meta name="twitter:description" content="ユーザーからのデータを受け取るには、フォームを利用します。フォームの使い方を学びましょう。" />
+<meta name="twitter:title" content=" Using forms  - Mojolicious Tutorial - Perl Web Framework" />
+<meta name="twitter:description" content="Use  forms  to receive data from users. Learn how to use forms." />
 <meta name="twitter:image" content="https://en.mojolicious.perlzemi.com//images/twitter_card_large_kaeru.png" />
 
 
@@ -61,9 +59,9 @@
     
   </div>
   <div class="middle">
-    <h2><a href="/blog/20140421139815.html">フォームの利用</a></h2>
+    <h2><a href="/blog/20140421139815.html"> Using forms </a></h2>
 <p>
-  ユーザーからのデータを受け取るには、<strong>フォーム</strong>を利用します。フォームの使い方を学びましょう。
+  Use <strong> forms </strong> to receive data from users. Learn how to use forms.
 </p>
 <div style="width:calc(100% - 30px);margin:10px auto;">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4525414114581084"
@@ -81,74 +79,74 @@
 </div>
 
 
-<h3>簡単なフォーム</h3>
+<h3> Simple form </h3>
 <p>
-  まず最初に簡単なフォームを作成してみましょう。テキストボックス、ラジオボタン、テキストエリアに値を入力してもらって、受け取って表示するプログラムを作成してみます。
+  First, let's create a simple form. Let's create a program that receives and displays values ​​by asking them to enter values ​​in text boxes, radio buttons, and text areas.
 </p>
 <pre>
 use Mojolicious::Lite;
 
-# トップページ
-get '/' =&gt; sub {
+# top page
+get'/' =&gt; sub {
   my $self = shift;
   
   $self-&gt;render('index');
-};
+};;
 
-# データを受け取って処理
-post '/' =&gt; sub {
+#Receive and process data
+post'/' =&gt; sub {
   my $self = shift;
   
-  # パラメーターの取得
+  #Get parameters
   my $name = $self-&gt;param('name');
   my $private = $self-&gt;param('private');
   my $message = $self-&gt;param('message');
 
-  # メッセージがない場合はトップページを表示
+  # Display the top page if there is no message
   unless (length $message) {
-    $self-&gt;render('index', error =&gt; 'Message is empty');
+    $self-&gt;render('index', error =&gt;'Message is empty');
     return;
   }
-  # フラッシュに保存
+  #Save to flash
   $self-&gt;flash(name =&gt; $name);
   $self-&gt;flash(private =&gt; $private);
   $self-&gt;flash(message =&gt; $message);
   
   $self-&gt;redirect_to('/');
-};
+};;
 
 app-&gt;start;
 
 __DATA__
 
-@@ index.html.ep
+@@index.html.ep
 &lt;%
-  my $error = stash('error');
+  my $error = stash ('error');
 %&gt;
 
-% if ($error) {
-  &lt;div style="color:red"&gt;
-    &lt;%= $error %&gt;
+%if ($error) {
+  &lt;div style = "color: red"&gt;
+    &lt;%= $error%&gt;
   &lt;/div&gt;
-% }
+%}
 
-&lt;form action="&lt;%= url_for %&gt;" method="post" style="border:1px solid gray"&gt;
-  &lt;b&gt;Form&lt;/b&gt;&lt;br&gt;
-  &lt;b&gt;Name:&lt;/b&gt; &lt;%= text_field 'name' %&gt;&lt;br&gt;
-  &lt;b&gt;Private:&lt;/b&gt; Yes&lt;%= radio_button private =&gt; 1 %&gt; / No &lt;%= radio_button private =&gt; 0, checked =&gt; 'checked' %&gt;&lt;br&gt;
-  &lt;b&gt;Message:&lt;/b&gt;&lt;br&gt;
-  &lt;%= text_area 'message', style =&gt; "width:400px; height:100px" %&gt;&lt;br&gt;
-  &lt;input type="submit" value="Post"&gt;
+&lt;form action = "&lt;%= url_for%&gt;" method = "post" style = "border: 1px solid gray"&gt;
+  &lt;b&gt; Form &lt;/b&gt; &lt;br&gt;
+  &lt;b&gt; Name: &lt;/b&gt; &lt;%= text_field'name'%&gt; &lt;br&gt;
+  &lt;b&gt; Private: &lt;/b&gt; Yes &lt;%= radio_button private =&gt; 1%&gt; / No &lt;%= radio_button private =&gt; 0, checked =&gt;'checked'%&gt; &lt;br&gt;
+  &lt;b&gt; Message: &lt;/b&gt; &lt;br&gt;
+  &lt;%= text_area'message', style =&gt; "width: 400px; height: 100px"%&gt; &lt;br&gt;
+  &lt;input type = "submit" value = "Post"&gt;
 &lt;/form&gt;
 
 &lt;div&gt;
-  &lt;b&gt;Name&lt;/b&gt;: &lt;%= flash('name') // '' %&gt;&lt;br&gt;
-  &lt;b&gt;Private&lt;/b&gt;: &lt;%= flash('private') // '' %&gt;&lt;br&gt;
-  &lt;b&gt;Message&lt;/b&gt;: &lt;%= flash('message') // '' %&gt;
+  &lt;b&gt; Name &lt;/b&gt;: &lt;%= flash ('name') //''%&gt; &lt;br&gt;
+  &lt;b&gt; Private &lt;/b&gt;: &lt;%= flash ('private') //''%&gt; &lt;br&gt;
+  &lt;b&gt; Message &lt;/b&gt;: &lt;%= flash ('message') //''%&gt;
 &lt;/div&gt;
 </pre>
 <p>
-  このプログラムを実行して、フォームに値を入力してPostボタンを押すと、画面に入力した内容が表示されます。画面の下の部分は次のように表示されると思います。
+  Run this program, enter a value in the form and press the Post button to see what you have entered on the screen. The bottom part of the screen should look like this:
 </p>
 <pre>
 Name: kimoto
@@ -156,123 +154,123 @@ Private: 0
 Message: Hello
 </pre>
 <p>
-  このプログラムはサンプルのプログラムです。本来ならばユーザーから受け取ったデータは、データベースに保存します。まだデータベースについては解説していませんので、データを保存せずに、そのまま表示するプログラムにしています。
+  This program is a sample program. The data normally received from the user is stored in the database. I haven't explained about the database yet, so I'm using a program that displays the data as it is without saving it.
 </p>
 <p>
-  プログラムの各部分を解説します。
+  I will explain each part of the program.
 </p>
 <pre>
-# トップページ
-get '/' =&gt; sub {
+# top page
+get'/' =&gt; sub {
   my $self = shift;
   
   $self-&gt;render('index');
-};
+};;
 </pre>
 <p>
-  これはトップページを表示するルーティングの記述です。いつもどおりの記述です。このページにフォームを記述します。
+  This is a description of the routing that displays the top page. The description is as usual. Write the form on this page.
 </p>
-<h4>フォームの記述</h4>
+<h4> Form description </h4>
 <p>
-  フォームは以下のようになっています。
+  The form looks like this:
 </p>
 <pre>
-&lt;form action="&lt;%= url_for %&gt;" method="post" style="border:1px solid gray"&gt;
-  &lt;b&gt;Form&lt;/b&gt;&lt;br&gt;
-  &lt;b&gt;Name:&lt;/b&gt; &lt;%= text_field 'name' %&gt;&lt;br&gt;
-  &lt;b&gt;Private:&lt;/b&gt; Yes&lt;%= radio_button private =&gt; 1 %&gt; / No &lt;%= radio_button private =&gt; 0, checked =&gt; 'checked' %&gt;&lt;br&gt;
-  &lt;b&gt;Message:&lt;/b&gt;&lt;br&gt;
-  &lt;%= text_area 'message', style =&gt; "width:400px; height:100px" %&gt;&lt;br&gt;
-  &lt;input type="submit" value="Post"&gt;
+&lt;form action = "&lt;%= url_for%&gt;" method = "post" style = "border: 1px solid gray"&gt;
+  &lt;b&gt; Form &lt;/b&gt; &lt;br&gt;
+  &lt;b&gt; Name: &lt;/b&gt; &lt;%= text_field'name'%&gt; &lt;br&gt;
+  &lt;b&gt; Private: &lt;/b&gt; Yes &lt;%= radio_button private =&gt; 1%&gt; / No &lt;%= radio_button private =&gt; 0, checked =&gt;'checked'%&gt; &lt;br&gt;
+  &lt;b&gt; Message: &lt;/b&gt; &lt;br&gt;
+  &lt;%= text_area'message', style =&gt; "width: 400px; height: 100px"%&gt; &lt;br&gt;
+  &lt;input type = "submit" value = "Post"&gt;
 &lt;/form&gt;
 </pre>
 <p>
-  formタグの中には<b>action</b>と<b>method</b>と<b>style</b>という属性がありますね。style属性はスタイルシートを設定するもので、フォームを囲む枠を設定しています。
+  There are attributes <b> action </b>, <b> method </b> and <b> style </b> in the form tag. The style attribute sets the stylesheet and sets the frame that surrounds the form.
 </p>
 <p>
-  フォームでデータを送信するときには、一般的にはmethodに<b>post</b>を指定します。postを指定すれば、どんなに大きなデータであっても送信することができます。getを指定した場合は、フォームの値はURLのクエリ文字列として送信されますが、postを指定した場合は、HTTPボディと呼ばれる部分に記述されて、送信されます。
+  When submitting data in a form, you typically specify <b> post </b> for method. If you specify post, you can send even the largest amount of data. If get is specified, the form value will be sent as a query string in the URL, but if post is specified, it will be written in a part called the HTTP body and sent.
 </p>
 <p>
-  actionには処理をするURLを指定します。今回は同一のURLにしました。同一のURLにしておくと簡単です。
+  For action, specify the URL to process. This time I used the same URL. It is easy to keep the same URL.
 </p>
 <p>
-  フォームの部品を使う部分で<strong>text_field</strong>ヘルパー、<strong>radio_button</strong>ヘルパー、strong>text_area</strong>ヘルパーを使用しています。
+  I use the <strong> text_field </strong> helper, <strong> radio_button </strong> helper, and <strong> text_area </strong> helper where I use the parts of the form.
 </p>
 <pre>
-  &lt;b&gt;Name:&lt;/b&gt; &lt;%= text_field 'name' %&gt;&lt;br&gt;
-  &lt;b&gt;Private:&lt;/b&gt; Yes&lt;%= radio_button private =&gt; 1 %&gt; / No &lt;%= radio_button private =&gt; 0 %&gt;&lt;br&gt;
-  &lt;b&gt;Message:&lt;/b&gt;&lt;br&gt;
-  &lt;%= text_area 'message', style =&gt; "width:400px; height:100px" %&gt;&lt;br&gt;
+  &lt;b&gt; Name: &lt;/b&gt; &lt;%= text_field'name'%&gt; &lt;br&gt;
+  &lt;b&gt; Private: &lt;/b&gt; Yes &lt;%= radio_button private =&gt; 1%&gt; / No &lt;%= radio_button private =&gt; 0%&gt; &lt;br&gt;
+  &lt;b&gt; Message: &lt;/b&gt; &lt;br&gt;
+  &lt;%= text_area'message', style =&gt; "width: 400px; height: 100px"%&gt; &lt;br&gt;
 </pre>
 <p>
-  これらは、タグヘルパーと呼ばれます。利用可能なタグヘルパーについては「<a href="/blog/20110616130993.html">「Mojoliciousのタグヘルパーの一覧</a>」を見てください。
+  These are called tag helpers. See <a href="/blog/20110616130993.html"> "List of Mojolicious Tag Helpers</a>" for available tag helpers.
 </p>
 <p>
-  タグヘルパーは、以下のような実際のタグに展開されます。
+  The tag helper expands to the actual tag, such as:
 </p>
 <pre>
-&lt;form action="/" method="post" style="border:1px solid gray"&gt;
-  &lt;b&gt;Form&lt;/b&gt;&lt;br&gt;
-  &lt;b&gt;Name:&lt;/b&gt; &lt;input name="name" type="text" /&gt;&lt;br&gt;
-  &lt;b&gt;Private:&lt;/b&gt; Yes&lt;input name="private" type="radio" value="1" /&gt; / No &lt;input name="private" type="radio" value="0" /&gt;&lt;br&gt;
-  &lt;b&gt;Message:&lt;/b&gt;&lt;br&gt;
-  &lt;textarea name="message" style="width:400px; height:100px"&gt;&lt;/textarea&gt;&lt;br&gt;
-  &lt;input type="submit" value="Post"&gt;
+&lt;form action = "/" method = "post" style = "border: 1px solid gray"&gt;
+  &lt;b&gt; Form &lt;/b&gt; &lt;br&gt;
+  &lt;b&gt; Name: &lt;/b&gt; &lt;input name = "name" type = "text" /&gt; &lt;br&gt;
+  &lt;b&gt; Private: &lt;/b&gt; Yes &lt;input name = "private" type = "radio" value = "1" /&gt; / No &lt;input name = "private" type = "radio" value = "0" /&gt; &lt;br&gt;
+  &lt;b&gt; Message: &lt;/b&gt; &lt;br&gt;
+  &lt;textarea name = "message" style = "width: 400px; height: 100px"&gt; &lt;/textarea&gt; &lt;br&gt;
+  &lt;input type = "submit" value = "Post"&gt;
 &lt;/form&gt;
 </pre>
 <p>
-  タグヘルパーを使うと便利な一番の理由は、フォームを送信した後でも、フォームの値を復元してくれることです。
+  The main reason why tag helpers are useful is that they restore the form's values ​​even after you submit the form.
 </p>
 <p>
-  今回は、メッセージが入力されていない場合は、エラーメッセージを表示するようにしているのですけれど、その場合にでも、フォームの値が保存されます。
+  This time, if no message is entered, an error message is displayed, but even in that case, the value of the form is saved.
 </p>
-<h4>フォームの処理</h4>
+<h4> Form processing </h4>
 <p>
-  次にフォームを処理する部分です。フォームではmethodにpostを指定しました。このリクエストはpost関数を使って、受け取ることができます。
+  Next is the part that processes the form. In the form, I specified post as method. This request can be received using the post function.
 </p>
 <pre>
-# データを受け取って処理
-post '/' =&gt; sub { ... };
+#Receive and process data
+post'/' =&gt; sub {...};
 </pre>
 <p>
-  では、処理を見ていきましょう。まずフォームから渡された値をパラメーターとして受け取っています。paramメソッドは、HTTPのGETメソッドであっても、POSTメソッドであっても、どちらでも値を受け取ることができます。
+  Let's take a look at the process. First, it receives the value passed from the form as a parameter. The param method can receive a value, whether it is an HTTP GET method or a POST method.
 </p>
 <pre>
-# パラメーターの取得
+#Get parameters
 my $name = $self-&gt;param('name');
 my $private = $self-&gt;param('private');
 my $message = $self-&gt;param('message');
 </pre>
 <p>
-  次にメッセージがない場合は、処理をエラーにしています。スタッシュのerrorという値を設定して、indexを描画します。途中で処理を抜けたい場合は、returnを返しましょう。
+  If there is no message next, the process is in error. Draw the index by setting a value of stash error. If you want to exit the process in the middle, return return.
 </p>
 <pre>
-  # メッセージがない場合はトップページを表示
+  # Display the top page if there is no message
   unless (length $message) {
-    $self-&gt;render('index', error =&gt; 'Message is empty');
+    $self-&gt;render('index', error =&gt;'Message is empty');
     return;
   }
 </pre>
 <p>
-  本来ならば、データベースなどにデータを保存するのですが、今回はまだデータベースの処理について書いていませんので、フラッシュに保存しています。
+  Originally, the data is saved in the database etc., but this time I have not written about the database processing yet, so I save it in the flash.
 </p>
 <p>
-  フラッシュとは、クライアントサイドに保存されるデータで、次の画面の遷移のときまで保存されるデータです。flashメソッドで設定と取得を行うことができます。フラッシュについては、セッションを解説するときに、詳しく解説します。
+  Flash is data stored on the client side and is stored until the next screen transition. You can set and get it with the flash method. We'll talk more about flash when we talk about sessions.
 </p>
 <pre>
-  # フラッシュに保存
+  #Save to flash
   $self-&gt;flash(name =&gt; $name);
   $self-&gt;flash(private =&gt; $private);
   $self-&gt;flash(message =&gt; $message);
 </pre>
 <p>
-  最後にリダイレクトを行って、最初のページを表示します。
+  Finally, redirect to display the first page.
 </p>
 <pre>
   $self-&gt;redirect_to('/');
 </pre>
 <p>
-  このようにフォームを使うとユーザーのデータを受け取ることができます。
+  You can use the form in this way to receive the user's data.
 </p>
 
   </div>
@@ -300,8 +298,7 @@ my $message = $self-&gt;param('message');
           <div style="margin-bottom:30px">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4525414114581084"
      crossorigin="anonymous"></script>
-<!-- ディスプレイ縦長 -->
-<ins class="adsbygoogle"
+<!-- ディスプレイ縦長 --><ins class="adsbygoogle"
      style="display:block"
      data-ad-client="ca-pub-4525414114581084"
      data-ad-slot="4544919209"

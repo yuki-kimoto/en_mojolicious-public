@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <!-- meta -->
-<meta charset="UTF-8">
+    <!-- meta --><meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
 <link rel="icon" type="image/x-icon" href="/images/logo.png">
 <link rel="stylesheet" type="text/css" href="/css/common.css">
@@ -25,8 +24,7 @@
   });
 </script>
 
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-G3M43D6P2H"></script>
+<!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=G-G3M43D6P2H"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
@@ -34,12 +32,12 @@
 
   gtag('config', 'G-G3M43D6P2H');
 </script>
-<title>Mojolicious::Plugin::DBViewer - データベースの情報をブラウザで観覧するためのプラグイン - Mojolicious Tutorial - Perl Web Framework</title>
-<meta name="description" content="Mojolicious::Plugin::DBViewerはデータベース情報をブラウザから見るためのMojoliciousのプラグインです。">
+<title> Mojolicious::Plugin::DBViewer --Plugin for viewing database information in a browser  - Mojolicious Tutorial - Perl Web Framework</title>
+<meta name="description" content="Mojolicious::Plugin::DBViewer strong> is a Mojolicious plugin for viewing  database information  from a  browser .">
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:site" content="@perlzemi" />
-<meta name="twitter:title" content="Mojolicious::Plugin::DBViewer - データベースの情報をブラウザで観覧するためのプラグイン - Mojolicious Tutorial - Perl Web Framework" />
-<meta name="twitter:description" content="Mojolicious::Plugin::DBViewerはデータベース情報をブラウザから見るためのMojoliciousのプラグインです。" />
+<meta name="twitter:title" content=" Mojolicious::Plugin::DBViewer --Plugin for viewing database information in a browser  - Mojolicious Tutorial - Perl Web Framework" />
+<meta name="twitter:description" content="Mojolicious::Plugin::DBViewer strong> is a Mojolicious plugin for viewing  database information  from a  browser ." />
 <meta name="twitter:image" content="https://en.mojolicious.perlzemi.com//images/twitter_card_large_kaeru.png" />
 
 
@@ -61,9 +59,9 @@
     
   </div>
   <div class="middle">
-    <h2><a href="/blog/20130419136633.html">Mojolicious::Plugin::DBViewer - データベースの情報をブラウザで観覧するためのプラグイン</a></h2>
+    <h2><a href="/blog/20130419136633.html"> Mojolicious::Plugin::DBViewer --Plugin for viewing database information in a browser </a></h2>
 <p>
-  <strong><a href="http://search.cpan.org/dist/Mojolicious-Plugin-DBViewer/lib/Mojolicious/Plugin/DBViewer.pm">Mojolicious::Plugin::DBViewer</a></strong>は<strong>データベース情報</strong>を<strong>ブラウザ</strong>から見るためのMojoliciousのプラグインです。
+  <strong> <a href="http://search.cpan.org/dist/Mojolicious-Plugin-DBViewer/lib/Mojolicious/Plugin/DBViewer.pm"> Mojolicious::Plugin::DBViewer</a></a></a> strong> is a Mojolicious plugin for viewing <strong> database information </strong> from a <strong> browser </strong>.
 </p>
 <div style="width:calc(100% - 30px);margin:10px auto;">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4525414114581084"
@@ -82,68 +80,68 @@
 
 
 <p>
-  <img src="http://cdn-ak.f.st-hatena.com/images/fotolife/p/perlcodesample/20130405/20130405170135_original.png" width="700">
+  <img src = "http://cdn-ak.f.st-hatena.com/images/fotolife/p/perlcodesample/20130405/20130405170135_original.png" width = "700">
 </p>
-<h3>機能</h3>
+<h3> Functions </h3>
 <ul>
   <li>
-    MySQLとSQLiteをサポートしています
+    Supports MySQL and SQLite
   </li>
   <li>
-    テーブル名の一覧表示
+    List table names
   </li>
   <li>
-    CREATE TABLEの内容の表示
+    Displaying the contents of CREATE TABLE
   </li>
   <li>
-    簡単SELECTステートメントによる検索の実行。複数検索条件、joinのサポート
+    Performing a search with a simple SELECT statement. Support for multiple search criteria, join
   </li>
   <li>
-    プライマリキー、nullを許容する列、データベースエンジン、文字コードなどの表示。
+    Display primary key, nullable columns, database engine, character encoding, etc.
   </li>
 </ul>
-<h3>概要</h3>
+<h3> Overview </h3>
 <p>
-  Mojolicious::Plugin::DBViewerは、Mojolicious::Plugin::MySQLViewerLiteとMojolicious::Plugin::SQLiteViewerLiteを統合して、機能を追加したものになっています。画面レイアウトもきれいになりました。
+  Mojolicious::Plugin::DBViewer integrates Mojolicious::Plugin::MySQLViewerLite and Mojolicious::Plugin::SQLiteViewerLite to add functionality. The screen layout has also been cleaned up.
 </p>
 <p>
-  今後はMojolicious::Plugin::DBViewerをお使いください。注意点として、直接データベースハンドルを渡すことができなくなりました。dsnにデータソース名を指定するようにしてください。
+  Please use Mojolicious::Plugin::DBViewer from now on. Note that you can no longer pass database handles directly. Be sure to specify the data source name for dsn.
 </p>
 <p>
-  MySQLとSQLiteに対応していて、データベースの情報をブラウザから見ることができます。phpMyAdminの観覧専用のようなものだともっていただけるとイメージしやすいかと思います。Mojoliciousのプラグインとして差し込むことができます。
+  It supports MySQL and SQLite, and you can see the database information from your browser. I think it's easy to imagine if you can think of it as something like phpMyAdmin for viewing only. It can be plugged in as a Mojolicious plugin.
 </p>
-<h3>使い方</h3>
+<h3> How to use </h3>
 <p>
-  以下のように利用します。
+  Use it as follows.
 </p>
 <pre>
-# Mojolicious::Lite
-plugin(
-  'DBViewer',
-  dsn =&gt; "dbi:mysql:database=bookshop",
-  user =&gt; 'ken',
-  password =&gt; '!LFKD%$&amp;'
+#Mojolicious::Lite
+plugin (
+  'DB Viewer',
+  dsn =&gt; "dbi: mysql: database = bookshop",
+  user =&gt;'ken',
+  password =&gt;'! LFKD%$&amp;'
 );
 
-# Mojolicious
+#Mojolicious
 $app-&gt;plugin(
-  'DBViewer',
-  dsn =&gt; "dbi:mysql:database=bookshop",
-  user =&gt; 'ken',
-  password =&gt; '!LFKD%$&amp;'
+  'DB Viewer',
+  dsn =&gt; "dbi: mysql: database = bookshop",
+  user =&gt;'ken',
+  password =&gt;'! LFKD%$&amp;'
 );
 </pre>
 <p>
-  以下のURLでアクセスできます。
+  You can access it at the following URL.
 </p>
 <blockquote>
 <p>
-  /dbviewer
+  / dbviewer
 </p>
 </blockquote>
 <hr>
 <p>
-  <a href="/blog/20130216136101.html">筆者の作成したCPANモジュールへ</a>
+  <a href="/blog/20130216136101.html"> To the CPAN module I created</a>
 </p>
 
   </div>
@@ -171,8 +169,7 @@ $app-&gt;plugin(
           <div style="margin-bottom:30px">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4525414114581084"
      crossorigin="anonymous"></script>
-<!-- ディスプレイ縦長 -->
-<ins class="adsbygoogle"
+<!-- ディスプレイ縦長 --><ins class="adsbygoogle"
      style="display:block"
      data-ad-client="ca-pub-4525414114581084"
      data-ad-slot="4544919209"

@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <!-- meta -->
-<meta charset="UTF-8">
+    <!-- meta --><meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
 <link rel="icon" type="image/x-icon" href="/images/logo.png">
 <link rel="stylesheet" type="text/css" href="/css/common.css">
@@ -25,8 +24,7 @@
   });
 </script>
 
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-G3M43D6P2H"></script>
+<!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=G-G3M43D6P2H"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
@@ -34,12 +32,12 @@
 
   gtag('config', 'G-G3M43D6P2H');
 </script>
-<title>Mojo::UserAgentでWeb上のコンテンツをファイルとして保存する - Mojolicious Tutorial - Perl Web Framework</title>
-<meta name="description" content="Mojo::UserAgentでWeb上からファイルを取得して、保存してみましょう。次のように記述します。">
+<title> Save content on the web as a file with Mojo::UserAgent  - Mojolicious Tutorial - Perl Web Framework</title>
+<meta name="description" content="Let's get the file from the web with Mojo::UserAgent and save it. Write as follows.">
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:site" content="@perlzemi" />
-<meta name="twitter:title" content="Mojo::UserAgentでWeb上のコンテンツをファイルとして保存する - Mojolicious Tutorial - Perl Web Framework" />
-<meta name="twitter:description" content="Mojo::UserAgentでWeb上からファイルを取得して、保存してみましょう。次のように記述します。" />
+<meta name="twitter:title" content=" Save content on the web as a file with Mojo::UserAgent  - Mojolicious Tutorial - Perl Web Framework" />
+<meta name="twitter:description" content="Let's get the file from the web with Mojo::UserAgent and save it. Write as follows." />
 <meta name="twitter:image" content="https://en.mojolicious.perlzemi.com//images/twitter_card_large_kaeru.png" />
 
 
@@ -61,9 +59,9 @@
     
   </div>
   <div class="middle">
-    <h2><a href="/blog/20120513133704.html">Mojo::UserAgentでWeb上のコンテンツをファイルとして保存する</a></h2>
+    <h2><a href="/blog/20120513133704.html"> Save content on the web as a file with Mojo::UserAgent </a></h2>
 <p>
-  Mojo::UserAgentでWeb上からファイルを取得して、保存してみましょう。次のように記述します。
+  Let's get the file from the web with Mojo::UserAgent and save it. Write as follows.
 </p>
 <div style="width:calc(100% - 30px);margin:10px auto;">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4525414114581084"
@@ -85,52 +83,52 @@
 use Mojo::UserAgent;
 
 my $ua = Mojo::UserAgent-&gt;new;
-my $file = 'google.html';
-my $url = 'http://www.google.co.jp/';
+my $file ='google.html';
+my $url ='http://www.google.co.jp/';
 $ua-&gt;get($url)-&gt;res-&gt;content-&gt;asset-&gt;move_to($file);
 </pre>
 <p>
-  Mojo::UserAgentにはdownloadするためのメソッドがありませんので、自力でがんばる必要があります。
+  Mojo::UserAgent doesn't have a method to download, so you have to do your best on your own.
 </p>
 <ol>
   <li>
-    <b>get</b>メソッドでHTTPリクエストを発行する。戻り値は<b>Mojo::Transaction::HTTP</b>オブジェクト。
+    Issue an HTTP request with the <b> get </b> method. The return value is a <b> Mojo::Transaction::HTTP </b> object.
   </li>
   <li>
-    <b>res</b>メソッドでHTTPレスポンスを取得。戻り値は、<b>Mojo::Message::Request</b>オブジェクト。
+    Get HTTP response with <b> res </b> method. The return value is a <b> Mojo::Message::Request </b> object.
   </li>
   <li>
-    <b>content</b>メソッドで、コンテンツを取得。戻り値は<b>Mojo::Content::Single</b>オブジェクト。
+    Get the content with the <b> content </b> method. The return value is a <b> Mojo::Content::Single </b> object.
   </li>
   <li>
-    <b>asset</b>メソッドで、コンテンツが実際に持っている内容を取得。戻り値は<b>Mojo::Asset::Memory</b>オブジェクトか<b>Mojo::Asset::File</b>オブジェクト。
+    Get what the content actually has with the <b> asset </b> method. The return value is a <b> Mojo::Asset::Memory </b> object or a <b> Mojo::Asset::File </b> object.
   </li>
   <li>
-    <b>move_to</b>メソッドで、ファイルに保存。
+    Save to a file with the <b> move_to </b> method.
   </li>
 </ol>
 <p>
-  という流れになります。ちょっと複雑かな。
+  It will be the flow. Is it a little complicated?
 </p>
-<h3>Test::Mojoからファイルの保存を行う場合。</h3>
+<h3> When saving a file from Test::Mojo. </h3>
 <p>
-  Mojoliciousのテストをするときに、ファイルをダウンロードしたい場合がありますね。そういう場合は以下のように記述します。一時ディレクトリの記述もいれてみました。
+  When testing Mojolicious, you may want to download a file. In such a case, write as follows. I also included a description of the temporary directory.
 </p>
 <pre>
 use Test::Mojo;
-use File::Temp 'tempdir';
+use File::Temp'tempdir';
 use YourApp;
 
 my $app = YourApp-&gt;new;
 my $t = Test::Mojo-&gt;new($app);
-my $tmpdir = tempdir(CLEANUP =&gt; 1);
-my $tmpfile = "$tmpdir/tmp.tar.gz";
+my $tmpdir = tempdir (CLEANUP =&gt; 1);
+my $tmpfile = "$tmpdir / tmp.tar.gz";
 
 $t-&gt;get_ok('http://somehost.com');
   -&gt;tx-&gt;res-&gt;content-&gt;asset-&gt;move_to($tmpfile);
 </pre>
 <p>
-  仕組みは同じですが、Test::Mojoから<b>tx</b>メソッドを使って、<b>Mojo::Transaction::HTTP</b>を取得している点が異なりますね。
+  The mechanism is the same, except that the <b> Mojo::Transaction::HTTP </b> is obtained from Test::Mojo using the <b> tx </b> method.
 </p>
 
   </div>
@@ -158,8 +156,7 @@ $t-&gt;get_ok('http://somehost.com');
           <div style="margin-bottom:30px">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4525414114581084"
      crossorigin="anonymous"></script>
-<!-- ディスプレイ縦長 -->
-<ins class="adsbygoogle"
+<!-- ディスプレイ縦長 --><ins class="adsbygoogle"
      style="display:block"
      data-ad-client="ca-pub-4525414114581084"
      data-ad-slot="4544919209"

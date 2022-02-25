@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <!-- meta -->
-<meta charset="UTF-8">
+    <!-- meta --><meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
 <link rel="icon" type="image/x-icon" href="/images/logo.png">
 <link rel="stylesheet" type="text/css" href="/css/common.css">
@@ -25,8 +24,7 @@
   });
 </script>
 
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-G3M43D6P2H"></script>
+<!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=G-G3M43D6P2H"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
@@ -34,12 +32,12 @@
 
   gtag('config', 'G-G3M43D6P2H');
 </script>
-<title>アップロードされたファイルのサイズを取得する - Mojolicious Tutorial - Perl Web Framework</title>
-<meta name="description" content="アップロードされたファイルのサイズを取得してみましょう。アップロードされたファイルのサイズを取得するにはMojo::Uploadクラスのsizeメソッドを使用します。">
+<title> Get the size of the uploaded file  - Mojolicious Tutorial - Perl Web Framework</title>
+<meta name="description" content="Let's get the size of the uploaded file. To get the size of the uploaded file, use the size method of the  Mojo::Upload class. To do.">
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:site" content="@perlzemi" />
-<meta name="twitter:title" content="アップロードされたファイルのサイズを取得する - Mojolicious Tutorial - Perl Web Framework" />
-<meta name="twitter:description" content="アップロードされたファイルのサイズを取得してみましょう。アップロードされたファイルのサイズを取得するにはMojo::Uploadクラスのsizeメソッドを使用します。" />
+<meta name="twitter:title" content=" Get the size of the uploaded file  - Mojolicious Tutorial - Perl Web Framework" />
+<meta name="twitter:description" content="Let's get the size of the uploaded file. To get the size of the uploaded file, use the size method of the  Mojo::Upload class. To do." />
 <meta name="twitter:image" content="https://en.mojolicious.perlzemi.com//images/twitter_card_large_kaeru.png" />
 
 
@@ -61,9 +59,9 @@
     
   </div>
   <div class="middle">
-    <h2><a href="/blog/20210712110219.html">アップロードされたファイルのサイズを取得する</a></h2>
+    <h2><a href="/blog/20210712110219.html"> Get the size of the uploaded file </a></h2>
 <p>
-  アップロードされたファイルのサイズを取得してみましょう。アップロードされたファイルのサイズを取得するには<a href="https://en.mojodoc.perlzemi.com/Mojo::Upload.html">Mojo::Upload</a>クラスのsizeメソッドを使用します。
+  Let's get the size of the uploaded file. To get the size of the uploaded file, use the size method of the <a href="https://en.mojodoc.perlzemi.com/Mojo ::Upload.html"> Mojo::Upload</a> class. To do.
 </p>
 <div style="width:calc(100% - 30px);margin:10px auto;">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4525414114581084"
@@ -85,34 +83,34 @@
 my $size = $upload-&gt;size;
 </pre>
 <p>
-  フォームからファイルをアップロードする場合は、フォームで「form」要素の「enctype」属性を「multipart/form-data」にして、ファイルフィールド(file_field)を使って、<a href="https://en.mojodoc.perlzemi.com/Mojolicious::Controller.html">Mojo::Controller</a>クラスの<a href="/blog/20110501130707.html">param</a>メソッドを使うと、アップロードされたファイルは、<a href="https://en.mojodoc.perlzemi.com/Mojo::Upload.html">Mojo::Upload</a>オブジェクトとして取得できます。
+  When uploading a file from a form, set the "enctype" attribute of the "form" element to "multipart / form-data" on the form and use the file field (file_field) to <a href="https: // en". Uploaded using the <a href="/blog/20110501130707.html"> param</a> method of the .mojodoc.perlzemi.com/Mojolicious::Controller.html "> Mojo::Controller</a> class You can get the file as a <a href="https://en.mojodoc.perlzemi.com/Mojo ::Upload.html"> Mojo::Upload</a> object.
 </p>
 <p>
-  <b>HTML側</b>
+  <b> HTML side </b>
 </p>
 <pre>
-&lt;form method="POST" enctype="multipart/form-data"&gt;
-  &lt;%= file_field 'image_file' %&gt;
+&lt;form method = "POST" enctype = "multipart / form-data"&gt;
+  &lt;%= file_field'image_file'%&gt;
 &lt;/form&gt;
 </pre>
 <p>
-  <b>プログラム側</b>
+  <b> Program side </b>
 </p>
 <pre>
-# アップロードされたファイル
+# Uploaded file
 my $image_file = $c-&gt;param('image_file');
 </pre>
-<h3>ファイルがアップロードされたかの確認</h3>
+<h3> Check if the file has been uploaded </h3>
 <p>
-  一つ注意してほしいのは、フォームからのアップロードでは、ファイルがアップロードされなかった場合も、Mojo::Uploadオブジェクトが生成されることです。そのためファイルがアップロードされたかどうかは、<a href="https://en.perlzemi.com/blog/20100219126425.html">defined関数</a>でチェックすることはできません。ファイルサイズをチェックする必要があります。
+  One thing to note is that uploading from a form will generate a Mojo::Upload object even if the file wasn't uploaded. Therefore, it is not possible to check whether the file has been uploaded with the <a href="https://en.perlzemi.com/blog/20100219126425.html"> defined function</a>. You need to check the file size.
 </p>
 <pre>
-# 正しいアップロードのチェック
-if ($image_file-&gt;size &gt; 0) {
+#Check for correct upload
+if ($image_file-&gt;size&gt; 0) {
   
 }
 
-# 間違ったアップロードのチェック
+# Check for wrong uploads
 if (defined $image_file) {
   
 }
@@ -143,8 +141,7 @@ if (defined $image_file) {
           <div style="margin-bottom:30px">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4525414114581084"
      crossorigin="anonymous"></script>
-<!-- ディスプレイ縦長 -->
-<ins class="adsbygoogle"
+<!-- ディスプレイ縦長 --><ins class="adsbygoogle"
      style="display:block"
      data-ad-client="ca-pub-4525414114581084"
      data-ad-slot="4544919209"

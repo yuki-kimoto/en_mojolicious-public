@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <!-- meta -->
-<meta charset="UTF-8">
+    <!-- meta --><meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
 <link rel="icon" type="image/x-icon" href="/images/logo.png">
 <link rel="stylesheet" type="text/css" href="/css/common.css">
@@ -25,8 +24,7 @@
   });
 </script>
 
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-G3M43D6P2H"></script>
+<!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=G-G3M43D6P2H"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
@@ -34,12 +32,12 @@
 
   gtag('config', 'G-G3M43D6P2H');
 </script>
-<title>MojoliciousのリバースプロキシのSSLの検知方法が変わります - Mojolicious Tutorial - Perl Web Framework</title>
-<meta name="description" content="MojoliciousのリバースプロキシでのSSLの検知方法が変わります。リバースプロキシを使って、かつSSLで運用している方はバージョンアップに注意です。バージョンを移すときは両方記述して、バージョンアップ後に、古い指定方法を削りましょう。">
+<title> Mojolicious's reverse proxy SSL detection method will change  - Mojolicious Tutorial - Perl Web Framework</title>
+<meta name="description" content="The way Mojolicious's reverse proxy detects SSL changes. Those who use a reverse proxy and operate with SSL should be careful about upgrading. When transferring the version, describe both, and after the version upgrade, delete the old specification method.">
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:site" content="@perlzemi" />
-<meta name="twitter:title" content="MojoliciousのリバースプロキシのSSLの検知方法が変わります - Mojolicious Tutorial - Perl Web Framework" />
-<meta name="twitter:description" content="MojoliciousのリバースプロキシでのSSLの検知方法が変わります。リバースプロキシを使って、かつSSLで運用している方はバージョンアップに注意です。バージョンを移すときは両方記述して、バージョンアップ後に、古い指定方法を削りましょう。" />
+<meta name="twitter:title" content=" Mojolicious's reverse proxy SSL detection method will change  - Mojolicious Tutorial - Perl Web Framework" />
+<meta name="twitter:description" content="The way Mojolicious's reverse proxy detects SSL changes. Those who use a reverse proxy and operate with SSL should be careful about upgrading. When transferring the version, describe both, and after the version upgrade, delete the old specification method." />
 <meta name="twitter:image" content="https://en.mojolicious.perlzemi.com//images/twitter_card_large_kaeru.png" />
 
 
@@ -61,9 +59,9 @@
     
   </div>
   <div class="middle">
-    <h2><a href="/blog/20140516140022.html">MojoliciousのリバースプロキシのSSLの検知方法が変わります</a></h2>
+    <h2><a href="/blog/20140516140022.html"> Mojolicious's reverse proxy SSL detection method will change </a></h2>
 <p>
-  MojoliciousのリバースプロキシでのSSLの検知方法が変わります。リバースプロキシを使って、かつSSLで運用している方はバージョンアップに注意です。バージョンを移すときは両方記述して、バージョンアップ後に、古い指定方法を削りましょう。
+  The way Mojolicious's reverse proxy detects SSL changes. Those who use a reverse proxy and operate with SSL should be careful about upgrading. When transferring the version, describe both, and after the version upgrade, delete the old specification method.
 </p>
 <div style="width:calc(100% - 30px);margin:10px auto;">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4525414114581084"
@@ -82,23 +80,23 @@
 
 
 <pre>
-  &lt;VirtualHost *:443&gt;
-    ServerName localhost
-    &lt;Proxy *&gt;
-      Order deny,allow
-      Allow from all
-    &lt;/Proxy&gt;
-    ProxyRequests Off
-    ProxyPreserveHost On
-    ProxyPass / http://localhost:8080/ keepalive=On
-    ProxyPassReverse / http://localhost:8080/
+   &lt;VirtualHost *: 443&gt;
+     ServerName localhost
+     &lt;Proxy *&gt;
+       Order deny, allow
+       Allow from all
+     &lt;/Proxy&gt;
+     ProxyRequests Off
+     ProxyPreserveHost On
+     ProxyPass / http: // localhost: 8080 / keepalive = On
+     ProxyPassReverse / http: // localhost: 8080 /
 
-    # 古い指定方法
-    RequestHeader set X-Forwarded-HTTPS "1"
+     #Old specification method
+     RequestHeader set X-Forwarded-HTTPS "1"
 
-    # 新しい指定方法
-    RequestHeader set X-Forwarded-Proto "https"
-  &lt;/VirtualHost&gt;
+     # New specification method
+     RequestHeader set X-Forwarded-Proto "https"
+   &lt;/VirtualHost&gt;
 </pre>
 
   </div>
@@ -126,8 +124,7 @@
           <div style="margin-bottom:30px">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4525414114581084"
      crossorigin="anonymous"></script>
-<!-- ディスプレイ縦長 -->
-<ins class="adsbygoogle"
+<!-- ディスプレイ縦長 --><ins class="adsbygoogle"
      style="display:block"
      data-ad-client="ca-pub-4525414114581084"
      data-ad-slot="4544919209"

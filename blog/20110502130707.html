@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <!-- meta -->
-<meta charset="UTF-8">
+    <!-- meta --><meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
 <link rel="icon" type="image/x-icon" href="/images/logo.png">
 <link rel="stylesheet" type="text/css" href="/css/common.css">
@@ -25,8 +24,7 @@
   });
 </script>
 
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-G3M43D6P2H"></script>
+<!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=G-G3M43D6P2H"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
@@ -34,12 +32,12 @@
 
   gtag('config', 'G-G3M43D6P2H');
 </script>
-<title>HTTPヘッダを取得する - Mojolicious Tutorial - Perl Web Framework</title>
-<meta name="description" content="HTTPヘッダを取得するにはMojo::Headersクラスのheaderメソッドを使用します。">
+<title> Get HTTP headers  - Mojolicious Tutorial - Perl Web Framework</title>
+<meta name="description" content="To get the HTTP headers, use the  header  method of the Mojo::Headers class.">
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:site" content="@perlzemi" />
-<meta name="twitter:title" content="HTTPヘッダを取得する - Mojolicious Tutorial - Perl Web Framework" />
-<meta name="twitter:description" content="HTTPヘッダを取得するにはMojo::Headersクラスのheaderメソッドを使用します。" />
+<meta name="twitter:title" content=" Get HTTP headers  - Mojolicious Tutorial - Perl Web Framework" />
+<meta name="twitter:description" content="To get the HTTP headers, use the  header  method of the Mojo::Headers class." />
 <meta name="twitter:image" content="https://en.mojolicious.perlzemi.com//images/twitter_card_large_kaeru.png" />
 
 
@@ -61,9 +59,9 @@
     
   </div>
   <div class="middle">
-    <h2><a href="/blog/20110502130707.html">HTTPヘッダを取得する</a></h2>
+    <h2><a href="/blog/20110502130707.html"> Get HTTP headers </a></h2>
 <p>
-  HTTPヘッダを取得するにはMojo::Headersクラスの<strong>header</strong>メソッドを使用します。
+  To get the HTTP headers, use the <strong> header </strong> method of the Mojo::Headers class.
 </p>
 <div style="width:calc(100% - 30px);margin:10px auto;">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4525414114581084"
@@ -85,7 +83,7 @@
 my $x_forwarded_host = $headers-&gt;header('X-Forwarded-Host');
 </pre>
 <p>
-  またMojo::Headersクラスには一般的なヘッダを取得するためのショートカットメソッドがたくさん用意されています。
+  The Mojo::Headers class also has a lot of shortcut methods for getting common headers.
 </p>
 <pre>
 my $content_type = $headers-&gt;content_type;
@@ -93,30 +91,30 @@ my $accept_language = $headers-&gt;accept_language;
 </pre>
 <ul>
   <li>
-    <a href="https://en.mojodoc.perlzemi.com/Mojo%3A%3AHeaders">HTTPヘッダのショートカットメソッド</a>
+    <a href="https://en.mojodoc.perlzemi.com/Mojo%3A%3AHeaders"> HTTP header shortcut method</a>
   </li>
 </ul>
 <p>
-  以下はMojolicious::Liteのサンプルです。Mojo::Message::RequestオブジェクトをMojolicious::Controllerオブジェクトのreqメソッドによって取得し、Mojo::HeadersオブジェクトをMojo::Message::Requestオブジェクトのheadersメソッドによって取得しています。
+  Below is a sample of Mojolicious::Lite. The Mojo::Message::Request object is fetched by the req method of the Mojolicious::Controller object, and the Mojo::Headers object is fetched by the headers method of the Mojo::Message::Request object.
 </p>
 <pre>
-# Mojolicious::Lite
+#Mojolicious::Lite
 use Mojolicious::Lite;
 
-get '/' =&gt; sub {
+get'/' =&gt; sub {
   my $self = shift;
   my $x_forwarded_host = $self-&gt;req-&gt;headers-&gt;header('X-Forwarded-Host');
   my $content_type = $self-&gt;req-&gt;headers-&gt;content_type;
   my $accept_language = $self-&gt;req-&gt;headers-&gt;accept_language;
-};
+};;
 </pre>
 <p>
-  以下はMojoliciousのサンプルです。
+  Below is a sample of Mojolicious.
 </p>
 <pre>
 package MyApp::Diary;
 
-use Mojo::Base 'Mojolicious::Controller';
+use Mojo::Base'Mojolicious::Controller';
 
 sub entry {
   my $self = shift;
@@ -151,8 +149,7 @@ sub entry {
           <div style="margin-bottom:30px">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4525414114581084"
      crossorigin="anonymous"></script>
-<!-- ディスプレイ縦長 -->
-<ins class="adsbygoogle"
+<!-- ディスプレイ縦長 --><ins class="adsbygoogle"
      style="display:block"
      data-ad-client="ca-pub-4525414114581084"
      data-ad-slot="4544919209"

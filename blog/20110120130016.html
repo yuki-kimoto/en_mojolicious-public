@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <!-- meta -->
-<meta charset="UTF-8">
+    <!-- meta --><meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
 <link rel="icon" type="image/x-icon" href="/images/logo.png">
 <link rel="stylesheet" type="text/css" href="/css/common.css">
@@ -25,8 +24,7 @@
   });
 </script>
 
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-G3M43D6P2H"></script>
+<!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=G-G3M43D6P2H"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
@@ -34,12 +32,12 @@
 
   gtag('config', 'G-G3M43D6P2H');
 </script>
-<title>Apacheのmod_proxyを使った場合に"Service Temporarily Unavailable"エラーが出る場合の対処法 - Mojolicious Tutorial - Perl Web Framework</title>
-<meta name="description" content="MojoliciousアプリケーションをApacheのmod_proxyを使って、アクセスしようとした場合に、"Service Temporarily Unavailable"がでることがあります。考えられる原因のひとつは、SELinuxが有効になっているということです。プロジェクトとしてSELinuxを無効にしてもよいのであれば、無効にするのが楽な対処方です。">
+<title> What to do if you get a "Service Temporarily Unavailable" error when using Apache mod_proxy  - Mojolicious Tutorial - Perl Web Framework</title>
+<meta name="description" content="If you try to access a Mojolicious application using Apache mod_proxy, you may get "Service Temporarily Unavailable". One possible cause is that SELinux is enabled. If you can disable SELinux as a project, disabling it is an easy solution.">
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:site" content="@perlzemi" />
-<meta name="twitter:title" content="Apacheのmod_proxyを使った場合に"Service Temporarily Unavailable"エラーが出る場合の対処法 - Mojolicious Tutorial - Perl Web Framework" />
-<meta name="twitter:description" content="MojoliciousアプリケーションをApacheのmod_proxyを使って、アクセスしようとした場合に、"Service Temporarily Unavailable"がでることがあります。考えられる原因のひとつは、SELinuxが有効になっているということです。プロジェクトとしてSELinuxを無効にしてもよいのであれば、無効にするのが楽な対処方です。" />
+<meta name="twitter:title" content=" What to do if you get a "Service Temporarily Unavailable" error when using Apache mod_proxy  - Mojolicious Tutorial - Perl Web Framework" />
+<meta name="twitter:description" content="If you try to access a Mojolicious application using Apache mod_proxy, you may get "Service Temporarily Unavailable". One possible cause is that SELinux is enabled. If you can disable SELinux as a project, disabling it is an easy solution." />
 <meta name="twitter:image" content="https://en.mojolicious.perlzemi.com//images/twitter_card_large_kaeru.png" />
 
 
@@ -61,9 +59,9 @@
     
   </div>
   <div class="middle">
-    <h2><a href="/blog/20110120130016.html">Apacheのmod_proxyを使った場合に"Service Temporarily Unavailable"エラーが出る場合の対処法</a></h2>
+    <h2><a href="/blog/20110120130016.html"> What to do if you get a "Service Temporarily Unavailable" error when using Apache mod_proxy </a></h2>
 <p>
-  MojoliciousアプリケーションをApacheのmod_proxyを使って、アクセスしようとした場合に、"Service Temporarily Unavailable"がでることがあります。考えられる原因のひとつは、SELinuxが有効になっているということです。プロジェクトとしてSELinuxを無効にしてもよいのであれば、無効にするのが楽な対処方です。
+  If you try to access a Mojolicious application using Apache mod_proxy, you may get "Service Temporarily Unavailable". One possible cause is that SELinux is enabled. If you can disable SELinux as a project, disabling it is an easy solution.
 </p>
 <div style="width:calc(100% - 30px);margin:10px auto;">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4525414114581084"
@@ -82,19 +80,19 @@
 
 
 <p>
-  SELinuxの設定ファイルを編集します。
+  Edit the SELinux configuration file.
 </p>
 <pre>
-vi /etc/selinux/config
+vi / etc / selinux / config
 </pre>
 <p>
-  以下の項目に変更してください。
+  Please change to the following items.
 </p>
 <pre>
-SELINUX=disabled
+SELINUX = disabled
 </pre>
 <p>
-  変更後はサーバーを再起動してください。
+  Please restart the server after making changes.
 </p>
 
   </div>
@@ -122,8 +120,7 @@ SELINUX=disabled
           <div style="margin-bottom:30px">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4525414114581084"
      crossorigin="anonymous"></script>
-<!-- ディスプレイ縦長 -->
-<ins class="adsbygoogle"
+<!-- ディスプレイ縦長 --><ins class="adsbygoogle"
      style="display:block"
      data-ad-client="ca-pub-4525414114581084"
      data-ad-slot="4544919209"

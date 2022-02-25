@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <!-- meta -->
-<meta charset="UTF-8">
+    <!-- meta --><meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
 <link rel="icon" type="image/x-icon" href="/images/logo.png">
 <link rel="stylesheet" type="text/css" href="/css/common.css">
@@ -25,8 +24,7 @@
   });
 </script>
 
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-G3M43D6P2H"></script>
+<!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=G-G3M43D6P2H"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
@@ -34,12 +32,12 @@
 
   gtag('config', 'G-G3M43D6P2H');
 </script>
-<title>HTTPメソッドを取得する - Mojolicious Tutorial - Perl Web Framework</title>
-<meta name="description" content="HTTPメソッドを取得するにはMojo::Message::Requestクラスのmethodメソッドを使用します。">
+<title> Get HTTP method  - Mojolicious Tutorial - Perl Web Framework</title>
+<meta name="description" content="To get the HTTP method, use the  method  method of the Mojo::Message::Request class.">
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:site" content="@perlzemi" />
-<meta name="twitter:title" content="HTTPメソッドを取得する - Mojolicious Tutorial - Perl Web Framework" />
-<meta name="twitter:description" content="HTTPメソッドを取得するにはMojo::Message::Requestクラスのmethodメソッドを使用します。" />
+<meta name="twitter:title" content=" Get HTTP method  - Mojolicious Tutorial - Perl Web Framework" />
+<meta name="twitter:description" content="To get the HTTP method, use the  method  method of the Mojo::Message::Request class." />
 <meta name="twitter:image" content="https://en.mojolicious.perlzemi.com//images/twitter_card_large_kaeru.png" />
 
 
@@ -61,9 +59,9 @@
     
   </div>
   <div class="middle">
-    <h2><a href="/blog/20110420130648.html">HTTPメソッドを取得する</a></h2>
+    <h2><a href="/blog/20110420130648.html"> Get HTTP method </a></h2>
 <p>
-  HTTPメソッドを取得するにはMojo::Message::Requestクラスの<strong>method</strong>メソッドを使用します。
+  To get the HTTP method, use the <strong> method </strong> method of the Mojo::Message::Request class.
 </p>
 <div style="width:calc(100% - 30px);margin:10px auto;">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4525414114581084"
@@ -85,41 +83,41 @@
 my $method = $req-&gt;method;
 </pre>
 <p>
-  以下はMojolicious::Liteでの例です。Mojo::Message::RequestオブジェクトにはMojolicious::Controllerオブジェクトのreqメソッドを使ってアクセスすることができます。
+  The following is an example with Mojolicious::Lite. You can access the Mojo::Message::Request object using the req method of the Mojolicious::Controller object.
 </p>
 <pre>
-# Mojolicious::Lite
-get '/' =&gt; sub {
-  my $self = shift;
-  my $method = $self-&gt;req-&gt;method;
-};
+#Mojolicious::Lite
+get'/' =&gt; sub {
+   my $self = shift;
+   my $method = $self-&gt;req-&gt;method;
+};;
 </pre>
 <p>
-  以下はMojoliciousでの例です。
+  The following is an example from Mojolicious.
 </p>
 <pre>
-# Mojolicious
+#Mojolicious
 package MyApp::Picture;
 
-use Mojo::Base 'Mojolicious::Controller';
+use Mojo::Base'Mojolicious::Controller';
 
 use utf8;
 
-# ログイン画面
+# Login screen
 sub list {
-  my $self = shift;
-  my $method = $self-&gt;req-&gt;method;
+   my $self = shift;
+   my $method = $self-&gt;req-&gt;method;
 }
 </pre>
 <p>
-  HTTPメソッドによって分岐させるときは次のようにlc関数で小文字にしてから判定するとよいでしょう。
+  When branching by the HTTP method, it is better to make a judgment after making it lowercase with the lc function as follows.
 </p>
 <pre>
-if (lc $self-&gt;req-&gt;method eq 'post') {
-  ...
+if (lc $self-&gt;req-&gt;methodeq'post') {
+   ...
 }
 else {
-  ...
+   ...
 }
 </pre>
 
@@ -148,8 +146,7 @@ else {
           <div style="margin-bottom:30px">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4525414114581084"
      crossorigin="anonymous"></script>
-<!-- ディスプレイ縦長 -->
-<ins class="adsbygoogle"
+<!-- ディスプレイ縦長 --><ins class="adsbygoogle"
      style="display:block"
      data-ad-client="ca-pub-4525414114581084"
      data-ad-slot="4544919209"

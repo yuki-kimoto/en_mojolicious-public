@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <!-- meta -->
-<meta charset="UTF-8">
+    <!-- meta --><meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
 <link rel="icon" type="image/x-icon" href="/images/logo.png">
 <link rel="stylesheet" type="text/css" href="/css/common.css">
@@ -25,8 +24,7 @@
   });
 </script>
 
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-G3M43D6P2H"></script>
+<!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=G-G3M43D6P2H"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
@@ -34,12 +32,12 @@
 
   gtag('config', 'G-G3M43D6P2H');
 </script>
-<title>Mojolicious::Liteアプリでは、最後を「1;」で終わってはいけない。 - Mojolicious Tutorial - Perl Web Framework</title>
-<meta name="description" content="Mojoliciousでは、自動的にファイルの変更を検地してくれるmorboと呼ばれるサーバーを起動して開発ができます。">
+<title> In the Mojolicious::Lite app, don't end with "1;".  - Mojolicious Tutorial - Perl Web Framework</title>
+<meta name="description" content="With Mojolicious, you can start development by starting a server called  morbo that automatically detects file changes.">
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:site" content="@perlzemi" />
-<meta name="twitter:title" content="Mojolicious::Liteアプリでは、最後を「1;」で終わってはいけない。 - Mojolicious Tutorial - Perl Web Framework" />
-<meta name="twitter:description" content="Mojoliciousでは、自動的にファイルの変更を検地してくれるmorboと呼ばれるサーバーを起動して開発ができます。" />
+<meta name="twitter:title" content=" In the Mojolicious::Lite app, don't end with "1;".  - Mojolicious Tutorial - Perl Web Framework" />
+<meta name="twitter:description" content="With Mojolicious, you can start development by starting a server called  morbo that automatically detects file changes." />
 <meta name="twitter:image" content="https://en.mojolicious.perlzemi.com//images/twitter_card_large_kaeru.png" />
 
 
@@ -61,9 +59,9 @@
     
   </div>
   <div class="middle">
-    <h2><a href="/blog/20120504133610.html">Mojolicious::Liteアプリでは、最後を「1;」で終わってはいけない。</a></h2>
+    <h2><a href="/blog/20120504133610.html"> In the Mojolicious::Lite app, don't end with "1;". </a></h2>
 <p>
-  Mojoliciousでは、自動的にファイルの変更を検地してくれる<a href="/blog/20120406133367.html">morbo</a>と呼ばれるサーバーを起動して開発ができます。
+  With Mojolicious, you can start development by starting a server called <a href="/blog/20120406133367.html"> morbo</a> that automatically detects file changes.
 </p>
 <div style="width:calc(100% - 30px);margin:10px auto;">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4525414114581084"
@@ -85,38 +83,38 @@
 morbo myapp.pl
 </pre>
 <p>
-  でもひとつ気をつけてほしいことがあります。実は以下のアプリケーションは正しくうごきません。
+  But there is one thing I want you to be careful about. Actually, the following applications do not work properly.
 </p>
 <pre>
 use Mojolicious::Lite;
 
-get '/' =&gt; sub { shift-&gt;render(text =&gt; 'aaa') };
+get'/' =&gt; sub {shift-&gt;render(text =&gt;'aaa')};
 
 app-&gt;start;
 
 1;
 </pre>
 <p>
-  Perlのソースコードとしては正しく見えます。でもmorboコマンドで実行すると以下のようにエラーになります。
+  It looks correct as Perl source code. However, when I execute it with the morbo command, the following error occurs.
 </p>
 <pre>
 "myapp.pl" is not a valid application.
 </pre>
 <p>
-  実は最後の<b>1;</b>という行が問題です。実はapp->startでスクリプトが終わっている必要があります。__DATA__セクションがある場合は、app->startと__DATA__の間に空白以外をいれてはいけません。
+  Actually, the last line <b> 1; </b> is the problem. Actually, the script needs to be finished with app->start. If there is a __DATA__ section, there should be no space between app->startand __DATA__.
 </p>
 <p>
-  以下のように修正すると正しく動きます。
+  If you modify it as follows, it will work correctly.
 </p>
 <pre>
 use Mojolicious::Lite;
 
-get '/' =&gt; sub { shift-&gt;render(text =&gt; 'aaa') };
+get'/' =&gt; sub {shift-&gt;render(text =&gt;'aaa')};
 
 app-&gt;start;
 </pre>
 <p>
-  これはPSGIでアプリケーションを実行するときも同じことが言えるので気をつけましょう。
+  Keep in mind that the same is true when running an application with PSGI.
 </p>
 
   </div>
@@ -144,8 +142,7 @@ app-&gt;start;
           <div style="margin-bottom:30px">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4525414114581084"
      crossorigin="anonymous"></script>
-<!-- ディスプレイ縦長 -->
-<ins class="adsbygoogle"
+<!-- ディスプレイ縦長 --><ins class="adsbygoogle"
      style="display:block"
      data-ad-client="ca-pub-4525414114581084"
      data-ad-slot="4544919209"

@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <!-- meta -->
-<meta charset="UTF-8">
+    <!-- meta --><meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
 <link rel="icon" type="image/x-icon" href="/images/logo.png">
 <link rel="stylesheet" type="text/css" href="/css/common.css">
@@ -25,8 +24,7 @@
   });
 </script>
 
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-G3M43D6P2H"></script>
+<!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=G-G3M43D6P2H"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
@@ -34,12 +32,12 @@
 
   gtag('config', 'G-G3M43D6P2H');
 </script>
-<title>Object::Simple - Mojo::Base互換のアクセサを生成 - Mojolicious Tutorial - Perl Web Framework</title>
-<meta name="description" content="デフォルト値つきのアクセサを作成するにはObject::Simpleを使用します。Object::SimpleはMojoliciousのMojo::Baseと高いレベルで互換性があります。">
+<title> Object::Simple --Generate Mojo::Base compatible accessor  - Mojolicious Tutorial - Perl Web Framework</title>
+<meta name="description" content="Use  Object::Simple  to create an accessor with a default value. Object::Simple is highly compatible with Mojolicious's Mojo::Base.">
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:site" content="@perlzemi" />
-<meta name="twitter:title" content="Object::Simple - Mojo::Base互換のアクセサを生成 - Mojolicious Tutorial - Perl Web Framework" />
-<meta name="twitter:description" content="デフォルト値つきのアクセサを作成するにはObject::Simpleを使用します。Object::SimpleはMojoliciousのMojo::Baseと高いレベルで互換性があります。" />
+<meta name="twitter:title" content=" Object::Simple --Generate Mojo::Base compatible accessor  - Mojolicious Tutorial - Perl Web Framework" />
+<meta name="twitter:description" content="Use  Object::Simple  to create an accessor with a default value. Object::Simple is highly compatible with Mojolicious's Mojo::Base." />
 <meta name="twitter:image" content="https://en.mojolicious.perlzemi.com//images/twitter_card_large_kaeru.png" />
 
 
@@ -61,9 +59,9 @@
     
   </div>
   <div class="middle">
-    <h2><a href="/blog/20100224126425.html">Object::Simple - Mojo::Base互換のアクセサを生成</a></h2>
+    <h2><a href="/blog/20100224126425.html"> Object::Simple --Generate Mojo::Base compatible accessor </a></h2>
 <p>
-  デフォルト値つきのアクセサを作成するには<strong>Object::Simple</strong>を使用します。Object::SimpleはMojoliciousのMojo::Baseと高いレベルで互換性があります。
+  Use <strong> Object::Simple </strong> to create an accessor with a default value. Object::Simple is highly compatible with Mojolicious's Mojo::Base.
 </p>
 <div style="width:calc(100% - 30px);margin:10px auto;">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4525414114581084"
@@ -96,11 +94,11 @@ print $point-&gt;x;
 1;
 </pre>
 <p>
-  useするときに-baseを指定すると、Object::Simpleを継承することができます。Object::Simpleはnewメソッドを持ちます。またアクセッサを定義するためのhasというメソッドがインポートされます。またstrictとwarningsが自動的に有効になります。
+  You can inherit Object::Simple by specifying -base when using. Object::Simple has a new method. Also, a method called has for defining accessors is imported. Also, strict and warnings are automatically enabled.
 </p>
-<h3>一般的なクラスのサンプル</h3>
+<h3> General class sample </h3>
 <p>
-  一般的なクラスのサンプルです。Pointクラスはxとyというアクセッサを持ちます。またclearというxとyを0に初期化するメソッドを持ちます。
+  This is a sample of a general class. The Point class has accessors x and y. It also has a method called clear that initializes x and y to 0.
 </p>
 <pre>
 package Point;
@@ -119,7 +117,7 @@ sub clear {
 1;
 </pre>
 <p>
-  Pointクラスは次のように使用します。コンストラクタnewはObject::Simpleから継承したものです。
+  Use the Point class as follows: The constructor new is inherited from Object::Simple.
 </p>
 <pre>
 my $point = Point-&gt;new(x =&gt; 4, y =&gt; 6);
@@ -132,50 +130,50 @@ my $y = $point-&gt;y;
 
 $point-&gt;clear;
 </pre>
-<h3>Object::Simpleの使い方</h3>
+<h3> How to use Object::Simple </h3>
 <p>
-  属性を定義する方法がいくつかあります。
+  There are several ways to define attributes.
 </p>
-<h4>複数の属性を一度に定義</h4>
+<h4> Define multiple attributes at once </h4>
 <pre>
-# デフォルト値なし
-has ['x', 'y'];
+#No default value
+has ['x','y'];
 
-# デフォルト値あり
-has ['x', 'y'] =&gt; 0;
+#There is a default value
+has ['x','y'] =&gt; 0;
 </pre>
 <p>
-  配列のリファレンスをhasの第一引数に指定すると複数のアクセッサを一度に定義できます。
+  You can define multiple accessors at once by specifying an array reference as the first argument to has.
 </p>
-<h4>デフォルト値の指定</h4>
+<h4> Specify default value </h4>
 <pre>
-# 定数
+#Constant
 has foo =&gt; 1;
 
-# 配列のリファレンス
-has foo =&gt; sub { [] };
+# Array reference
+has foo =&gt; sub {[]};
 
-# ハッシュのリファレンス
-has bar =&gt; sub { {} };
+#Hash reference
+has bar =&gt; sub {{}};
 
-# オブジェクト
-has baz =&gt; sub { LWP::UserAgent-&gt;new };
+# object
+has baz =&gt; sub {LWP::UserAgent-&gt;new};
 </pre>
 <p>
-  配列のリファレンス、ハッシュのリファレンス、オブジェクトなどをデフォルト値に設定するときはsub { }で囲んで遅延評価する必要があります。
+  When setting array references, hash references, objects, etc. to default values, you need to enclose them in sub {} for lazy evaluation.
 </p>
-<h4>すべてのアクセサを一度に定義</h4>
+<h4> Define all accessors at once </h4>
 <pre>
-has [qw/foo bar baz/],
+has [qw / foo bar baz /],
     some =&gt; 1,
-    other =&gt; sub { 5 };
+    other =&gt; sub {5};
 </pre>
 <p>
-  すべてのアクセサの定義を一度に行うこともできます。
+  You can also define all accessors at once.
 </p>
-<h3>継承のサンプル</h3>
+<h3> Inheritance sample </h3>
 <p>
-  Pointクラスを継承したPoint3Dクラスを作成するサンプルです。
+  This is a sample to create a Point3D class that inherits from the Point class.
 </p>
 <pre>
 package Point3D;
@@ -185,32 +183,32 @@ has z =&gt; 0;
 
 sub clear {
   my $self = shift;
-  $self-&gt;SUPER::clear();
+  $self-&gt;SUPER::clear ();
   $self-&gt;z(0);
 }
 
 1;
 </pre>
-<h3>コンストラクタのオーバーライド</h3>
+<h3> Constructor override </h3>
 <p>
-  コンストラクタnew()をオブジェクトの初期化や引数の加工のためにオーバーライドすることができます。
+  The constructor new () can be overridden for object initialization and argument processing.
 </p>
 <pre>
-# オブジェクトの初期化のためのnew()のオーバーライド
+#Override new () for object initialization
 sub new {
-  my $self = shift-&gt;SUPER::new(@_);
+  my $self = shift-&gt;SUPER::new (@_);
   
-  # Initialization
+  #Initialization
   
   return $self;
 }
 </pre>
 <pre>
-# 引数の加工のためのnew()のオーバーライド
+#Override new () for argument processing
 sub new {
   my $self = shift;
   
-  $self-&gt;SUPER::new(x =&gt; $_[0], y =&gt; $_[1]);
+  $self-&gt;SUPER::new (x =&gt; $_ [0], y =&gt; $_ [1]);
   
   return $self;
 }
@@ -241,8 +239,7 @@ sub new {
           <div style="margin-bottom:30px">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4525414114581084"
      crossorigin="anonymous"></script>
-<!-- ディスプレイ縦長 -->
-<ins class="adsbygoogle"
+<!-- ディスプレイ縦長 --><ins class="adsbygoogle"
      style="display:block"
      data-ad-client="ca-pub-4525414114581084"
      data-ad-slot="4544919209"

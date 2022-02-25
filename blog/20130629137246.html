@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <!-- meta -->
-<meta charset="UTF-8">
+    <!-- meta --><meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
 <link rel="icon" type="image/x-icon" href="/images/logo.png">
 <link rel="stylesheet" type="text/css" href="/css/common.css">
@@ -25,8 +24,7 @@
   });
 </script>
 
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-G3M43D6P2H"></script>
+<!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=G-G3M43D6P2H"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
@@ -34,12 +32,12 @@
 
   gtag('config', 'G-G3M43D6P2H');
 </script>
-<title>テンプレートディレクトリの中のファイルを自動でディスパッチする方法 - Mojolicious Tutorial - Perl Web Framework</title>
-<meta name="description" content="テンプレートディレクトリの中のファイルを自動でディスパッチする処理は以下のようにして書くことができます。">
+<title> How to automatically dispatch files in the template directory  - Mojolicious Tutorial - Perl Web Framework</title>
+<meta name="description" content="The process of automatically dispatching files in the  template directory  can be written as follows.">
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:site" content="@perlzemi" />
-<meta name="twitter:title" content="テンプレートディレクトリの中のファイルを自動でディスパッチする方法 - Mojolicious Tutorial - Perl Web Framework" />
-<meta name="twitter:description" content="テンプレートディレクトリの中のファイルを自動でディスパッチする処理は以下のようにして書くことができます。" />
+<meta name="twitter:title" content=" How to automatically dispatch files in the template directory  - Mojolicious Tutorial - Perl Web Framework" />
+<meta name="twitter:description" content="The process of automatically dispatching files in the  template directory  can be written as follows." />
 <meta name="twitter:image" content="https://en.mojolicious.perlzemi.com//images/twitter_card_large_kaeru.png" />
 
 
@@ -61,9 +59,9 @@
     
   </div>
   <div class="middle">
-    <h2><a href="/blog/20130629137246.html">テンプレートディレクトリの中のファイルを自動でディスパッチする方法</a></h2>
+    <h2><a href="/blog/20130629137246.html"> How to automatically dispatch files in the template directory </a></h2>
 <p>
-  <strong>テンプレートディレクトリの中のファイルを自動でディスパッチ</strong>する処理は以下のようにして書くことができます。
+  The process of automatically dispatching files in the <strong> template directory </strong> can be written as follows.
 </p>
 <div style="width:calc(100% - 30px);margin:10px auto;">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4525414114581084"
@@ -84,81 +82,81 @@
 <pre>
 use Mojolicious::Lite;
 
-# 手動でルートを作成
-get '/foo' =&gt; 'foo';
+# Manually create a route
+get'/ foo' =&gt;'foo';
 
-# 自動のルートを作成
-any '/(*Path)' =&gt; sub {
+#Create an automatic route
+any'/ (* Path)' =&gt; sub {
   my $self = shift;
   
   my $path = $self-&gt;param('Path');
   
   $self-&gt;render(template =&gt; $path);
-};
+};;
 
 app-&gt;start;
 
 __DATA__
 
-@@ foo.html.ep
+@@foo.html.ep
 foo
 
-@@ bar/baz.html.ep
-bar/baz
+@@bar / baz.html.ep
+bar / baz
 </pre>
 <p>
-  ワイルドカードプレースホルダー(*)を使ってアクセスするパス構造をそのままテンプレートのディレクトリ構造としてわたしています。Pathという大文字を使っているのはpathが予約語だからです。
+  The path structure accessed using the wildcard placeholder (*) is used as the template directory structure. The capital letter Path is used because path is a reserved word.
 </p>
 <p>
-  これでPHPのようなテンプレートディレクトリにファイルを配置する簡便さと、ルートを手動で定義してユーザーに見やすいURLを提供するというふたつの作業のどちらも簡単に行うことができます。
+  Now you can easily do both the convenience of placing the file in a template directory like PHP and the manual definition of the root to provide the user with an easy-to-read URL.
 </p>
 <p>
-  でもこの方法はよいように見えてひとつ問題があって、自動でテンプレートを描画した場合には、テンプレート描画以外の処理ができないということです。テンプレートの中で先頭でロジックを記述して場合に応じてNot Foundや例外ページやJSONを描画することができません。
+  However, this method seems to be good, and there is one problem: when the template is drawn automatically, processing other than template drawing can not be done. It is not possible to write logic at the beginning of the template to draw Not Found, exception pages or JSON as the case may be.
 </p>
 <p>
-  抜け道はあります。けれども、公式な方法ではないので、サポートされるかどうかは未知な部分がありますし、仕様変更に弱くなります。
+  There is a loophole. However, since it is not an official method, it is unknown whether it will be supported or not, and it is vulnerable to specification changes.
 </p>
-<h3>抜け道の方法(Mojolicious 4.0以降)</h3>
+<h3> How to get around (Mojolicious 4.0 or later) </h3>
 <p>
-  render_maybeでテンプレートを描画して、mojo.finisedを確認します。
+  Render the template with render_maybe and check mojo.finised.
 </p>
 <pre>
 use Mojolicious::Lite;
 
-# 手動でルートを作成
-get '/foo' =&gt; sub {
+# Manually create a route
+get'/ foo' =&gt; sub {
   my $self = shift;
   $self-&gt;render_maybe('foo');
-  $self-&gt;stash('mojo.finished') ? undef : $self-&gt;reply-&gt;not_found;
-};
+  $self-&gt;stash('mojo.finished')? undef: $self-&gt;reply-&gt;not_found;
+};;
 
-# 自動のルートを作成
-any '/(*Path)' =&gt; sub {
+#Create an automatic route
+any'/ (* Path)' =&gt; sub {
   my $self = shift;
   
   my $path = $self-&gt;param('Path');
   $self-&gt;render_maybe($path);
-  $self-&gt;stash('mojo.finished') ? undef : $self-&gt;reply-&gt;not_found;
-};
+  $self-&gt;stash('mojo.finished')? undef: $self-&gt;reply-&gt;not_found;
+};;
 
 app-&gt;start;
 
 __DATA__
 
-@@ foo.html.ep
+@@foo.html.ep
 &lt;%
-  $self-&gt;render(json =&gt; {path =&gt; 'foo'});
+  $self-&gt;render(json =&gt; {path =&gt;'foo'});
   return;
 %&gt;
 
-@@ bar/baz.html.ep
+@@bar / baz.html.ep
 &lt;%
-  $self-&gt;render(json =&gt; {path =&gt; '/bar/baz'});
+  $self-&gt;render(json =&gt; {path =&gt;'/ bar / baz'});
   return;
 %&gt;
 </pre>
 <p>
-  このように記述するとテンプレートの中で、JSONやrender_exceptionを呼び出して例外を描画することができます。
+  With this description, you can call JSON or render_exception in the template to draw the exception.
 </p>
 
   </div>
@@ -186,8 +184,7 @@ __DATA__
           <div style="margin-bottom:30px">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4525414114581084"
      crossorigin="anonymous"></script>
-<!-- ディスプレイ縦長 -->
-<ins class="adsbygoogle"
+<!-- ディスプレイ縦長 --><ins class="adsbygoogle"
      style="display:block"
      data-ad-client="ca-pub-4525414114581084"
      data-ad-slot="4544919209"

@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <!-- meta -->
-<meta charset="UTF-8">
+    <!-- meta --><meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
 <link rel="icon" type="image/x-icon" href="/images/logo.png">
 <link rel="stylesheet" type="text/css" href="/css/common.css">
@@ -25,8 +24,7 @@
   });
 </script>
 
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-G3M43D6P2H"></script>
+<!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=G-G3M43D6P2H"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
@@ -34,12 +32,12 @@
 
   gtag('config', 'G-G3M43D6P2H');
 </script>
-<title>データベースとプログラムの連携 - Mojolicious Tutorial - Perl Web Framework</title>
-<meta name="description" content="データベースの基礎を学習した後は、プログラムからデータベースにアクセスする方法を学びましょう。">
+<title> Database and program linkage  - Mojolicious Tutorial - Perl Web Framework</title>
+<meta name="description" content="After learning the basics of databases, let's learn how to  programmatically access databases .">
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:site" content="@perlzemi" />
-<meta name="twitter:title" content="データベースとプログラムの連携 - Mojolicious Tutorial - Perl Web Framework" />
-<meta name="twitter:description" content="データベースの基礎を学習した後は、プログラムからデータベースにアクセスする方法を学びましょう。" />
+<meta name="twitter:title" content=" Database and program linkage  - Mojolicious Tutorial - Perl Web Framework" />
+<meta name="twitter:description" content="After learning the basics of databases, let's learn how to  programmatically access databases ." />
 <meta name="twitter:image" content="https://en.mojolicious.perlzemi.com//images/twitter_card_large_kaeru.png" />
 
 
@@ -61,9 +59,9 @@
     
   </div>
   <div class="middle">
-    <h2><a href="/blog/20140511139989.html">データベースとプログラムの連携</a></h2>
+    <h2><a href="/blog/20140511139989.html"> Database and program linkage </a></h2>
 <p>
-  データベースの基礎を学習した後は、<strong>プログラムからデータベースにアクセス</strong>する方法を学びましょう。
+  After learning the basics of databases, let's learn how to <strong> programmatically access databases </strong>.
 </p>
 <div style="width:calc(100% - 30px);margin:10px auto;">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4525414114581084"
@@ -81,48 +79,48 @@
 </div>
 
 
-<h3>DBD::SQLiteのインストール</h3>
+<h3> Install DBD::SQLite </h3>
 <p>
-  まず最初にSQLiteを使えるようにする必要があります。Windowsの場合はcpanコマンドを使って、Linux, Mac OS Xの場合は、cpanmコマンドを使って<strong>DBD::SQLite</strong>モジュールをインストールします。
+  First of all, you need to be able to use SQLite. Use the cpan command for Windows and the cpanm command for Linux and Mac OS X to install the <strong> DBD::SQLite </strong> module.
 </p>
 <pre>
-# Windows
+#Windows
 cpan DBD::SQLite
 
-# Linux, Mac OS X
+#Linux, Mac OS X
 cpanm DBD::SQLite
 </pre>
-<h3>DBIx::Connectorのインストール</h3>
+<h3> Install DBIx::Connector </h3>
 <p>
-  Perlにはデータベースを操作する場合にDBIを使うようにと解説されていることが多いですが、Webサイトを作成する場合は、DBIをそのまま使ってはいけません。Webサイトを作成する場合は、プリフォークサーバーで本番環境において配置するのですが、DBIはデータベースとの接続の管理をしてくれませんので、接続が途切れるという不具合がおきます。
+  Perl often tells you to use DBI when working with databases, but when creating a website, don't just use DBI. When creating a website, it is placed in the production environment on the prefork server, but DBI does not manage the connection with the database, so there is a problem that the connection is interrupted.
 </p>
 <p>
-  ですから、DBIにデータベースとの接続を自動的に管理してくれる機能がつけられたモジュールを利用する必要があります。今回はDBIの機能に、接続の自動管理機能がついた、DBIx::Connectorというモジュールを使います。このようなモジュールはコネクションマネージャーと呼ばれるので覚えておきましょう。
+  Therefore, you need to use a module that has a function in DBI that automatically manages the connection with the database. This time, we will use a module called DBIx::Connector, which has an automatic connection management function in addition to the DBI function. Keep in mind that such modules are called connection managers.
 </p>
 <p>
-  DBIx::Connectorをインストールします。
+  Install DBIx::Connector.
 </p>
 <pre>
-# Windows
+#Windows
 cpan DBIx::Connector
 
-# Linux, Mac OS X
+#Linux, Mac OS X
 cpanm DBIx::Connector
 </pre>
-<h3>データベースへの接続</h3>
+<h3> Connection to database </h3>
 <p>
-  ではDBIx::Connectorを使って、データベースにアクセスしてみましょう。まず最初にDBIx::Connectorオブジェクトを作成します。DBIx::Connectorオブジェクトを作成するにはnewメソッドを使用します。
+  Now let's access the database using DBIx::Connector. First, create a DBIx::Connector object. Use the new method to create a DBIx::Connector object.
 </p>
 <pre>
 use DBIx::Connector;
 
-# 接続の作成
-my $dsn = 'dbi:SQLite:dbname=test.db';
+#Create connection
+my $dsn ='dbi: SQLite: dbname = test.db';
 my $conn = DBIx::Connector-&gt;new(
-  $dsn, # データソース名
-  undef, # ユーザー名
-  undef, # パスワード
-  # DBIのオプション
+  $dsn, # data source name
+  undef, #username
+  undef, # password
+  # DBI options
   {
     RaiseError =&gt; 1,
     PrintError =&gt; 0,
@@ -131,144 +129,144 @@ my $conn = DBIx::Connector-&gt;new(
 );
 </pre>
 <p>
-  DBIx::Connectorのnewの引数は、DBIのconnectメソッドの引数と同じです。newの第1引数はデータソースと呼ばれるデータベースに接続するための情報を指定します。フォーマットは少し特殊ですが覚えてしまいましょう。
+  The new argument of DBIx::Connector is the same as the argument of the connect method of DBI. The first argument of new specifies the information to connect to the database called the data source. The format is a bit special, but let's remember.
 </p>
- データソースの中で接続するデータベース名を指定することができます。SQLiteではデータベースは単純にファイルとして作成されるのでデータベース名として好きな名前を指定します。戻り値にはデータベースハンドルと呼ばれるデータベースと通信するためのオブジェクトが返されます。
+ You can specify the name of the database to connect to in the data source. In SQLite, the database is simply created as a file, so specify any name you like as the database name. The return value is an object called a database handle for communicating with the database.
 <p>
-  これを実行するとカレントディレクトリにtest.dbというファイルができているはずです。
+  When you do this, you should have a file called test.db in your current directory.
 </p>
-<h4>ユーザ名とパスワードを指定して接続する</h4>
+<h4> Connect by specifying the user name and password </h4>
 <p>
-  SQLiteで作成したデータベースへの接続にはユーザ名やパスワードは必要ありません。ですがMySQLやPostgreSQLやOracleなどの標準的なデータベースではユーザ名とパスワードを接続のときに指定する必要があります。
+  No username or password is required to connect to a database created with SQLite. However, standard databases such as MySQL, PostgreSQL, and Oracle require you to specify a username and password when connecting.
 </p>
 <p>
-  DBIを使用してユーザ名とパスワードを指定して接続するには次のようにします。第2引数にユーザ名、第3引数にパスワードを指定します。
+  To connect using DBI with a username and password: Specify the user name in the second argument and the password in the third argument.
 </p>
 <pre>
 my $conn = DBIx::Connector-&gt;new($dsn, $user, $password);
 </pre>
-<h4>オプションの解説</h4>
+<h4> Explanation of options </h4>
 <p>
-  DBIx::Connectorのnewメソッドの第4引数にはDBIのオプションを指定することができます。
+  DBI options can be specified in the 4th argument of the new method of DBIx::Connector.
 </p>
 <pre>
 DBIx::Connector-&gt;new($dsn, $user, $password, {opt1 =&gt; $val1, opt2 =&gt; $val2, ..});
 </pre>
 <p>
-  DBIのデフォルトの動作はエラーが発生した場合に警告を標準エラー出力に出力するようになっています。
+  The default behavior of DBI is to print a warning to standard error if an error occurs.
 </p>
 <p>
-  ですが警告ではなく、エラーメッセージを出力してプログラムを終了するほうがよりよいように思います。
+  However, I think it is better to print an error message and exit the program instead of a warning.
 </p>
 <p>
-  警告を出力しないようにするには次のようにします。
+  To prevent the warning from being output, do the following.
 </p>
 <pre>
 PrintError =&gt; 0
 </pre>
 <p>
-  またエラーメッセージを出力してプログラムを終了するようにするには次のようにします。
+  To output an error message and terminate the program, do the following.
 </p>
 <pre>
 RaiseError =&gt; 1
 </pre>
 <p>
-  またDBIにはAutoCommitと呼ばれるオプションがあります。これはコミットと呼ばれる処理を自動的に行うか行わないかを決めるオプションです。データベースのドライバによってデフォルトの値が異なる可能性がありますので明示的に指定しておいたほうが良いと思います。わたしの場合は自動的にコミットするようにしておいてトランザクションが必要になった場合にAutoCommitを0に設定します。
+  DBI also has an option called AutoCommit. This is an option that decides whether to do something called commit automatically or not. The default value may differ depending on the database driver, so it is better to specify it explicitly. In my case I set it to commit automatically and set AutoCommit to 0 when a transaction is needed.
 </p>
 <p>
-  ですのでこのようなことを踏まえてデータベースに接続する場合は次のようなサンプルのような記述にしておくのがよいと思います。
+  Therefore, when connecting to the database based on this, I think it is better to write something like the following sample.
 </p>
-<h3>データベースハンドルの取得</h3>
+<h3> Get database handle </h3>
 <p>
-  データベースにアクセスするためには、コネクションマネージャーからデータベースハンドルを取得する必要があります。データベースハンドルは<strong>dbh</strong>メソッドで取得できます。
+  To access the database, you need to get the database handle from the connection manager. You can get the database handle with the <strong> dbh </strong> method.
 </p>
 <pre>
-# データベースハンドルの取得
-my $dbh  = $conn-&gt;dbh;
+#Get database handle
+my $dbh = $conn-&gt;dbh;
 </pre>
 <p>
-  これを使って、データベースへアクセスを行います。
+  Use this to access the database.
 </p>
-<h3>SQLの実行</h3>
+<h3> SQL execution </h3>
 <p>
-  SQLとはテーブルを作成したり、データベースにデータを登録したり、データを取り出したりするために使用する問い合わせ言語のことです。基本的なSQLについてはこれから解説します。ここではまずSQLを実行する方法を解説します。
+  SQL is the query language used to create tables, register data in databases, and retrieve data. I will explain the basic SQL from now on. Here, we will first explain how to execute SQL.
 </p>
 <p>
-  SQLを実行する方法には2通りの方法があります。
+  There are two ways to execute SQL.
 </p>
 <ol>
   <li>
-    doメソッドを使用して直接実行する方法
+    How to execute directly using do method
   </li>
   <li>
-    prepareメソッドでステートメントハンドルを準備してからexecuteメソッドで実行する方法
+    How to prepare a statement handle with the prepare method and then execute it with the execute method
   </li>
 </ol>
 <p>
-  二つの方法がありますが、原則として2番目の方法を使います。Webサイトではユーザーから受け取ったデータをデータベースに挿入することになりますが、一番目の方法は、セキュリティによる危険がありますので、2番目の方法を使うようにしてください。
+  There are two methods, but in principle, the second method is used. Websites will insert data received from users into the database, but the first method is a security risk, so be sure to use the second method.
 </p>
 <p>
-  今回は2番目の方法だけ解説します。
+  This time, I will explain only the second method.
 </p>
-<h3>レコードの追加 insert</h3>
+<h3> Add record insert </h3>
 <p>
-  テーブルにレコードを挿入するにはinsert文を使用します。
+  Use the insert statement to insert a record into the table.
 </p>
 <pre>
-# ステートメントハンドルの準備
-my $sth = $dbh-&gt;prepare('insert into book (id, title, author) values (?, ?, ?)');
+#Preparing the statement handle
+my $sth = $dbh-&gt;prepare('insert into book (id, title, author) values ​​(?,?,?)');
 
-# SQLの実行
-my @params = ('00000001', 'Perl', 'kimoto');
+#Execute SQL
+my @params = ('00000001','Perl','kimoto');
 $sth-&gt;execute(@params);
 </pre>
 <p>
-  まず最初にprepare文で、ステートメントハンドルを準備します。パラメーターの部分は「?」を記述します。これはプレースホルダーと呼ばれます。
+  First, prepare the statement handle with the prepare statement. In the parameter part, describe "?". This is called a placeholder.
 </p>
 <p>
-  SQLを実際に実行するには、ステートメントハンドルから<strong>execute</strong>メソッドを呼び出します。引数にはプレースホルダーに埋め込む値を配列で指定します。
+  To actually execute the SQL, call the <strong> execute </strong> method from the statement handle. In the argument, specify the value to be embedded in the placeholder as an array.
 </p>
 <p>
-  ユーザーから受け取った値を利用するときは、必ずプレースホルダーを利用してください。プレースホルダーを使えば、値は適切にクォートされますので、安全です。
+  Be sure to use placeholders when using values ​​received from users. If you use placeholders, the values ​​will be quoted properly, so it's safe.
 </p>
-<h3>レコードの更新 update</h3>
+<h3> Record update update </h3>
 <p>
-  テーブルにあるデータを更新するにはupdate文を使用します。
+  Use the update statement to update the data in the table.
 </p>
 <pre>
-# ステートメントハンドルの準備
-my $sth = $dbh-&gt;prepare('update book set title = ? where author = ?');
+#Preparing the statement handle
+my $sth = $dbh-&gt;prepare('update book set title =? where author =?');
 
-# SQLの実行
-my @params = ('Ruby', 'taro',);
+#Execute SQL
+my @params = ('Ruby','taro',);
 $sth-&gt;execute(@params);
 </pre>
-<h3>レコードの削除 delete</h3>
+<h3> Delete record delete </h3>
 <p>
-  レコードを削除するにはdelete文を使用します。
+  Use the delete statement to delete a record.
 </p>
 <pre>
-# ステートメントハンドルの準備
-my $sth = $dbh-&gt;prepare('delete from book where id = ?');
+#Preparing the statement handle
+my $sth = $dbh-&gt;prepare('delete from book where id =?');
 
-# SQLの実行
+#Execute SQL
 my @params = ('00000001');
 $sth-&gt;execute(@params);
 </pre>
-<h3>レコードの取得 select</h3>
+<h3> Get record select </h3>
 <p>
-  列を取得するにはselect文を使用します。他のSQL文と異なるのは、各行を取得するためにフェッチという処理を行うことです。
+  Use a select statement to get the column. It differs from other SQL statements in that it performs a process called fetch to retrieve each row.
 </p>
 <pre>
-# ステートメントハンドルの準備
-my $sth = $dbh-&gt;prepare('select * from book where title like ?');
+#Preparing the statement handle
+my $sth = $dbh-&gt;prepare('select * from book where title like?');
 
-# SQLの実行
+#Execute SQL
 my @params = ('%Perl%');
 $sth-&gt;execute(@params);
 
-# フェッチ
-while (my $row =  $sth-&gt;fetchrow_hashref) {
+#Fetch
+while (my $row = $sth-&gt;fetchrow_hashref) {
   my $id = $row-&gt;{id};
   my $title = $row-&gt;{title};
 
@@ -276,39 +274,39 @@ while (my $row =  $sth-&gt;fetchrow_hashref) {
 }
 </pre>
 <p>
-  <strong>fetchrow_hashref</strong>メソッドを使用すれば、各行のデータをハッシュリファレンスとして取得できます。<a href="/blog/20100123126425.html">while文</a>ですべての行を取得するまで繰り返します。
+  You can use the <strong> fetchrow_hashref </strong> method to fetch the data for each row as a hash reference. Repeat until you get all the lines in the <a href="/blog/20100123126425.html"> while statement</a>.
 </p>
-<h3>日本語の扱い</h3>
+<h3> Handling of Japanese </h3>
 <p>
-  プログラムの内部では内部文字列を利用して、外部へ出力するときは、バイト文字列に変換するということを、解説しましたね。データベースの場合もこれと同じ考えです。データベースにデータを渡すときは、内部文字列をバイト文字列に変換する必要があります。
-</p>
-<p>
-  けれどもこれは、とてもわずらわしいですね。でも、これを自動で行ってくれる<b>sqlite_unicode</b>というオプションがあるので、オプションさえ指定しておけば、後は何も考える必要はありません。
+  You explained that the internal character string is used inside the program, and when it is output to the outside, it is converted to a byte character string. The same idea applies to databases. When you pass data to the database, you need to convert the internal string to a byte string.
 </p>
 <p>
-  接続するときにオプションとして指定するようにしましょう。
+  But this is very annoying, isn't it? However, there is an option called <b> sqlite_unicode </b> that does this automatically, so if you specify the option, you don't have to think about anything else.
+</p>
+<p>
+  Let's specify it as an option when connecting.
 </p>
 <pre>
 use DBIx::Connector;
 
-# 接続の作成
-my $dsn = 'dbi:SQLite:dbname=test.db';
+#Create connection
+my $dsn ='dbi: SQLite: dbname = test.db';
 my $conn = DBIx::Connector-&gt;new(
-  $dsn, # データソース名
-  undef, # ユーザー名
-  undef, # パスワード
-  # DBIのオプション
+  $dsn, # data source name
+  undef, #username
+  undef, # password
+  # DBI options
   {
     RaiseError =&gt; 1,
     PrintError =&gt; 0,
     AutoCommit =&gt; 1,
-    sqlite_unicode =&gt; 1 # 内部文字列を自動的にUTF-8バイト文字列に変換
+    sqlite_unicode =&gt; 1 # Automatically convert internal strings to UTF-8 byte strings
   }
 );
 </pre>
-<h3>サンプルコード</h3>
+<h3> Sample code </h3>
 <p>
-  では実際に動かすことのできるプログラムを書いてみましょう。SQLiteでは、データベースをメモリ上に作成することもできるので、試験が簡単です。データソース名の中で、「dbname」に「:memory:」を指定します。ソースコードはUTF-8で保存してください。
+  Let's write a program that can actually be run. SQLite also allows you to create a database in memory, which makes testing easier. In the data source name, specify ": ​​memory:" for "dbname". Save the source code in UTF-8.
 </p>
 <pre>
 use strict;
@@ -316,15 +314,15 @@ use warnings;
 use utf8;
 
 use DBIx::Connector;
-use Encode 'encode';
+use Encode'encode';
 
-# 接続の作成
-my $dsn = 'dbi:SQLite:dbname=:memory:';
+#Create connection
+my $dsn ='dbi: SQLite: dbname =: memory:';
 my $conn = DBIx::Connector-&gt;new(
-  $dsn, # データソース名
-  undef, # ユーザー名
-  undef, # パスワード
-  # DBIのオプション
+  $dsn, # data source name
+  undef, #username
+  undef, # password
+  # DBI options
   {
     RaiseError =&gt; 1,
     PrintError =&gt; 0,
@@ -333,60 +331,60 @@ my $conn = DBIx::Connector-&gt;new(
   }
 );
 
-# データベースハンドルの取得
-my $dbh  = $conn-&gt;dbh;
+#Get database handle
+my $dbh = $conn-&gt;dbh;
 
-# テーブルの作成
-my $create_table_sql = &lt;&lt;"EOS";
+#Create table
+my $create_table_sql = &lt;&lt; "EOS";
 create table book (
   id primary key,
-  title not null default '',
-  author not null default ''
+  title not null default'',
+  author not null default''''
 );
 EOS
 $dbh-&gt;do($create_table_sql);
 
-# insert文
-my $sth = $dbh-&gt;prepare('insert into book (id, title, author) values (?, ?, ?)');
-$sth-&gt;execute('00000001', 'Perl', 'kimoto');
+#insert statement
+my $sth = $dbh-&gt;prepare('insert into book (id, title, author) values ​​(?,?,?)');
+$sth-&gt;execute('00000001','Perl','kimoto');
 
-# update文
-$sth = $dbh-&gt;prepare('update book set title = ? where author = ?');
-$sth-&gt;execute('Ruby', 'taro');
+#update statement
+$sth = $dbh-&gt;prepare('update book set title =? where author =?');
+$sth-&gt;execute('Ruby','taro');
 
-# delete文
-$sth = $dbh-&gt;prepare('delete from book where id = ?');
+#delete statement
+$sth = $dbh-&gt;prepare('delete from book where id =?');
 $sth-&gt;execute('00000001');
 
-# insert文
-$sth = $dbh-&gt;prepare('insert into book (id, title, author) values(?, ?, ?)');
-$sth-&gt;execute('00000001', 'Perl Tutorial', '木本');
-$sth-&gt;execute('00000002', 'Perl advantage', '健');
-$sth-&gt;execute('00000003', 'Ruby Tutorial', '洋介');
+#insert statement
+$sth = $dbh-&gt;prepare('insert into book (id, title, author) values ​​(?,?,?)');
+$sth-&gt;execute('00000001','Perl Tutorial','Kimoto');
+$sth-&gt;execute('00000002','Perl advantage','Ken');
+$sth-&gt;execute('00000003','Ruby Tutorial','Yosuke');
 
-# select文
-$sth = $dbh-&gt;prepare('select * from book where title like ?');
+#select statement
+$sth = $dbh-&gt;prepare('select * from book where title like?');
 $sth-&gt;execute('%Perl%');
 
-# フェッチ
-while (my $row =  $sth-&gt;fetchrow_hashref) {
+#Fetch
+while (my $row = $sth-&gt;fetchrow_hashref) {
   my $id = $row-&gt;{id};
   my $title = $row-&gt;{title};
   my $author = $row-&gt;{author};
 
   my $line = "id: $id, title: $title, author: $author\n";
   
-  # Windowsの場合はcp932で、それ以外のOSはUTF-8で出力
-  my $enc = $^O eq 'MSWin32' ? 'cp932' : 'UTF-8';
-  print encode($enc, $line);
+  # Output in cp932 for Windows, UTF-8 for other OS
+  my $enc = $^ O eq'MSWin32'?'cp932':'UTF-8';
+  print encode ($enc, $line);
 }
 </pre>
 <p>
-  列「title」に「Perl」を含んでいる場合だけ、行の内容が表示されます。
+  The contents of the row are displayed only if the column "title" contains "Perl".
 </p>
 <pre>
-id: 00000001, title: Perl Tutorial, author: 木本
-id: 00000002, title: Perl advantage, author: 健
+id: 00000001, title: Perl Tutorial, author: Kimoto
+id: 00000002, title: Perl advantage, author: Ken
 </pre>
 
   </div>
@@ -414,8 +412,7 @@ id: 00000002, title: Perl advantage, author: 健
           <div style="margin-bottom:30px">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4525414114581084"
      crossorigin="anonymous"></script>
-<!-- ディスプレイ縦長 -->
-<ins class="adsbygoogle"
+<!-- ディスプレイ縦長 --><ins class="adsbygoogle"
      style="display:block"
      data-ad-client="ca-pub-4525414114581084"
      data-ad-slot="4544919209"
